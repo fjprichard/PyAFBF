@@ -1,0 +1,3 @@
+[console_scripts]
+AFBF = AFBF:main
+

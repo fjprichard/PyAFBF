@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Textured images with large trend &mdash; PyAFBF  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Textured images with spectral variations" href="plot_extendedfield.html" />
+    <link rel="prev" title="Texture Patchwork" href="../plot_database.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> PyAFBF
+          
+
+          
+            
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../quickstartguide.html">Quick start guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Example gallery</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#basic-examples">Basic examples</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#extended-anisotropic-fields">Extended anisotropic fields</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Textured images with large trend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_extendedfield.html">Textured images with spectral variations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#heterogeneous-fields">Heterogeneous fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#related-anisotropic-fields">Related anisotropic fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../afbf.Field.html">Field classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../afbf.Classes.html">Auxiliary classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refs.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">PyAFBF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Example gallery</a> &raquo;</li>
+        
+      <li>Textured images with large trend</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/auto_examples/ExtendedFields/plot_intrinsic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-extendedfields-plot-intrinsic-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="textured-images-with-large-trend">
+<span id="sphx-glr-auto-examples-extendedfields-plot-intrinsic-py"></span><h1>Textured images with large trend<a class="headerlink" href="#textured-images-with-large-trend" title="Permalink to this headline">¶</a></h1>
+<p><em>Code author: Frédéric Richard &lt;frederic.richard_at_univ-amu.fr&gt;</em></p>
+<p>In this example, we show how to simulate textured images with large trends.</p>
+<p>Basic AFBF have <a class="reference internal" href="../../glossary.html#term-stationarity"><span class="xref std std-term">stationary</span></a> <a class="reference internal" href="../../glossary.html#term-increments"><span class="xref std std-term">increments</span></a>.
+This is ensured by the fact that the Hurst function <span class="math notranslate nohighlight">\(\beta\)</span>
+ranges in the interval <span class="math notranslate nohighlight">\((0,1)\)</span>. However, the package PyAFBF
+enables the simulation of more generic fields for which <span class="math notranslate nohighlight">\(\beta\)</span>
+have values above 1. Increments of order 0 of such fields might not be
+stationary anymore. They are <a class="reference internal" href="../../glossary.html#term-intrinsic"><span class="xref std std-term">intrinsic</span></a> fields of an order k,
+which depends on the maximal value of the Hurst function. Such fields
+may show large polynomial trends, the degree of which corresponding
+to the order k.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even when extended to an intrinsic random field,
+the hurst function of an AFBF
+has a minimum <span class="math notranslate nohighlight">\(H\)</span> which remains in <span class="math notranslate nohighlight">\((0,1)\)</span>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The definition and theory of intrinsic random fields are presented
+in <span id="id1">[<a class="reference internal" href="../../refs.html#id2">10</a>]</span>. These fields have been used for modeling
+in the framework of AFBF
+<span id="id2">[<a class="reference internal" href="../../refs.html#id4">3</a>, <a class="reference internal" href="../../refs.html#id5">4</a>, <a class="reference internal" href="../../refs.html#id6">5</a>, <a class="reference internal" href="../../refs.html#id7">6</a>, <a class="reference internal" href="../../refs.html#id8">7</a>]</span>.</p>
+</div>
+<ul class="sphx-glr-horizontal">
+<li><img alt="Intrinsic field." class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_intrinsic_001.png" />
+</li>
+<li><img alt="Hurst function" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_intrinsic_002.png" />
+</li>
+</ul>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>c:\users\frede\nextcloud\synchro\recherche\deep-texture\afbf_release\afbf\Classes\SpatialData.py:318: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  fig = plt.subplot()
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">afbf</span> <span class="kn">import</span> <span class="n">tbfield</span>
+
+<span class="c1"># Definition and simulation of an AFBF.</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">tbfield</span><span class="p">(</span><span class="s1">&#39;afbf-smooth&#39;</span><span class="p">)</span>
+
+<span class="n">Z</span><span class="o">.</span><span class="n">hurst</span><span class="o">.</span><span class="n">ChangeParameters</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]]),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span>  <span class="mf">1.2</span><span class="p">]])</span>
+    <span class="p">)</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">hurst</span><span class="o">.</span><span class="n">trans</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">NormalizeModel</span><span class="p">()</span>
+
+<span class="n">Z</span><span class="o">.</span><span class="n">FindOrder</span><span class="p">()</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">DisplayParameters</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">Simulate</span><span class="p">()</span>
+<span class="n">z</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Intrinsic field.&#39;</span>
+<span class="n">z</span><span class="o">.</span><span class="n">Display</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.489 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-extendedfields-plot-intrinsic-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/5bd98cc888a8e9c541ea4a0361faf435/plot_intrinsic.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_intrinsic.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/6cce9b3f990e4c2d30b31456faa2248e/plot_intrinsic.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_intrinsic.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="plot_extendedfield.html" class="btn btn-neutral float-right" title="Textured images with spectral variations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../plot_database.html" class="btn btn-neutral float-left" title="Texture Patchwork" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright Frédéric Richard, 2021.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

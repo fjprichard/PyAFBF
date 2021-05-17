@@ -1,0 +1,47 @@
+Metadata-Version: 1.1
+Name: PyAFBF
+Version: 0.0.1
+Summary: Brownian texture simulation
+Home-page: UNKNOWN
+Author: Frederic Richard
+Author-email: frederic.richard@univ-amu.fr
+License: GNU GPL, Version 3
+Description: ======
+        PyAFBF
+        ======
+        
+        This package is intended for the simulation of image textures from a mathematical model called the anisotropic fractional Brownian fields.
+        
+        Installation from sources
+        =========================
+        
+        In the root directory of the package, just do::
+        
+            python setup.py install
+            or
+            pip install -e .
+        
+        
+        Credits
+        =======
+        
+        PyAFBF is written and maintained by Frederic Richard, Professor at Aix-Marseille University, France.
+        
+        
+        Contributors
+        ------------
+        
+        Frederic Richard
+        
+        
+Keywords: image texture,Anisotropic fractional Brownian field,simulation
+Platform: Linux
+Platform: MacOSX
+Platform: Windows
+Classifier: Development Status :: 1
+Classifier: Intended Audience :: Users
+Classifier: Natural Language :: English
+Classifier: License :: GNU Public Licence, Version 3
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: image texture, random field, simulation
