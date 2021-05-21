@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: PyAFBF
-Version: 0.0.1
+Version: 0.0.2
 Summary: Brownian texture simulation
 Home-page: UNKNOWN
 Author: Frederic Richard
@@ -34,7 +34,7 @@ Description: ======
         Frederic Richard
         
         
-Keywords: image texture,Anisotropic fractional Brownian field,simulation
+Keywords: image texture,simulation,Anisotropic fractional Brownian field
 Platform: Linux
 Platform: MacOSX
 Platform: Windows

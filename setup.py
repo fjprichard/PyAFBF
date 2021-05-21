@@ -1,4 +1,5 @@
 import os
+import re
 from setuptools import setup, find_packages
 
 
@@ -8,6 +9,10 @@ def read(*paths):
         return f.read()
 
 
+__version__ = re.search(
+    r'__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
+    open('afbf/__init__.py').read()).group(1)
+
 setup(
     # name of the package
     name='PyAFBF',
@@ -15,7 +20,7 @@ setup(
     # function
     packages=find_packages(),
     # See PEP440 for defining a proper version number
-    version='0.0.1',
+    version=__version__,
     # Small description of the package
     description='Brownian texture simulation',
     # Long description
@@ -52,7 +57,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'AFBF=AFBF:main',
+            'afbf=afbf:main',
         ],
     },
 )

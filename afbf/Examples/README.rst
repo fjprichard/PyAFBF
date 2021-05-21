@@ -1,5 +1,0 @@
-Example gallery
-===============
-
-Basic examples
---------------
