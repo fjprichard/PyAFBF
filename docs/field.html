@@ -1,0 +1,630 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API: main classes &mdash; PyAFBF  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API: auxiliary classes" href="classes.html" />
+    <link rel="prev" title="Anisotropic textures from field deformations" href="auto_examples/RelatedFields/plot_deformfield.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> PyAFBF
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstartguide.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Example gallery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API: main classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#afbf-field">AFBF (<em>field</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#turning-band-field-tbfield">Turning band field (<em>tbfield</em>)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">API: auxiliary classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyAFBF</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API: main classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/field.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="api-main-classes">
+<h1>API: main classes<a class="headerlink" href="#api-main-classes" title="Permalink to this headline">¶</a></h1>
+<p><em>Code author: Frédéric Richard &lt;frederic.richard_at_univ-amu.fr&gt;</em></p>
+<div class="section" id="afbf-field">
+<span id="field"></span><h2>AFBF (<em>field</em>)<a class="headerlink" href="#afbf-field" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="afbf.Classes.Field.field">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">afbf.Classes.Field.</span></code><code class="sig-name descname"><span class="pre">field</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fbf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hurst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class handles Anisotropic Fractional Brownian Fields (AFBF).</p>
+<p>An AFBF is a Gaussian <a class="reference internal" href="glossary.html#term-random-field"><span class="xref std std-term">random field</span></a> with
+<a class="reference internal" href="glossary.html#term-stationarity"><span class="xref std std-term">stationary</span></a> <a class="reference internal" href="glossary.html#term-increments"><span class="xref std std-term">increments</span></a>
+whose probabibility distribution is characterized by
+a <a class="reference internal" href="glossary.html#term-density"><span class="xref std std-term">density</span></a> of the form
+<span id="id1">[<a class="reference internal" href="refs.html#id18">1</a>, <a class="reference internal" href="refs.html#id3">2</a>, <a class="reference internal" href="refs.html#id4">3</a>, <a class="reference internal" href="refs.html#id5">4</a>, <a class="reference internal" href="refs.html#id6">5</a>, <a class="reference internal" href="refs.html#id7">6</a>, <a class="reference internal" href="refs.html#id8">7</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[v(x) = \frac{1}{2} \int_{-\pi/2}^{\pi/2}
+\tau(\theta)
+\left\vert
+\langle x, (\cos(\theta), \sin(\theta)) \rangle
+\right\vert^{2\beta(\theta)} d\theta\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are non-negative <span class="math notranslate nohighlight">\(\pi\)</span>-periodic
+functions depending both on the direction <span class="math notranslate nohighlight">\(\arg(w)\)</span> of
+the frequency <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>Functions <span class="math notranslate nohighlight">\(\tau\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are called the
+<strong>topothesy function</strong> and the <strong>Hurst function</strong>, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em>) – Name of the field.</p></li>
+<li><p><strong>topo</strong> (<a class="reference internal" href="classes.html#perfunction"><span class="std std-ref">perfunction</span></a>) – The topothesy function <span class="math notranslate nohighlight">\(\tau\)</span> of the field.</p></li>
+<li><p><strong>hurst</strong> (<a class="reference internal" href="classes.html#perfunction"><span class="std std-ref">perfunction</span></a>) – The Hurst function <span class="math notranslate nohighlight">\(\beta\)</span> of the field.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order of the field (used for the extension to
+<a class="reference internal" href="glossary.html#term-intrinsic"><span class="xref std std-term">intrinsic</span></a> field
+<span id="id2">[<a class="reference internal" href="refs.html#id4">3</a>, <a class="reference internal" href="refs.html#id5">4</a>, <a class="reference internal" href="refs.html#id6">5</a>, <a class="reference internal" href="refs.html#id7">6</a>, <a class="reference internal" href="refs.html#id8">7</a>, <a class="reference internal" href="refs.html#id2">12</a>]</span>).</p></li>
+<li><p><strong>H</strong> (<em>scalar</em>) – The Hurst index of the field.</p></li>
+<li><p><strong>hurst_argmin_len</strong> (<em>scalar</em>) – The lenght of the argmin set of the Hurst function.</p></li>
+<li><p><strong>Hmax</strong> (<em>scalar</em>) – The maximum of the Hurst function.</p></li>
+<li><p><strong>hurst_aniso_index</strong> (<em>scalar</em>) – An anisotropy index derived from the lenght of the argmin set of
+the Hurst function.</p></li>
+<li><p><strong>aniso_indices_topo</strong> (:ref:<a href="#id3"><span class="problematic" id="id4">`</span></a>ndarray) – Measures of deviation of the topothesy function.</p></li>
+<li><p><strong>aniso_indices_hurst</strong> (<a class="reference internal" href="classes.html#ndarray"><span class="std std-ref">ndarray</span></a>) – Measures of deviation of the Hurst function.</p></li>
+<li><p><strong>aniso_sharpness_topo</strong> (<a class="reference internal" href="classes.html#ndarray"><span class="std std-ref">ndarray</span></a>) – Measures of sharpness of the topothesy
+function.</p></li>
+<li><p><strong>aniso_sharpness_hurst</strong> (<a class="reference internal" href="classes.html#ndarray"><span class="std std-ref">ndarray</span></a>) – Measures of sharpness of the Hurst function.</p></li>
+<li><p><strong>aniso_indices_mixed_1</strong> (<a class="reference internal" href="classes.html#ndarray"><span class="std std-ref">ndarray</span></a>) – Measures of deviations of a function
+combining the topothesy and Hurst functions.</p></li>
+<li><p><strong>aniso_indices_mixed_2</strong> – Measures of deviations of another function
+combining the topothesy and Hurst functions.</p></li>
+<li><p><strong>aniso_sharpness_mixed_2</strong> (<a class="reference internal" href="classes.html#ndarray"><span class="std std-ref">ndarray</span></a>) – Measures of sharpness of another function
+combining the topothesy and Hurst functions.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Constructor method.</p>
+<p>Set the <a class="reference internal" href="glossary.html#term-random-field"><span class="xref std std-term">random field</span></a> model either in a predefined or a
+customized mode.</p>
+<p>In customized mode, the field is defined with topothesy and Hurst
+functions given in arguments as objects of the class perfunction.</p>
+<p>In predefined mode, the topothesy and Hurst functions
+are generated at random according to the type of field indicated
+in fname. Available predefined fields are:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>‘fbf’:</dt><dd><p>standard fractional Brownian field (default).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘efbf’:</dt><dd><p>elementary fractional Brownian field.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘afbf’:</dt><dd><p>Normalized afbf with a step Hurst function.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘afbf-smooth’:</dt><dd><p>Normalized afbf with a smooth step Hurst function.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘afbf-Fourier’:</dt><dd><p>afbf with a Fourier topothesy and a step Hurst function.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>‘afbf-smooth-Fourier’:</dt><dd><p>afbf with a Fourier topothesy and a smooth step Hurst function.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the field. The default is ‘fbf’.</p></li>
+<li><p><strong>topo</strong> (<a class="reference internal" href="classes.html#perfunction"><span class="std std-ref">perfunction</span></a>, optional) – Topothesy function. Default is None.</p></li>
+<li><p><strong>hurst</strong> (<a class="reference internal" href="classes.html#perfunction"><span class="std std-ref">perfunction</span></a>, optional) – Topothesy function. Default is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Attributes fname, order, topo, hurst.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.ChangeOrder">
+<code class="sig-name descname"><span class="pre">ChangeOrder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">neworder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.ChangeOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the order of the <a class="reference internal" href="glossary.html#term-intrinsic"><span class="xref std std-term">intrinsic</span></a> field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>neworder</strong> (<em>int</em>) – The new order of the field.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Attributes order, hurst.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function is only available when the Hurst function is a step
+function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.CheckValidity">
+<code class="sig-name descname"><span class="pre">CheckValidity</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.CheckValidity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the validity of field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if attributes are properly defined, and false otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.ComputeFeatures">
+<code class="sig-name descname"><span class="pre">ComputeFeatures</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.ComputeFeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute several features of the field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Attributes H, hurst_argmin_length, hurst_index_aniso,
+aniso_indices_topo, aniso_indices_hurst, aniso_sharpness_topo,
+aniso_sharpness_hurst, aniso_indices_mixed1, aniso_indices_mixed2,
+aniso_sharpness_mixed1, aniso_sharpness_mixed2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.ComputeSemiVariogram">
+<code class="sig-name descname"><span class="pre">ComputeSemiVariogram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.ComputeSemiVariogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute values of the <a class="reference internal" href="glossary.html#term-semi-variogram"><span class="xref std std-term">semi-variogram</span></a> of the field
+at points given by lags.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lags</strong> (<a class="reference internal" href="classes.html#coordinates"><span class="std std-ref">coordinates</span></a>) – Lags at which to compute the semi-variogram.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Attribute vario.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.DisplayParameters">
+<code class="sig-name descname"><span class="pre">DisplayParameters</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nfig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.DisplayParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the graph of the topothesy and Hurst functions of the field,
+and the <a class="reference internal" href="glossary.html#term-semi-variogram"><span class="xref std std-term">semi-variogram</span></a> (if available).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nfig</strong> (<em>int</em><em>, </em><em>optional</em>) – The index of the figure. Default to 1.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.FindOrder">
+<code class="sig-name descname"><span class="pre">FindOrder</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.FindOrder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the order of the <a class="reference internal" href="glossary.html#term-intrinsic"><span class="xref std std-term">intrinsic</span></a> field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Attribute order.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int.</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This function is only available when the Hurst function
+is a step function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.NormalizeModel">
+<code class="sig-name descname"><span class="pre">NormalizeModel</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.NormalizeModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Normalize the model.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function can only be applied if the Hurst function is a
+step function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Classes.Field.field.SetModel">
+<code class="sig-name descname"><span class="pre">SetModel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fbf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hurst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Classes.Field.field.SetModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>See Constructor method.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="turning-band-field-tbfield">
+<span id="tbfield"></span><h2>Turning band field (<em>tbfield</em>)<a class="headerlink" href="#turning-band-field-tbfield" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="afbf.Simulation.TurningBands.tbfield">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">afbf.Simulation.TurningBands.</span></code><code class="sig-name descname"><span class="pre">tbfield</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fbf'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hurst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">K</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Simulation.TurningBands.tbfield" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#afbf.Classes.Field.field" title="afbf.Classes.Field.field"><code class="xref py py-class docutils literal notranslate"><span class="pre">afbf.Classes.Field.field</span></code></a></p>
+<p>This class handles the turning-band fields.</p>
+<p>They are defined as follows.
+Let <span class="math notranslate nohighlight">\(\{ \phi_k, k =1,\cdots, K\}\)</span> be a set of ordered angles in
+<span class="math notranslate nohighlight">\([-\pi/2,\pi/2)\)</span>, called turning bands. Let <span class="math notranslate nohighlight">\(\tau\)</span>
+and <span class="math notranslate nohighlight">\(\beta\)</span> be the topothesy and Hurst functions
+of an AFBF.</p>
+<div class="math notranslate nohighlight">
+\[W(y) = \sum_{k=1}^K \lambda_k X_k(\langle \phi_k, y \rangle),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda_k\)</span> are coefficients depending on <span class="math notranslate nohighlight">\(\tau(\phi_k)\)</span>
+and <span class="math notranslate nohighlight">\(X_k\)</span> are independent fractional Brownian motions of
+Hurst index <span class="math notranslate nohighlight">\(\beta(\phi_k)\)</span>.</p>
+<p>Turning band fields are used for simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Example</dt>
+<dd class="field-odd"><p>Simulation of a fractional Brownian field.</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">afbf</span> <span class="kn">import</span> <span class="n">tbfield</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Definition of a fractional Brownian field.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">tbfield</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="o">.</span><span class="n">DisplayParameters</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field</span><span class="o">.</span><span class="n">tb</span><span class="o">.</span><span class="n">DisplayInformation</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Simulation of the field.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">Simulate</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">Display</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tb</strong> (<a class="reference internal" href="classes.html#tbparameters"><span class="std std-ref">tbparameters</span></a>) – Turning band parameters of the fields.</p></li>
+<li><p><strong>svario</strong> (<a class="reference internal" href="classes.html#sdata"><span class="std std-ref">sdata</span></a>) – The semi variogram of the turning-band field.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Constructor method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fname</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the field. The default is ‘fbf’.</p></li>
+<li><p><strong>topo</strong> (<a class="reference internal" href="classes.html#perfunction"><span class="std std-ref">perfunction</span></a>, optional) – The topothesy function of the field.</p></li>
+<li><p><strong>hurst</strong> (<a class="reference internal" href="classes.html#perfunction"><span class="std std-ref">perfunction</span></a>, optional) – The Hurst function of the field.</p></li>
+<li><p><strong>K</strong> (int or <a class="reference internal" href="classes.html#tbparameters"><span class="std std-ref">tbparameters</span></a>) – Number of bands. The default is 500.
+if K is of the class <a class="reference internal" href="classes.html#tbparameters"><span class="std std-ref">tbparameters</span></a>,
+the bands are given directly in K.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Attributes fname, topo, hurst and tb.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Constructor method of the class <a class="reference internal" href="#field"><span class="std std-ref">AFBF (field)</span></a>.</p>
+</div>
+<dl class="py method">
+<dt id="afbf.Simulation.TurningBands.tbfield.ComputeApproximateSemiVariogram">
+<code class="sig-name descname"><span class="pre">ComputeApproximateSemiVariogram</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lags</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logvario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Simulation.TurningBands.tbfield.ComputeApproximateSemiVariogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the semi-variogram of the turning-band field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>lags</strong> (<a class="reference internal" href="classes.html#coordinates"><span class="std std-ref">coordinates</span></a>) – Lags at which to compute the semi-variogram.</p></li>
+<li><p><strong>logvario</strong> (<em>int</em><em>, </em><em>optional</em>) – If log&gt;0, a log semi-variogram is computed instead
+of the semi-variogram. The default is 0.</p></li>
+<li><p><strong>evaluate</strong> (<em>boolean</em><em>, </em><em>optional</em>) – if True the topothesy and hurst functions
+are evaluated at bands. If not, the current values are used.
+The default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Attribute svario.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Simulation.TurningBands.tbfield.EvaluateTurningBandParameters">
+<code class="sig-name descname"><span class="pre">EvaluateTurningBandParameters</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Simulation.TurningBands.tbfield.EvaluateTurningBandParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the topothesy and Hurst function at turning band angles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Attributes topo and hurst.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Simulation.TurningBands.tbfield.ExtendTopothesy">
+<code class="sig-name descname"><span class="pre">ExtendTopothesy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M2</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Simulation.TurningBands.tbfield.ExtendTopothesy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend the definition of the topothesy of the field.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M1</strong> (<em>int</em>) – Number of spectrum subdivisions.</p></li>
+<li><p><strong>M2</strong> (<em>int</em>) – Number of angle subdivisions.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Simulation.TurningBands.tbfield.InitTurningBands">
+<code class="sig-name descname"><span class="pre">InitTurningBands</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">K</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Simulation.TurningBands.tbfield.InitTurningBands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set parameters of turning bands.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>K</strong> (<em>int</em>) – The number of bands.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Attribute tb.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="afbf.Simulation.TurningBands.tbfield.Simulate">
+<code class="sig-name descname"><span class="pre">Simulate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vario</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#afbf.Simulation.TurningBands.tbfield.Simulate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate the anisotropic fractional Brownian fields by a
+turning-band method.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The method was designed by H. Biermé, L. Moisan
+and F. Richard. It is described in <span id="id5">[<a class="reference internal" href="refs.html#id11">11</a>]</span>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<a class="reference internal" href="classes.html#coordinates"><span class="std std-ref">coordinates</span></a>) – Coordinates where to simulate the field or evaluate its
+semi-variogram. The default is None, indicating that
+coordinates will be set automatically.</p></li>
+<li><p><strong>vario</strong> (<em>boolean</em><em>, </em><em>optional</em>) – if True, the function computes the semi-variogram of
+the simulation field. The default is False.</p></li>
+<li><p><strong>evaluate</strong> (<em>boolean</em><em>, </em><em>optional</em>) – if True, the topothesy and hurst functions
+are evaluated at bands. If not, the current values are used.
+The default is True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A simulation of the field or the semi-variogram
+of the simulation field (if vario=True).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="classes.html#sdata"><span class="std std-ref">sdata</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="classes.html" class="btn btn-neutral float-right" title="API: auxiliary classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="auto_examples/RelatedFields/plot_deformfield.html" class="btn btn-neutral float-left" title="Anisotropic textures from field deformations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright Frédéric Richard, 2021.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

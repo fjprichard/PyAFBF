@@ -1,0 +1,21 @@
+afbf.Simulation package
+=======================
+
+Submodules
+----------
+
+afbf.Simulation.TurningBands module
+-----------------------------------
+
+.. automodule:: afbf.Simulation.TurningBands
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: afbf.Simulation
+   :members:
+   :undoc-members:
+   :show-inheritance:

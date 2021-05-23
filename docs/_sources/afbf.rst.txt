@@ -1,0 +1,30 @@
+afbf package
+============
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   afbf.Classes
+   afbf.Simulation
+
+Submodules
+----------
+
+afbf.utilities module
+---------------------
+
+.. automodule:: afbf.utilities
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: afbf
+   :members:
+   :undoc-members:
+   :show-inheritance:
