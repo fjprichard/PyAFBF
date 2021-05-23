@@ -1,4 +1,4 @@
-The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. Some texture examples are shown below on the patchwork. More details can be found on the[documentation](https://fjprichard.github.io/PyAFBF/).
+The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. More details can be found on the `documentation <https://fjprichard.github.io/PyAFBF/>`_.
 
 Package features
 ================
@@ -15,7 +15,7 @@ Package features
 Installation from sources
 =========================
 
-The package source can be downloaded from the [repository](https://github.com/fjprichard/PyAFBF). 
+The package source can be downloaded from the `repository <https://github.com/fjprichard/PyAFBF>`_. 
 
 To install the package, write the following commands in the root directory where the package was downloaded:
 
@@ -32,7 +32,7 @@ If no output appears, then the package is correctly installed.
 Communication to the author
 ===========================
 
-PyAFBF is developed and maintained by Frédéric Richard. For feed-back, contributions, bug reports, contact directly the [author](https://github.com/fjprichard), or use the [discussion](https://github.com/fjprichard/PyAFBF/discussions) facility.
+PyAFBF is developed and maintained by Frédéric Richard. For feed-back, contributions, bug reports, contact directly the `author <https://github.com/fjprichard>`_, or use the `discussion <https://github.com/fjprichard/PyAFBF/discussions>`_ facility.
 
 
 Licence
