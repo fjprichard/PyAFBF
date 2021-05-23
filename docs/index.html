@@ -196,7 +196,7 @@
 </style>
 <div class="section" id="welcome-to-pyafbf-s-documentation">
 <h1>Welcome to PyAFBF’s documentation!<a class="headerlink" href="#welcome-to-pyafbf-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. Some texture examples are shown below on the patchwork.</p>
+<p>The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. Some texture examples are shown below on the patchwork. More details can be found on the[documentation](<a class="reference external" href="https://fjprichard.github.io/PyAFBF/">https://fjprichard.github.io/PyAFBF/</a>).</p>
 <blockquote>
 <div><img alt="_images/patchwork.png" src="_images/patchwork.png" />
 </div></blockquote>
@@ -211,26 +211,31 @@
 <li><p>Simulation of rough anisotropic textures,</p></li>
 <li><p>Computation of field features (semi-variogram, regularity, anisotropy indices) that can serve as texture attributes,</p></li>
 <li><p>Random definition of simulated fields,</p></li>
-<li><p>Extensions to other fields (deformed fields, intrinsic fields, heterogeneous fields, binary patterns).</p></li>
+<li><p>Extensions to related fields (deformed fields, intrinsic fields, heterogeneous fields, binary patterns).</p></li>
 </ul>
 </div>
 <div class="section" id="installation-from-sources">
 <h2>Installation from sources<a class="headerlink" href="#installation-from-sources" title="Permalink to this headline">¶</a></h2>
-<p>In the root directory of the package, just do</p>
+<p>The package source can be downloaded from the [repository](<a class="reference external" href="https://github.com/fjprichard/PyAFBF">https://github.com/fjprichard/PyAFBF</a>).</p>
+<p>To install the package, write the following commands in the root directory where the package was downloaded:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
 <span class="ow">or</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
 </pre></div>
 </div>
+<p>After installation, the package can be tested by running</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">tests</span><span class="o">/</span><span class="n">TestAll</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>If no output appears, then the package is correctly installed.</p>
 </div>
 <div class="section" id="communication-to-the-author">
 <h2>Communication to the author<a class="headerlink" href="#communication-to-the-author" title="Permalink to this headline">¶</a></h2>
-<p>PyAFBF is developed and maintained by Frédéric Richard. For feed-back, contributions, bug reports, contact directly the author at
-&lt;frederic.richard_at_univ-amu.fr&gt;.</p>
+<p>PyAFBF is developed and maintained by Frédéric Richard. For feed-back, contributions, bug reports, contact directly the [author](<a class="reference external" href="https://github.com/fjprichard">https://github.com/fjprichard</a>), or use the [discussion](<a class="reference external" href="https://github.com/fjprichard/PyAFBF/discussions">https://github.com/fjprichard/PyAFBF/discussions</a>) facility.</p>
 </div>
 <div class="section" id="citation">
 <h2>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h2>
-<p>When using PyAFBF, please cite the original paper <span id="id6">[<a class="reference internal" href="refs.html#id11">11</a>]</span>, and the companion paper.</p>
+<p>When using PyAFBF, please cite the original paper <span id="id6">[<a class="reference internal" href="refs.html#id11">11</a>]</span>.</p>
 </div>
 <div class="section" id="licence">
 <h2>Licence<a class="headerlink" href="#licence" title="Permalink to this headline">¶</a></h2>
