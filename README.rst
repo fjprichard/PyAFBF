@@ -2,7 +2,7 @@
 PyAFBF
 ======
 
-This package is intended for the simulation of image textures from a mathematical model called the anisotropic fractional Brownian fields.
+This package is intended for the simulation of rough anisotropic image textures. Textures are sampled from the so-called anisotropic fractional Brownian field. 
 
 Installation from sources
 =========================
