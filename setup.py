@@ -22,14 +22,14 @@ setup(
     # See PEP440 for defining a proper version number
     version=__version__,
     # Small description of the package
-    description='Brownian texture simulation',
+    description='Sample image textures from fractional Brownian fields',
     # Long description
     long_description=(read('README.rst') + '\n\n' +
                       read('AUTHORS.rst') + '\n\n'),
     # Project home page:
-    url='',
+    url='https://github.com/fjprichard/PyAFBF/',
     # license, author and author email
-    license='GNU GPL, Version 3',
+    license='GPLv3',
     author='Frederic Richard',
     author_email='frederic.richard@univ-amu.fr',
     # If any packages contains data which are not python files, include them
@@ -39,16 +39,23 @@ setup(
     # The list of classifiers elements can be found at :
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 1',
-        'Intended Audience :: Users',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Science/Research',
+        'Intended Audience :: End Users/Desktop',
+        'Intended Audience :: Developers',
         'Natural Language :: English',
-        'License :: GNU Public Licence, Version 3',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3 :: Only',
-        'Topic :: image texture, random field, simulation',
+        'Programming Language :: Python :: 3.8',
+        'Topic :: Scientific/Engineering :: Image Processing',
     ],
+    project_urls={
+        'Documentation': 'https://fjprichard.github.io/PyAFBF/',
+        'Source': 'https://github.com/fjprichard/PyAFBF/',
+        'Tracker': 'https://github.com/fjprichard/PyAFBF/issues',
+    },
     # What does your project relate to?
-    keywords={'image texture', 'Anisotropic fractional Brownian field',
+    keywords={'image texture', 'anisotropic fractional Brownian field',
               'simulation'},
     # Platforms on which the package can be installed:
     platforms='Linux, MacOSX, Windows',
