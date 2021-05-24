@@ -17,7 +17,7 @@ Installation from sources
 
 The package source can be downloaded from the `repository <https://github.com/fjprichard/PyAFBF>`_. 
 
-To install the package, just do
+The package can be installed through PYPI with
  
  pip install PyAFBF
 
