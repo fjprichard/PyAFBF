@@ -21,12 +21,6 @@ The package can be installed through PYPI with
  
  pip install PyAFBF
 
-After installation, the package can be tested by running 
-
-    python tests/TestAll.py
-
-The package is correctly installed if no output is produced.
-
 Communication to the author
 ===========================
 
