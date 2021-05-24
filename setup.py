@@ -22,12 +22,12 @@ setup(
     # See PEP440 for defining a proper version number
     version=__version__,
     # Small description of the package
-    description='Brownian texture simulation',
+    description='Sample image textures from anisotropic fractional Brownian fields',
     # Long description
     long_description=(read('README.rst') + '\n\n' +
                       read('AUTHORS.rst') + '\n\n'),
     # Project home page:
-    url='',
+    url='https://github.com/fjprichard/PyAFBF/',
     # license, author and author email
     license='GPLv3',
     author='Frederic Richard',
@@ -50,13 +50,12 @@ setup(
         'Topic :: Scientific/Engineering :: Image Processing',
     ],
     project_urls={
-    'Documentation': 'https://fjprichard.github.io/PyAFBF/',
-    'Source': 'https://github.com/fjprichard/PyAFBF/',
-    'Tracker': 'https://github.com/fjprichard/PyAFBF/issues',
-},
+        'Documentation': 'https://fjprichard.github.io/PyAFBF/',
+        'Source': 'https://github.com/fjprichard/PyAFBF/',
+        'Tracker': 'https://github.com/fjprichard/PyAFBF/issues',
+    },
     # What does your project relate to?
-    keywords={'image texture', 'anisotropic fractional Brownian field',
-              'simulation'},
+    keywords={'image texture', 'anisotropic fractional Brownian field', 'simulation'},
     # Platforms on which the package can be installed:
     platforms='Linux, MacOSX, Windows',
     # To provide executable scripts, use entry points in preference to the
