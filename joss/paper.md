@@ -1,7 +1,7 @@
+
 ---
 title: '**PyAFBF**: a Python library for sampling image textures from the anisotropic fractional Brownian field.'
 tags:
-
 - Python
 - mathematics
 - texture synthesis
@@ -9,24 +9,20 @@ tags:
 - probability
 - statistics
 - fractional Brownian field
-
 authors:
-
 - name: Frédéric J.P. Richard
     orcid: 0000-0001-5146-9894
     affiliation: 1
-
 affiliations:
-
 - name: Aix Marseille University, CNRS, Centrale Marseille, I2M, UMR 7373, Marseille, France.
     index: 1
-    date: 18 may 2021
-    bibliography: refs.bib
+date: 18 may 2021
+bibliography: refs.bib
 ---
 
 # Summary
 
-The Python library **PyAFBF** is devoted to the simulation of anisotropic textures of image. These textures are sampled from a mathematical model called the anisotropic fractional Brownian field (AFBF) [@Bonami2003]; see Figure \autoref{fig:example} for an illustration. The library offers several features. It enables to set, either manually or randomly, the simulated model so as to generate a wide variety of textures. It also include tools to compute model features (regularity, anisotropy,...) which may serve as attributes to describe generated textures. The library further offers the possibility to sample heterogeneous textures from random field models related to the AFBF.
+The Python library **PyAFBF** is devoted to the simulation of anisotropic textures of image. These textures are sampled from a mathematical model called the anisotropic fractional Brownian field (AFBF) [@Bonami2003]; see \autoref{fig:example} for an illustration. The library offers several features. It enables to set, either manually or randomly, the simulated model so as to generate a wide variety of textures. It also include tools to compute model features (regularity, anisotropy,...) which may serve as attributes to describe generated textures. The library further offers the possibility to sample heterogeneous textures from random field models related to the AFBF.
 
 ![A patchwork of simulated textures. \label{fig:example}](patchwork.png)
 
