@@ -53,7 +53,7 @@ which is characterized by two $\pi$-periodic functions $\tau$ and $\beta$ called
 
 The package **PyAFBF** proposes some convenient representations for these functions (Fourier, step functions,...) that enable to easily set an AFBF, either manually or at random, in a proper way.
 
-Using the package **PyAFBF**, image textures are realizations of an AFBF on a discrete grid. This are simulated using a turning band fields. These fields are defined, for some set of angles $(\varphi_k, k=1,\cdots,K)$ in $[-\frac{\pi}{2}, \frac{\pi}{2}]$ and of appropriate non-negative weights $(\lambda_k, k=1,\cdots,K)$, as
+Using the package **PyAFBF**, image textures are realizations of an AFBF on a discrete grid. This are simulated using a turning band fields [@Bierme-2015-TBM]. These fields are defined, for some set of angles $(\varphi_k, k=1,\cdots,K)$ in $[-\frac{\pi}{2}, \frac{\pi}{2}]$ and of appropriate non-negative weights $(\lambda_k, k=1,\cdots,K)$, as
 
 $$ Z_{\varphi} (x)  = \sum_{k=1}^K \lambda_k X_k ( \langle u(\varphi_k), x \rangle ), $$
 
