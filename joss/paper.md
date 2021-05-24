@@ -11,11 +11,11 @@ tags:
 - fractional Brownian field
 authors:
 - name: Frédéric J.P. Richard
-    orcid: 0000-0001-5146-9894
-    affiliation: 1
+  orcid: 0000-0001-5146-9894
+  affiliation: 1
 affiliations:
 - name: Aix Marseille University, CNRS, Centrale Marseille, I2M, UMR 7373, Marseille, France.
-    index: 1
+  index: 1
 date: 18 may 2021
 bibliography: refs.bib
 ---
@@ -46,7 +46,7 @@ The implementation of random field simulation methods in Python are less manifes
 An AFBF $Z$ is a Gaussian non-stationary random field with stationary increments whose semi-variograms are of the form
 
 $$
-v(h) = 1/2 \mathbb{E}((Z(x+h) - Z(x))^2) = 1/2 \int_{-\pi/2}^{\pi/2} \tau(\theta) \left\vert \langle x, u_\theta \rangle \right\vert^{2\beta(\theta)} d\theta, \: u_\theta = (\cos \theta, \sin \theta),
+v(h) = 1/2 \mathbb{E}((Z(x+h) - Z(x))^2) = \frac{1}{2} \int_{-\pi/2}^{\pi/2} \tau(\theta) \left\vert \langle x, u_\theta \rangle \right\vert^{2\beta(\theta)} d\theta, \: u_\theta = (\cos \theta, \sin \theta),
 $$
 
 which is characterized by two $\pi$-periodic functions $\tau$ and $\beta$ called the topothesy function and the Hurst function, respectively. These functions determined the properties of the AFBF and the aspect of the textures that are sampled from it.
