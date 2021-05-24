@@ -29,7 +29,7 @@ setup(
     # Project home page:
     url='',
     # license, author and author email
-    license='GNU GPL, Version 3',
+    license='GPLv3',
     author='Frederic Richard',
     author_email='frederic.richard@univ-amu.fr',
     # If any packages contains data which are not python files, include them
@@ -40,15 +40,20 @@ setup(
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 1',
-        'Intended Audience :: Users',
+        'Intended Audience :: End Users/Desktop',
+        'Intended Audience :: Developers',
         'Natural Language :: English',
-        'License :: GNU Public Licence, Version 3',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: image texture, random field, simulation',
     ],
+    project_urls={
+    'Documentation': 'https://fjprichard.github.io/PyAFBF/',
+    'Source': 'https://github.com/fjprichard/PyAFBF/',
+    'Tracker': 'https://github.com/fjprichard/PyAFBF/issues',
+},
     # What does your project relate to?
-    keywords={'image texture', 'Anisotropic fractional Brownian field',
+    keywords={'image texture', 'anisotropic fractional Brownian field',
               'simulation'},
     # Platforms on which the package can be installed:
     platforms='Linux, MacOSX, Windows',
