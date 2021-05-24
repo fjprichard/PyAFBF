@@ -39,13 +39,15 @@ setup(
     # The list of classifiers elements can be found at :
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 1',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Science/Research',
         'Intended Audience :: End Users/Desktop',
         'Intended Audience :: Developers',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3 :: Only',
-        'Topic :: image texture, random field, simulation',
+        'Programming Language :: Python :: 3.8',
+        'Topic :: Scientific/Engineering :: Image Processing',
     ],
     project_urls={
     'Documentation': 'https://fjprichard.github.io/PyAFBF/',
