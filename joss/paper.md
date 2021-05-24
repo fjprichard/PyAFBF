@@ -43,10 +43,10 @@ The implementation of random field simulation methods in Python are less manifes
 
 # Definition and simulation of an AFBF.
 
-An AFBF $Z$ is a Gaussian non-stationary random field with stationary increments whose semi-variograms are of the form
+An AFBF $Z$ is a Gaussian non-stationary random field with stationary increments whose semi-variograms are of a form
 
 $$
-v(h) = \frac{1}{2} \mathbb{E}((Z(x+h) - Z(x))^2) = \frac{1}{2} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \tau(\theta) \left\vert \langle x, u(\theta) \rangle \right\vert^{2\beta(\theta)} d\theta, \: u(\theta) = (\cos \theta, \sin \theta),
+v(h) = \frac{1}{2} \mathbb{E}((Z(x+h) - Z(x))^2) = \frac{1}{2} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \tau(\theta) \left\vert h, u(\theta) \rangle \right\vert^{2\beta(\theta)} d\theta, \: u(\theta) = (\cos \theta, \sin \theta),
 $$
 
 which is characterized by two $\pi$-periodic functions $\tau$ and $\beta$ called the topothesy function and the Hurst function, respectively. These functions determined the properties of the AFBF and the aspect of the textures that are sampled from it.
