@@ -59,14 +59,12 @@ The package **PyAFBF** proposes some convenient representations for these functi
 
 Using the package **PyAFBF**, image textures are obtained by simulating realizations of an AFBF on a discrete grid. This is done using a turning band fields. These fields are defined, for some set of angles $(\varphi_k, k=1,\cdots,K)$ in $[-\pi/2, \pi/2]$ and of appropriate non-negative weights $(\lambda_k, k=1,\cdots,K)$, as
 
-$$
-Z_\varphi (x)  = \sum_{k=1}^K \lambda_k X_k (\langle u(\varphi_k), x \rangle), 
-$$
+$$ Z_{\varphi} (x)  = \sum_{k=1}^K \lambda_k X_k ( \langle u(\varphi_k), x \rangle ), $$
 
 where $X_k$ are independent Brownian motions with Hurst index $h_k$. The package includes a Python class to handle turning-band fields, simulate them and compute their properties.
 
 # Availability and Community Guidelines
 
-The package **PyAFBF** is available at the Gitlab repository.  A documentation, which includes a quickstart guide, a gallery of examples and API, can be found at the [PyAFBF]() site. Users and contributors are welcome to contribute, request features, and report bugs using a dedicated chat.
+The package **PyAFBF** can be downloaded from the Github [repository](https://github.com/fjprichard/PyAFBF). A documentation, which includes a quickstart guide, a gallery of examples and API, is available at the [PyAFBF](https://fjprichard.github.io/PyAFBF/) site. Users and contributors are welcome to contribute, request features, and report bugs via Github.
 
 # References
