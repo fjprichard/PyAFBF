@@ -31,3 +31,29 @@ Licence
 =======
 
 PyAFBF is under licence GNU GPL, version 3.
+
+Contents
+========
+
+    - Quick start guide
+       - Getting started
+       - Customed models
+       - Tuning model parameters
+       - Model features
+       - Simulating with turning-band fields
+    - Example gallery
+       - Basic examples
+       - Extended anisotropic fields
+       - Heterogeneous fields
+       - Related anisotropic fields
+    - API: main classes
+       - AFBF (field)
+       - Turning band field (tbfield)
+    - API: auxiliary classes
+       - Periodic functions (perfunction)
+       - Coordinates (coordinates)
+       - Spatial data (sdata)
+       - Process (process)
+       - Turning bands (tbparameters)
+       - ndarray
+
