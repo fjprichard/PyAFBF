@@ -43,6 +43,7 @@ Contents
     - Quick start guide
        - Getting started
        - Customed models
+       - Exporting simulations
        - Tuning model parameters
        - Model features
        - Simulating with turning-band fields
