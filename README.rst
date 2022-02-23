@@ -21,7 +21,7 @@ The package can be installed through PYPI with
  
  pip install PyAFBF
  
-If the package is to be installed in a googlecollab environment, please type
+To install the package in a Google Collab environment, please type
 
  !pip install imgaug==0.2.6
  
