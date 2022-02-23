@@ -24,6 +24,7 @@ The package can be installed through PYPI with
 If the package is to be installed in a googlecollab environment, please type
 
  !pip install imgaug==0.2.6
+ 
  !pip install PyAFBF
 
 Communication to the author
@@ -43,7 +44,6 @@ Contents
     - Quick start guide
        - Getting started
        - Customed models
-       - Exporting simulations
        - Tuning model parameters
        - Model features
        - Simulating with turning-band fields
