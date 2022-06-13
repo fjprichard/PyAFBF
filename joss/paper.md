@@ -22,7 +22,7 @@ bibliography: refs.bib
 
 # Summary
 
-The Python library **PyAFBF** is devoted to the simulation of anisotropic textures of image. These textures are sampled from a mathematical model called the anisotropic fractional Brownian field (AFBF) [@Bonami2003]; see \autoref{fig:example} for an illustration. The library offers several features. It enables to set, either manually or randomly, the simulated model so as to generate a wide variety of textures. It also include tools to compute model features (regularity, anisotropy,...) which may serve as attributes to describe generated textures. The library further offers the possibility to sample heterogeneous textures from random field models related to the AFBF.
+The Python library **PyAFBF** is devoted to the simulation of anisotropic textures of image. These textures are sampled from a mathematical model called the anisotropic fractional Brownian field (AFBF) [@Bonami2003]; see \autoref{fig:example} for an illustration. The library offers several features. Users can generate a wide variety of textures by setting the simulated model manually or randomly either manually or randomly. It also includes tools to compute model features (regularity, anisotropy,...) which may serve as attributes to describe generated textures. The library further offers the possibility to sample heterogeneous textures from random field models related to the AFBF.
 
 ![A patchwork of simulated textures. \label{fig:example}](patchwork.png)
 
@@ -61,6 +61,6 @@ where $X_k$ are independent Brownian motions with Hurst index $h_k$. The package
 
 # Availability and Community Guidelines
 
-The package **PyAFBF** can be downloaded from the Github [repository](https://github.com/fjprichard/PyAFBF). A documentation, which includes a quickstart guide, a gallery of examples and API, is available at the [PyAFBF](https://fjprichard.github.io/PyAFBF/) site. Users and contributors are welcome to contribute, request features, and report bugs via Github.
+The package **PyAFBF** can be downloaded from the Github [repository](https://github.com/fjprichard/PyAFBF). Documentation, which includes a quickstart guide, a gallery of examples and API, is available at the [PyAFBF](https://fjprichard.github.io/PyAFBF/) site. Users and contributors are welcome to contribute, request features, and report bugs via Github.
 
 # References
