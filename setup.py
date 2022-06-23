@@ -35,7 +35,7 @@ setup(
     # If any packages contains data which are not python files, include them
     # package_data={'myapp': 'data'},
     install_requires=['numpy>=1.19.2', 'matplotlib>=3.3.2', 'scipy>=1.5.2'],
-    extras_require = {'dev': ['doctest']}
+    extras_require = {'dev': ['doctest']},
     # classifiers is needed for uploading package on pypi.
     # The list of classifiers elements can be found at :
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
