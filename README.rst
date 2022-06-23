@@ -17,17 +17,15 @@ Installation from sources
 
 The package source can be downloaded from the `repository <https://github.com/fjprichard/PyAFBF>`_. 
 
-To install the package, write the following commands in the root directory where the package was downloaded:
+The package can be installed through PYPI with
+ 
+ pip install PyAFBF
+ 
+To install the package in a Google Collab environment, please type
 
-    python setup.py install
-    or
-    pip install -e .
-
-After installation, the package can be tested by running 
-
-    python tests/TestAll.py
-
-If no output appears, then the package is correctly installed.
+ !pip install imgaug==0.2.6
+ 
+ !pip install PyAFBF
 
 Communication to the author
 ===========================
@@ -39,3 +37,29 @@ Licence
 =======
 
 PyAFBF is under licence GNU GPL, version 3.
+
+Contents
+========
+
+    - Quick start guide
+       - Getting started
+       - Customed models
+       - Tuning model parameters
+       - Model features
+       - Simulating with turning-band fields
+    - Example gallery
+       - Basic examples
+       - Extended anisotropic fields
+       - Heterogeneous fields
+       - Related anisotropic fields
+    - API: main classes
+       - AFBF (field)
+       - Turning band field (tbfield)
+    - API: auxiliary classes
+       - Periodic functions (perfunction)
+       - Coordinates (coordinates)
+       - Spatial data (sdata)
+       - Process (process)
+       - Turning bands (tbparameters)
+       - ndarray
+

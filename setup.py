@@ -22,7 +22,7 @@ setup(
     # See PEP440 for defining a proper version number
     version=__version__,
     # Small description of the package
-    description='Sample image textures from fractional Brownian fields',
+    description='Sample image textures from anisotropic fractional Brownian fields',
     # Long description
     long_description=(read('README.rst') + '\n\n' +
                       read('AUTHORS.rst') + '\n\n'),
@@ -35,6 +35,7 @@ setup(
     # If any packages contains data which are not python files, include them
     # package_data={'myapp': 'data'},
     install_requires=['numpy>=1.19.2', 'matplotlib>=3.3.2', 'scipy>=1.5.2'],
+    extras_require = {'dev': ['doctest']}
     # classifiers is needed for uploading package on pypi.
     # The list of classifiers elements can be found at :
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -55,8 +56,7 @@ setup(
         'Tracker': 'https://github.com/fjprichard/PyAFBF/issues',
     },
     # What does your project relate to?
-    keywords={'image texture', 'anisotropic fractional Brownian field',
-              'simulation'},
+    keywords={'image texture', 'anisotropic fractional Brownian field', 'simulation'},
     # Platforms on which the package can be installed:
     platforms='Linux, MacOSX, Windows',
     # To provide executable scripts, use entry points in preference to the
