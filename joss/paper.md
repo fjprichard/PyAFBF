@@ -1,6 +1,6 @@
 
 ---
-title: '**PyAFBF**: a Python library for sampling image textures from the anisotropic fractional Brownian field.'
+title: 'PyAFBF: a Python library for sampling image textures from the anisotropic fractional Brownian field.'
 tags:
 - Python
 - mathematics
