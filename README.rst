@@ -41,6 +41,21 @@ Licence
 
 PyAFBF is under licence GNU GPL, version 3.
 
+
+Citation
+========
+
+When using PyAFBF, please cite the original paper
+
+H. Biermé, M. Moisan, and F. Richard. A turning-band method for the simulation of anisotropic fractional Brownian field. J. Comput. Graph. Statist., 24(3):885–904, 2015.
+
+and the JOSS paper:
+
+
+.. image:: https://joss.theoj.org/papers/10.21105/joss.03821/status.svg
+   :target: https://doi.org/10.21105/joss.03821
+
+
 Contents
 ========
 
