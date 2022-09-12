@@ -171,7 +171,7 @@ class tbfield(field):
         for m in range(M1):
             self.gtopo.append(perfunction('step-smooth', M2))
 
-    def Simulate(self, coord=None, vario=False, evaluate=True):
+    def Simulate(self, coord=None, vario=False, evaluate=True, geom=False):
         """Simulate the anisotropic fractional Brownian fields by a
         turning-band method.
 
@@ -238,6 +238,7 @@ class tbfield(field):
         X = zeros((coord.xy.shape[0], 1))
 
         C = self.topo.values
+        # H = zeros(self.hurst.values.shape)
         H = self.hurst.values
         H0 = floor(H)
         H = H - H0
@@ -288,10 +289,16 @@ class tbfield(field):
                     fbm.Simulate_CirculantCovarianceMethod(nbsamp)
                     # Integrate the increments to obtain a FBM realization.
                     fbm.IntegrateProcess(H0[0, k] + 1)
+                    if geom:
+                        fbm.Geometricize()
                     # Update of the simulation field.
                     fbm.y = fbm.y[indr, 0] - fbm.y[ind0, 0]
                     X = X + sqrt(weig0) * pow(weig, H[0, k]) *\
                         fbm.y.reshape(fbm.y.size, 1)
+
+        if not coord.grid:
+            coord.xy = coord.xy[0:-4, :]
+            X = X[0:-4, :]
 
         if vario:
             self.svario = sdata(coord)
@@ -299,9 +306,6 @@ class tbfield(field):
             self.svario.values = X
             return(1)
         else:
-            if not coord.grid:
-                coord.xy = coord.xy[0:-4, :]
-                X = X[0:-4, :]
             sfield = sdata(coord)
             sfield.name = 'Field simulation.'
             sfield.values = X
