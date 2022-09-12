@@ -6,5 +6,8 @@ First Release
 Release
 -------
 
-2022-09-05:
-SpatialData
+	2022-09-05: SpatialData
+	Add the method  DefineSparseSemiBall in coordinate class
+	Add the method ImportImage in sdata class
+	
+	
