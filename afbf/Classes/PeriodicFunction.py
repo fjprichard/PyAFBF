@@ -263,34 +263,33 @@ class perfunction:
 
         :returns: Attributes fparam.
         """
-
-        if fparam is None and finter is None:  # Change parameters at random.
+        if fparam is None or finter is None:  # Change parameters at random.
             if self.ftype == 'Fourier':
                 self.InitFourierFunction('update')
             if 'step' in self.ftype:
                 self.InitStepFunction(self.ftype, 'update')
-        else:  # Change parameters manually.
-            if fparam is not None:
-                if isinstance(fparam, ndarray):
-                    if fparam.size == self.fparam.size:
-                        self.fparam = reshape(fparam, self.fparam.shape)
-                    else:
-                        print('ChangeParameters: fparam size is not correct.')
-                        return(0)
-                else:
-                    print('ChangeParameters: fparam should be ndarray.')
-                    return(0)
 
-            if 'step' in self.ftype and finter is not None:
-                if isinstance(finter, ndarray):
-                    if finter.size == self.finter.size:
-                        self.finter = reshape(finter, self.finter.shape)
-                    else:
-                        print('ChangeParameters: finter size is not correct.')
-                        return(0)
+        if fparam is not None:
+            if isinstance(fparam, ndarray):
+                if fparam.size == self.fparam.size:
+                    self.fparam[:] = reshape(fparam, self.fparam.shape)[:]
                 else:
-                    print('ChangeParameters: finter should be ndarray.')
+                    print('ChangeParameters: fparam size is not correct.')
                     return(0)
+            else:
+                print('ChangeParameters: fparam should be ndarray.')
+                return(0)
+
+        if 'step' in self.ftype and finter is not None:
+            if isinstance(finter, ndarray):
+                if finter.size == self.finter.size:
+                    self.finter[:] = reshape(finter, self.finter.shape)[:]
+                else:
+                    print('ChangeParameters: finter size is not correct.')
+                    return(0)
+            else:
+                print('ChangeParameters: finter should be ndarray.')
+                return(0)
 
     def ApplyTransforms(self, translate=None, rescale=None):
         """Apply translation and/or rescaling transform to the function.
@@ -677,7 +676,7 @@ class perfunction:
         self.ChangeParameters(
             None,
             linspace(-pi / 2, pi / 2, self.finter.size + 2)[1:-1]
-            )
+        )
         if self.steptrans:
             self.trans = 1
 
@@ -827,6 +826,8 @@ def DiscreteFunctionDescription(values, delta):
     tvnorm = mean(dvalues)
     # Maximum of the absolute derivatives.
     maxabs = amax(dvalues)
-    sharpness = array([tvnorm, maxabs])
+    # L2-norm.
+    l2norm = mean(power(dvalues, 2))
+    sharpness = array([tvnorm, maxabs, l2norm])
 
     return stats, deviation, sharpness
