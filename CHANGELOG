@@ -3,8 +3,11 @@ First Release
 05/24/2021.
 
 
-Release
--------
+Release 0.1.6
+-------------
 
-2022-09-05:
-SpatialData
+	2022-09-05: SpatialData
+	Add the method  DefineSparseSemiBall in coordinate class
+	Add the method ImportImage in sdata class
+	
+	
