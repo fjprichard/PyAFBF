@@ -42,12 +42,11 @@
 
 .. note::
     This version only deals with the fractional Brownian motion.
-    
 """
 
 from afbf.utilities import pi, randn, rand, absolute, concatenate, fft, arange
-from afbf.utilities import amin, reshape, mean
-from afbf.utilities import real, cumsum, power, sqrt, plt, log, nonzero, zeros
+from afbf.utilities import amin, reshape, mean, zeros, diff
+from afbf.utilities import real, cumsum, power, sqrt, plt, log, nonzero
 from afbf import perfunction
 
 
@@ -187,6 +186,7 @@ class process:
             self.vario = 0.5 * power(absolute(lags), 2 * self.param)
         else:
             v = power(absolute(lags), 2)
+            # v[v == 0] = 10e-100
             ind = nonzero(v != 0)
             self.vario = zeros(lags.shape)
             self.vario[ind] = 0.5 * power(v[ind], self.param)
@@ -221,7 +221,7 @@ class process:
         self.gf.SetUniformStepInterval()
         self.gn = 100000
 
-    def Simulate(self, T):
+    def Simulate(self, T, geom=False):
         r"""Simulate the process at uniformly-spaced positions
             :math:`\{0, 1, \cdots, T\}`.
 
@@ -234,6 +234,35 @@ class process:
         self.Simulate_CirculantCovarianceMethod(T)
         # Simulation of the process by integration of increments.
         self.IntegrateProcess(1)
+        # Essai 10/06/2022
+        if geom:
+            self.Geometricize()
+
+    def Geometricize(self):
+        # essai 10/06/2022
+        y = self.y
+        v = diff(diff(y, append=0), append=0)
+        y[v < 0] = -1
+        y[v >= 0] = 1
+
+        # y = self.y
+        # v = zeros(y.shape)  # diff(diff(y, append=0), append=0)
+        # v[y < 0] = -1
+        # v[y >= 0] = 1
+
+        # vsign = v[v.size - 1]
+        # aux = 0
+        # cnt = 0
+        # for i in range(v.size - 1, 0, -1):
+        #     if v[i] == vsign:
+        #         aux += y[i]
+        #         cnt += 1
+        #         y[i] = 0
+        #     else:
+        #         vsign = - vsign
+        #         y[i + 1: i + cnt + 1] = aux / cnt
+        #         aux = y[i]
+        #         cnt = 1
 
     def Simulate_CirculantCovarianceMethod(self, T):
         r"""Simulate process :term:`increments` at positions
@@ -265,6 +294,7 @@ class process:
             c = reshape(c, self.y.shape)
         else:
             c = 1
+
         self.y = fft.ifft(self.y * (randn(T2, 1) + 1j * randn(T2, 1)) * c,
                           axis=0, norm="ortho")
 
@@ -299,3 +329,73 @@ class process:
 
         plt.figure(nfig)
         plt.plot(self.y)
+
+
+def grandn(N=1, p=2):
+    """Simulation of a sample from the generalized Gaussian distribution.
+
+    :param int N: size of the sample. The default is 1.
+    :param p: Parameter of the distribution. The default value is 2,
+        corresponding to the Gaussian distribution.
+    :type p: positive scalar, optional
+
+    :returns: Two independent samples of size N.
+    :rtype:
+    """
+    from scipy.stats import gennorm, laplace, gengamma
+
+    return(gengamma.rvs(0.5, 2, size=N).reshape(N, 1))
+    if p == 2:
+        return(randn(N, 1))
+    elif p == 1:
+        return(laplace.rvs(size=N).reshape(N, 1))
+    else:
+        return(gennorm.rvs(p, size=N).reshape(N, 1))
+
+    # if p <= 0:
+    #     print('SimulateGeneralizedGauss...: Parameter p should be positive.')
+    #     return(0)
+
+    # k = int(floor(2 / p))
+    # pt = 2 / p - k
+    # if pt != 0:
+    #     pt1 = 1 / pt
+    #     pt2 = 1 / (1 - pt)
+    # pi2 = pi / 2
+    # p0 = 1 / p
+
+    # x = zeros((N, 2))
+    # for i in range(N):
+    #     # Generate the radius.
+    #     g = sum(log(rand(k)))
+    #     if pt != 0:
+    #         u = 1.1
+    #         while u > 1:
+    #             u1 = power(rand(), pt1)
+    #             u = u1 + power(rand(), pt2)
+    #         g += log(rand()) * u1 / u
+    #     rho = power(- p * g, p0)
+
+    #     # Generate the argument.
+    #     v = 1.1
+    #     while v > 1:
+    #         v1 = rand()
+    #         v2 = rand()
+    #         v = power(power(v1, p) + power(v2, p), p0)
+    #     if rand() < 0.5:
+    #         s1 = - 1
+    #     else:
+    #         s1 = 1
+    #     if rand() < 0.5:
+    #         s2 = 0
+    #     else:
+    #         s2 = 1
+    #     phi = s1 * arctan2(v1, v2) + pi * s2 + pi2
+
+    #     Np = power(power(absolute(cos(phi)), p) +
+    #                power(absolute(sin(phi)), p), p0)
+    #     rho = rho / Np
+    #     x[i, 0] = rho * cos(phi)
+    #     x[i, 1] = rho * sin(phi)
+
+    # return(x)
