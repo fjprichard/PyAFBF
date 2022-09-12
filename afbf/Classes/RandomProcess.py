@@ -42,12 +42,11 @@
 
 .. note::
     This version only deals with the fractional Brownian motion.
-    
 """
 
 from afbf.utilities import pi, randn, rand, absolute, concatenate, fft, arange
-from afbf.utilities import amin, reshape, mean
-from afbf.utilities import real, cumsum, power, sqrt, plt, log, nonzero, zeros
+from afbf.utilities import amin, reshape, mean, zeros, diff
+from afbf.utilities import real, cumsum, power, sqrt, plt, log, nonzero
 from afbf import perfunction
 
 
@@ -235,6 +234,7 @@ class process:
         # Simulation of the process by integration of increments.
         self.IntegrateProcess(1)
 
+
     def Simulate_CirculantCovarianceMethod(self, T):
         r"""Simulate process :term:`increments` at positions
         :math:`\{0, 1, \cdots, T\}`.
@@ -265,6 +265,7 @@ class process:
             c = reshape(c, self.y.shape)
         else:
             c = 1
+
         self.y = fft.ifft(self.y * (randn(T2, 1) + 1j * randn(T2, 1)) * c,
                           axis=0, norm="ortho")
 
