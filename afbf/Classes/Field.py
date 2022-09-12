@@ -214,7 +214,6 @@ class field:
             else:
                 print('Field.SetModel(): set hurst and topo as perfunction.')
                 return(0)
-            self.FindOrder()
 
         self.extended = False
         self.vario = None

@@ -43,8 +43,9 @@
 
 from afbf.utilities import reshape, arange, repmat, concatenate, array, zeros
 from afbf.utilities import amin, amax, mean, matmul, floor, linspace, sign
-from afbf.utilities import power, plt
+from afbf.utilities import power, plt, sqrt, unique
 from afbf.utilities import make_axes_locatable, ndarray
+from afbf.utilities import imread
 
 
 class coordinates:
@@ -111,7 +112,7 @@ class coordinates:
         if valid is not True:
             print("Coordinates are not properly defined.")
 
-        return(valid)
+        return valid
 
     def DefineUniformGrid(self, N, step=1, signed=False):
         r"""Define a uniform grid.
@@ -128,9 +129,9 @@ class coordinates:
         """
         self.N = N
 
-        vx = arange(1, N+1, step, dtype=int)
+        vx = arange(1, N + 1, step, dtype=int)
         if signed:
-            vy = arange(-N, N+1, step, dtype=int)
+            vy = arange(-N, N + 1, step, dtype=int)
         else:
             vy = vx
 
@@ -142,11 +143,41 @@ class coordinates:
 
         # Coordinates.
         N2 = Nx * Ny
-        self.xy = concatenate((x.reshape(N2, 1), y.reshape(N2, 1)),
-                              axis=1)
+        self.xy = concatenate((x.reshape(N2, 1), y.reshape(N2, 1)), axis=1)
         self.grid = True
         self.Nx = Nx  # grid dimension.
         self.Ny = Ny
+
+    def DefineSparseSemiBall(self, N, step=1):
+        r"""Define a sparse semi-ball.
+
+        :param int N: number of x- and y- coordinates.
+
+
+        :returns: Attributes xy, N, Nx, Ny, grid.
+        """
+        N = int(floor(N / 2) * 2) + 1
+        self.N = N
+
+        vx = arange(0, N, step, dtype=int)
+        vy = arange(0, N, step, dtype=int)
+
+        M = vx.size
+        x = repmat(vx.reshape(1, M), M, 1)
+        y = repmat(vy.reshape(M, 1), 1, M)
+
+        y[0::2, 0::2] = -y[0::2, 0::2]
+        y[1::2, 1::2] = -y[1::2, 1::2]
+
+        # Coordinates.
+        M2 = M ** 2  # (N + 1)
+        xy = concatenate((x.reshape(M2, 1), y.reshape(M2, 1)), axis=1)
+        xy = xy[1:, :]  # Remove the origin (0, 0).
+        sc = sqrt(power(xy[:, 0], 2) + power(xy[:, 1], 2))
+        N = N - 1
+        ind = sc <= N
+        xy = xy[ind, :]
+        self.DefineNonUniformLocations(xy)
 
     def DefineNonUniformLocations(self, xy):
         """Import a set of positions provided in an array.
@@ -212,7 +243,7 @@ class coordinates:
 
         """
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         if isinstance(A, ndarray) and A.shape[0] == 2 and A.shape[1] == 2:
             self.xy = matmul(self.xy, A)
@@ -235,7 +266,7 @@ class coordinates:
         :rtype: :ref:`ndarray` of shape (ncoord, 2)
         """
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         ind = u * self.xy[:, 0] + v * self.xy[:, 1]
 
@@ -249,11 +280,11 @@ class coordinates:
         :type nfig: int, optional
         """
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         plt.figure(nfig)
-        plt.plot(self.xy[:, 0] / self.N, self.xy[:, 1] / self.N, 'rx')
-        plt.axis('equal')
+        plt.plot(self.xy[:, 0] / self.N, self.xy[:, 1] / self.N, "rx")
+        plt.axis("equal")
 
 
 class sdata:
@@ -276,7 +307,7 @@ class sdata:
     :type name: str, optional
     """
 
-    def __init__(self, coord=None, name='undefined'):
+    def __init__(self, coord=None, name="undefined"):
         """Contructor method.
 
         :param coord:
@@ -296,11 +327,11 @@ class sdata:
                 self.coord = coord
                 if coord.grid:
                     self.M = array([coord.Ny, coord.Nx])
-                    self.name = 'Image'
+                    self.name = "Image"
                 self.values = zeros((coord.xy.shape[0], 1))
             else:
                 print("sdata.__init__: provide coord as coordinates.")
-                return(None)
+                return None
         else:
             self.coord = None
             self.values = None
@@ -316,11 +347,10 @@ class sdata:
             N = self.coord.N
             plt.figure(nfig)
             fig = plt.subplot()
-            plt.xlabel('x')
-            plt.ylabel('y')
+            plt.xlabel("x")
+            plt.ylabel("y")
             plt.title(self.name)
-            v = plt.imshow(self.values.reshape(M),
-                           origin='upper', cmap='gray')
+            v = plt.imshow(self.values.reshape(M), origin="upper", cmap="gray")
             r = M[1] / M[0]
             crx = int(max(1, floor(5 * min(1, r))))
             cry = int(max(1, floor(5 * min(1, 1 / r))))
@@ -328,10 +358,14 @@ class sdata:
                 cx = linspace(0, M[1] / N, crx)
                 cy = linspace(0, M[0] / N, cry)
             else:
-                cx = linspace(amin(self.coord.xy[:, 0]) / N,
-                              amax(self.coord.xy[:, 0]) / N, crx)
-                cy = linspace(amin(self.coord.xy[:, 1]) / N,
-                              amax(self.coord.xy[:, 1]) / N, cry)
+                cx = linspace(
+                    amin(self.coord.xy[:, 0]) / N,
+                    amax(self.coord.xy[:, 0]) / N, crx
+                )
+                cy = linspace(
+                    amin(self.coord.xy[:, 1]) / N,
+                    amax(self.coord.xy[:, 1]) / N, cry
+                )
             cy = cy[::-1]
 
             plt.xticks(linspace(0, M[1], crx), floor(cx * 1000) / 1000)
@@ -342,7 +376,26 @@ class sdata:
             plt.colorbar(v, cax=cax)
             plt.show()
         else:
-            print('SpatialData.Display: not available on non-uniform sites.')
+            print("SpatialData.Display: not available on non-uniform sites.")
+
+    def ImportImage(self, filename):
+        """Import an image.
+
+        :param filename: Physical address of the image.
+        :type filename: str.
+        """
+        im = imread(filename)
+        if len(im.shape) == 3:
+            print("ImportImage: converting color image to grayscale image.")
+            # im = 0.2989 * im[:, :, 0] + 0.587 * im[:, :, 1] +\
+            #    0.114 * im[:, :, 2]
+            im = im[:, :, 0]
+        shape = array(im.shape)
+        size = int(shape[0] * shape[1])
+        self.CreateImage(shape)
+        values = zeros((size, 1))
+        values[:, 0] = im.reshape((size))[:]
+        self.values = values
 
     def CreateImage(self, M):
         """Create an image.
@@ -363,8 +416,8 @@ class sdata:
             self.coord.Ny = M[0]
             self.coord.grid = True
         else:
-            print('CreateImage: size of image should be an array of size 2.')
-            return(0)
+            print("CreateImage: size of image should be an array of size 2.")
+            return 0
 
     def ComputeIncrements(self, hx, hy, order=0):
         r"""Compute increments of an image.
@@ -395,14 +448,14 @@ class sdata:
         hy = int(hy)
 
         if not self.coord.grid:
-            print('sdata.ComputeIncrements:  only applies to an image.')
-            return(0)
+            print("sdata.ComputeIncrements:  only applies to an image.")
+            return 0
 
         N = self.coord.N
 
         if (abs(hx) >= self.M[1]) or (abs(hy) >= self.M[0]):
-            print('ComputeIncrements: lags are too large for image size.')
-            return(0)
+            print("ComputeIncrements: lags are too large for image size.")
+            return 0
 
         valincre = reshape(self.values, self.M)
 
@@ -412,32 +465,40 @@ class sdata:
             hxa = int(abs(hx))
             hya = int(abs(hy))
             # Compute Z(x, y) - Z(x - hx, y - hy).
-            # The computation is expected in Euclidien coordinates, but the
+            # The computation is expected in Euclidian coordinates, but the
             # values of Z are stored in a matrix. The term Z[i, j] of this
             # matrix corresponds to Z(x, y) with x = j and y = M[0] - i,
             # M[0] being the number of rows.
 
             if (hx >= 0) and (hy >= 0):
-                valincre = valincre[0:(M[0] - hya), hxa:M[1]]\
-                    - valincre[hya:M[0], 0:(M[1] - hxa)]
+                valincre = (
+                    valincre[0: (M[0] - hya), hxa: M[1]]
+                    - valincre[hya: M[0], 0: (M[1] - hxa)]
+                )
             elif hx >= 0:  # hx >=0  and hy < 0
-                valincre = valincre[hya:M[0], hxa:M[1]]\
-                    - valincre[0:(M[0] - hya), 0:(M[1] - hxa)]
+                valincre = (
+                    valincre[hya: M[0], hxa: M[1]]
+                    - valincre[0: (M[0] - hya), 0: (M[1] - hxa)]
+                )
             elif hy >= 0:  # hx < 0 and hy >= 0
-                valincre = valincre[0:(M[0] - hya), 0:(M[1] - hxa)]\
-                    - valincre[hya:M[0], hxa:M[1]]
+                valincre = (
+                    valincre[0: (M[0] - hya), 0: (M[1] - hxa)]
+                    - valincre[hya: M[0], hxa: M[1]]
+                )
             else:  # hx < 0 and hy < 0
-                valincre = valincre[hya:M[0], 0:(M[1] - hxa)]\
-                    - valincre[0:(M[0] - hya), hxa:M[1]]
+                valincre = (
+                    valincre[hya: M[0], 0: (M[1] - hxa)]
+                    - valincre[0: (M[0] - hya), hxa: M[1]]
+                )
 
         incre = sdata()
         M = array(valincre.shape)
         incre.CreateImage(M)
         incre.values = valincre
         incre.coord.N = N
-        incre.name = 'Increments'
+        incre.name = "Increments"
 
-        return(incre)
+        return incre
 
     def ComputeLaplacian(self, scale=1):
         """Compute the discrete laplacian of an image.
@@ -457,8 +518,8 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            print('data.ComputeLaplacian:  only applies to an image.')
-            return(0)
+            print("data.ComputeLaplacian:  only applies to an image.")
+            return 0
 
         # Second-order discrete derivative with respect to x and y variables.
         dx2 = self.ComputeIncrements(scale, 0, 1)
@@ -472,12 +533,13 @@ class sdata:
         M = array([my, mx])
         laplacian.CreateImage(M)
         laplacian.coord.N = self.coord.N
-        laplacian.name = 'Image Laplacian.'
-        laplacian.values =\
-            dx2.values.reshape(Mdx2)[0:my, 0:mx] +\
+        laplacian.name = "Image Laplacian."
+        laplacian.values = (
+            dx2.values.reshape(Mdx2)[0:my, 0:mx] +
             dy2.values.reshape(Mdy2)[0:my, 0:mx]
+        )
 
-        return(laplacian)
+        return laplacian
 
     def ComputeImageSign(self):
         """Compute the sign of an image.
@@ -487,14 +549,14 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            print('data.ComputeImageSign:  only applies to an image.')
-            return(0)
+            print("data.ComputeImageSign:  only applies to an image.")
+            return 0
 
         simage = sdata()
         simage.CreateImage(self.M)
         simage.values = sign(self.values)
         simage.coord.N = self.coord.N
-        simage.name = 'Image sign.'
+        simage.name = "Image sign."
 
         return simage
 
@@ -515,15 +577,15 @@ class sdata:
             This method only applies to an image.
         """
         if not self.coord.grid:
-            print('ComputeQuadraticVariations:  only applies to an image.')
-            return(0)
+            print("ComputeQuadraticVariations:  only applies to an image.")
+            return 0
 
         if not isinstance(lags, coordinates):
-            print('ComputeQuadraticVariations: provide lags as coordinates.')
-            return(None)
+            print("ComputeQuadraticVariations: provide lags as coordinates.")
+            return None
 
         qvar = sdata(lags)
-        qvar.name = 'Quadratic variations.'
+        qvar.name = "Quadratic variations."
 
         for j in range(lags.xy.shape[0]):
             hx = lags.xy[j, 0]
@@ -535,7 +597,7 @@ class sdata:
             # Compute the quadratic variations.
             qvar.values[j, 0] = mean(power(values, 2), axis=None)
 
-        return(qvar)
+        return qvar
 
     def ComputeEmpiricalSemiVariogram(self, lags):
         """Compute the empirical semi-variogram of an image.
@@ -552,14 +614,14 @@ class sdata:
 
         """
         if not self.coord.grid:
-            print('ComputeEmpiricalSemiVariogram: only applies to an image.')
-            return(0)
+            print("ComputeEmpiricalSemiVariogram: only applies to an image.")
+            return 0
 
         # Compute quadratic variations
         evario = self.ComputeQuadraticVariations(lags)
-        evario.name = 'Empirical semi-variogram.'
+        evario.name = "Empirical semi-variogram."
 
         # Compute the semi-variogram.
         evario.values[:, 0] = 0.5 * evario.values[:, 0]
 
-        return(evario)
+        return evario

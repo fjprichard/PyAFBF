@@ -62,8 +62,8 @@ Test the normalization
 >>> Z = field()
 >>> Z.hurst.ChangeParameters(array([0.5]))
 >>> Z.NormalizeModel()
->>> Z.topo.fparam[0, 0]
-0.5
+>>> absolute(Z.topo.fparam[0, 0] - 0.5) < 10e-6
+True
 
 Test the semi-variogram
 -----------------------
