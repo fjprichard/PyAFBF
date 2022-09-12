@@ -238,7 +238,8 @@ class tbfield(field):
         X = zeros((coord.xy.shape[0], 1))
 
         C = self.topo.values
-        H = self.hurst.values
+        H = zeros(self.hurst.values.shape)
+        H[:] = self.hurst.values[:]
         H0 = floor(H)
         H = H - H0
 
@@ -293,15 +294,16 @@ class tbfield(field):
                     X = X + sqrt(weig0) * pow(weig, H[0, k]) *\
                         fbm.y.reshape(fbm.y.size, 1)
 
+        if not coord.grid:
+            coord.xy = coord.xy[0:-4, :]
+            X = X[0:-4, :]
+
         if vario:
             self.svario = sdata(coord)
             self.svario.name = 'Semi-variogram of the simulation field.'
             self.svario.values = X
             return(1)
         else:
-            if not coord.grid:
-                coord.xy = coord.xy[0:-4, :]
-                X = X[0:-4, :]
             sfield = sdata(coord)
             sfield.name = 'Field simulation.'
             sfield.values = X
