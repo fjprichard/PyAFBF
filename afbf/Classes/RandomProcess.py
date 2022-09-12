@@ -186,7 +186,6 @@ class process:
             self.vario = 0.5 * power(absolute(lags), 2 * self.param)
         else:
             v = power(absolute(lags), 2)
-            # v[v == 0] = 10e-100
             ind = nonzero(v != 0)
             self.vario = zeros(lags.shape)
             self.vario[ind] = 0.5 * power(v[ind], self.param)
