@@ -238,8 +238,8 @@ class tbfield(field):
         X = zeros((coord.xy.shape[0], 1))
 
         C = self.topo.values
-        # H = zeros(self.hurst.values.shape)
-        H = self.hurst.values
+        H = zeros(self.hurst.values.shape)
+        H[:] = self.hurst.values[:]
         H0 = floor(H)
         H = H - H0
 
