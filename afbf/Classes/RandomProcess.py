@@ -221,7 +221,7 @@ class process:
         self.gf.SetUniformStepInterval()
         self.gn = 100000
 
-    def Simulate(self, T, geom=False):
+    def Simulate(self, T):
         r"""Simulate the process at uniformly-spaced positions
             :math:`\{0, 1, \cdots, T\}`.
 
@@ -234,35 +234,7 @@ class process:
         self.Simulate_CirculantCovarianceMethod(T)
         # Simulation of the process by integration of increments.
         self.IntegrateProcess(1)
-        # Essai 10/06/2022
-        if geom:
-            self.Geometricize()
 
-    def Geometricize(self):
-        # essai 10/06/2022
-        y = self.y
-        v = diff(diff(y, append=0), append=0)
-        y[v < 0] = -1
-        y[v >= 0] = 1
-
-        # y = self.y
-        # v = zeros(y.shape)  # diff(diff(y, append=0), append=0)
-        # v[y < 0] = -1
-        # v[y >= 0] = 1
-
-        # vsign = v[v.size - 1]
-        # aux = 0
-        # cnt = 0
-        # for i in range(v.size - 1, 0, -1):
-        #     if v[i] == vsign:
-        #         aux += y[i]
-        #         cnt += 1
-        #         y[i] = 0
-        #     else:
-        #         vsign = - vsign
-        #         y[i + 1: i + cnt + 1] = aux / cnt
-        #         aux = y[i]
-        #         cnt = 1
 
     def Simulate_CirculantCovarianceMethod(self, T):
         r"""Simulate process :term:`increments` at positions
