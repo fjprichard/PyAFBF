@@ -6,7 +6,7 @@ Commands, class, and functions from external modules.
 
 # NUMPY COMMANDS
 
-from numpy import ndarray                # class of ndarray.
+from numpy import ndarray  # class of ndarray.
 
 # element-wise operations on matrix
 from numpy import absolute  # absolute values of matrix elements.
@@ -27,6 +27,7 @@ from numpy import sign
 # global operations on matrix.
 from numpy import amin  # find the minimum of a matrix.
 from numpy import amax  # find the minimum of a matrix.
+from numpy import minimum, maximum
 from numpy import argmin  # find the minimum argument.
 from numpy import sum  # compute sums.
 from numpy import mean  # compute mean.
@@ -89,6 +90,8 @@ from scipy.special import beta  # Beta function.
 from scipy.special import betainc  # Incomplete Beta function.
 
 # Optimization function
-from scipy.optimize import minimize, least_squares
-from numpy.linalg import solve
+from scipy.optimize import minimize, least_squares, Bounds
+from numpy.linalg import solve, cond
 
+# Reading an image.
+from imageio import imread
