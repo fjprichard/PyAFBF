@@ -43,7 +43,7 @@
 
 from afbf.utilities import reshape, arange, repmat, concatenate, array, zeros
 from afbf.utilities import amin, amax, mean, matmul, floor, linspace, sign
-from afbf.utilities import power, plt, sqrt, unique
+from afbf.utilities import power, plt, sqrt
 from afbf.utilities import make_axes_locatable, ndarray
 from afbf.utilities import imread
 
@@ -285,6 +285,7 @@ class coordinates:
         plt.figure(nfig)
         plt.plot(self.xy[:, 0] / self.N, self.xy[:, 1] / self.N, "rx")
         plt.axis("equal")
+        plt.show()
 
 
 class sdata:

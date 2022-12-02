@@ -1,6 +1,6 @@
-Metadata-Version: 1.2
+Metadata-Version: 2.1
 Name: PyAFBF
-Version: 0.0.3
+Version: 0.2.0
 Summary: Sample image textures from anisotropic fractional Brownian fields
 Home-page: https://github.com/fjprichard/PyAFBF/
 Author: Frederic Richard
@@ -9,7 +9,10 @@ License: GPLv3
 Project-URL: Documentation, https://fjprichard.github.io/PyAFBF/
 Project-URL: Source, https://github.com/fjprichard/PyAFBF/
 Project-URL: Tracker, https://github.com/fjprichard/PyAFBF/issues
-Description: The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. More details can be found on the `documentation <https://fjprichard.github.io/PyAFBF/>`_.
+Description: .. image:: https://zenodo.org/badge/368267301.svg
+           :target: https://zenodo.org/badge/latestdoi/368267301
+        
+        The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. More details can be found on the `documentation <https://fjprichard.github.io/PyAFBF/>`_.
         
         Package features
         ================
@@ -28,17 +31,15 @@ Description: The Package PyAFBF is intended for the simulation of rough anisotro
         
         The package source can be downloaded from the `repository <https://github.com/fjprichard/PyAFBF>`_. 
         
-        To install the package, write the following commands in the root directory where the package was downloaded:
+        The package can be installed through PYPI with
+         
+         pip install PyAFBF
+         
+        To install the package in a Google Collab environment, please type
         
-            python setup.py install
-            or
-            pip install -e .
-        
-        After installation, the package can be tested by running 
-        
-            python tests/TestAll.py
-        
-        If no output appears, then the package is correctly installed.
+         !pip install imgaug==0.2.6
+         
+         !pip install PyAFBF
         
         Communication to the author
         ===========================
@@ -52,6 +53,47 @@ Description: The Package PyAFBF is intended for the simulation of rough anisotro
         PyAFBF is under licence GNU GPL, version 3.
         
         
+        Citation
+        ========
+        
+        When using PyAFBF, please cite the original paper
+        
+        H. BiermÃ©, M. Moisan, and F. Richard. A turning-band method for the simulation of anisotropic fractional Brownian field. J. Comput. Graph. Statist., 24(3):885â€“904, 2015.
+        
+        and the JOSS paper:
+        
+        
+        .. image:: https://joss.theoj.org/papers/10.21105/joss.03821/status.svg
+           :target: https://doi.org/10.21105/joss.03821
+        
+        
+        Contents
+        ========
+        
+            - Quick start guide
+               - Getting started
+               - Customed models
+               - Tuning model parameters
+               - Model features
+               - Simulating with turning-band fields
+            - Example gallery
+               - Basic examples
+               - Extended anisotropic fields
+               - Heterogeneous fields
+               - Related anisotropic fields
+            - API: main classes
+               - AFBF (field)
+               - Turning band field (tbfield)
+            - API: auxiliary classes
+               - Periodic functions (perfunction)
+               - Coordinates (coordinates)
+               - Spatial data (sdata)
+               - Process (process)
+               - Turning bands (tbparameters)
+               - ndarray
+        
+        
+        
         Credits
         =======
         
@@ -59,7 +101,7 @@ Description: The Package PyAFBF is intended for the simulation of rough anisotro
         
         
         
-Keywords: simulation,anisotropic fractional Brownian field,image texture
+Keywords: anisotropic fractional Brownian field,image texture,simulation
 Platform: Linux
 Platform: MacOSX
 Platform: Windows
@@ -72,3 +114,4 @@ Classifier: Natural Language :: English
 Classifier: Operating System :: OS Independent
 Classifier: Programming Language :: Python :: 3.8
 Classifier: Topic :: Scientific/Engineering :: Image Processing
+Provides-Extra: dev

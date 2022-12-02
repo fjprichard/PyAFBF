@@ -43,7 +43,7 @@ r"""Module for the management of anisotropic fractional Brownian fields.
 
 """
 from afbf.utilities import pi, linspace, unique, concatenate, power
-from afbf.utilities import ceil, amin, amax, mean, reshape, nonzero
+from afbf.utilities import ceil, amin, amax, mean, reshape, nonzero, argmin
 from afbf.utilities import sum, zeros, array
 from afbf.Classes.PeriodicFunction import DiscreteFunctionDescription
 from afbf import sdata, coordinates, perfunction
@@ -233,7 +233,8 @@ class field:
             topo = perfunction(self.hurst.ftype, self.hurst.fparam.size)
             self.topo = topo
             topo.fname = 'Topothesy function'
-            topo.finter = self.hurst.finter
+            topo.finter = zeros(self.hurst.finter.shape)
+            topo.finter[:] = self.hurst.finter[:]
             topo.fparam = zeros(self.hurst.fparam.shape)
             if self.hurst.steptrans:
                 topo.trans = self.hurst.trans
@@ -391,7 +392,7 @@ class field:
     def ComputeFeatures(self):
         """Compute several features of the field.
 
-        :returns: Attributes H, hurst_argmin_length, hurst_index_aniso,
+        :returns: Attributes H, Hmax, hurst_argmin_length, hurst_index_aniso,
             aniso_indices_topo, aniso_indices_hurst, aniso_sharpness_topo,
             aniso_sharpness_hurst, aniso_indices_mixed1, aniso_indices_mixed2,
             aniso_sharpness_mixed1, aniso_sharpness_mixed2.
@@ -423,13 +424,6 @@ class field:
         self.aniso_sharpness_mixed_1 = sh1
         self.aniso_sharpness_mixed_2 = sh2
 
-        # Analysis of the Hurst function.
-        # Find the support of the topothesy function on (-pi/2, pi/2).
-        ind = nonzero(self.topo.values != 0)
-        self.topo.values = self.topo.values[ind]
-        self.hurst.values = self.hurst.values[ind]
-        self.hurst.t = self.hurst.t[ind]
-
         # Minimum and maximum of the Hurst function on this support.
         self.H = amin(self.hurst.values)
         self.Hmax = amax(self.hurst.values)
@@ -457,10 +451,44 @@ class field:
             hmean = hmean - pi
         self.hurst_argmin_mean = hmean
 
+    def ComputeFeatures_Hurst(self):
+        """Compute several features of the field related to the Hurst index.
+        :returns: Attributes H, Hmax, hurst_argmin_lenght, hurst_argmin_center.
+        """
+
+        if self.CheckValidity() is False:
+            return(0)
+
+        if "step" not in self.hurst.ftype or "step" not in self.topo.ftype:
+            print("ComputeFeature_Hurst: only apply to step functions.")
+            return(0)
+
+        finter = self.hurst.finter
+        inter = concatenate((finter[0, -1].reshape((1, 1)) - pi, finter),
+                            axis=1)
+        centers = inter[:, 0:-1] + (inter[:, 1:] - inter[:, 0:-1]) / 2
+        self.hurst.Evaluate(centers)
+        self.H = amin(self.hurst.fparam)
+        self.Hmax = amax(self.hurst.fparam)
+        i = argmin(self.hurst.values)
+
+        if i > 0:
+            s = self.hurst.finter[0, i] - self.hurst.finter[0, i - 1]
+            c = self.hurst.finter[0, i - 1] + s / 2
+        else:
+            s = self.hurst.finter[0, i] - self.hurst.finter[0, -1] + pi
+            c = self.hurst.finter[0, -1] - pi + s / 2
+
+        self.hurst_argmin_lenght = inter[0, i + 1] - inter[0, i]
+        c = centers[0, i]
+        if c < - pi / 2:
+            c = c + pi
+        self.hurst_argmin_center = c
+
 
 def BETA_H(coord, alp1, alp2, H):
     r"""Approximation of an integral useful for the computation of
-    semi-variogram.
+        semi-variogram.
 
     The approximated integral is defined as:
 
