@@ -45,7 +45,7 @@
 """
 
 from afbf.utilities import pi, randn, rand, absolute, concatenate, fft, arange
-from afbf.utilities import amin, reshape, mean, zeros, diff
+from afbf.utilities import amin, reshape, mean, zeros
 from afbf.utilities import real, cumsum, power, sqrt, plt, log, nonzero
 from afbf import perfunction
 
@@ -141,8 +141,7 @@ class process:
     def ComputeSemiVariogram(self, lags, logvario=0):
         """Compute the semi-variogram of the process at lags given in lags.
 
-        :param :ref:`ndarray` lags: Lags where to compute the variogram.
-
+        :param `ndarray`_ lags: Lags where to compute the variogram.
         :param logvario:
             if logvario>0, a log semi-variogram is computed.
             The default is 0.
@@ -175,7 +174,7 @@ class process:
     def ComputeFBMSemiVariogram(self, lags, logvario=0):
         """Compute the semi-variogram of the fbm at lags given in lags.
 
-        :param :ref:`ndarray` lags: Lags where to compute the variogram.
+        :param `ndarray`_ lags: Lags where to compute the variogram.
         :param logvario: if logvario>0, a log semi-variogram is computed.
             The default is 0.
         :type logvario: int, optional

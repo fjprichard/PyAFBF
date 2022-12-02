@@ -45,9 +45,6 @@ Elementary Fractional Brownian field
 
 This example shows how to simulate an elementary fractional Brownian field
 with prescribed Hurst index, step intervals and directions.
-
-.. note::
-
 """
 import numpy as np
 from afbf import tbfield

@@ -25,8 +25,8 @@ from numpy import ceil
 from numpy import sign
 
 # global operations on matrix.
-from numpy import amin  # find the minimum of a matrix.
-from numpy import amax  # find the minimum of a matrix.
+from numpy import amin, min, argmin  # find the minimum of a matrix.
+from numpy import amax, max, argmax  # find the minimum of a matrix.
 from numpy import minimum, maximum
 from numpy import argmin  # find the minimum argument.
 from numpy import sum  # compute sums.
@@ -43,7 +43,7 @@ from numpy import fmax
 # matrix manipulation
 from numpy.matlib import repmat          # replication of a matrix.
 from numpy import reshape                # reshape a matrix.
-from numpy import array                  # create an array.
+from numpy import array, append          # create, append an array.
 from numpy import asmatrix               # interpret as a matrix.
 
 # matrix creation

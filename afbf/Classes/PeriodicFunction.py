@@ -207,6 +207,8 @@ class perfunction:
         self.ftype = 'undefined'
         self.fparam = None
         self.finter = None
+        self.steptrans = None
+        self.trans = None
         self.translate = 0
         self.rescale = 1
 
@@ -217,7 +219,6 @@ class perfunction:
         else:
             print("PeriodicFunction.__init__: invalid representation.")
             print("PeriodicFunction.__init__: function not defined.")
-
         self.t = None
         self.values = None
         self.basis = None
@@ -532,6 +533,7 @@ class perfunction:
                 k = mod(k + 1, ninter)
             else:
                 k = 1
+
             # Set interval bounds between -pi/2 and pi/2.
             finter = finter - pi / 2
             if self.steptrans:

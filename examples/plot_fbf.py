@@ -45,9 +45,6 @@ Fractional Brownian field
 
 This example shows how to simulate a fractional Brownian field with
 a prescribed Hurst index.
-
-.. note::
-
 """
 
 import numpy as np

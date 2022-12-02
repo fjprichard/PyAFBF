@@ -43,8 +43,8 @@ r"""Module for the management of turning band fields.
 """
 
 from afbf.utilities import pi, linspace, zeros, tan, arctan2, cos, unique
-from afbf.utilities import log, nonzero, floor, absolute, amax, amin
-from afbf.utilities import sqrt, diff, sum, array, concatenate
+from afbf.utilities import log, power, nonzero, floor, absolute, amax, amin
+from afbf.utilities import sqrt, diff, sum, max, std, array, concatenate
 from afbf import coordinates, sdata, process, perfunction, field
 
 
@@ -444,6 +444,7 @@ class tbparameters:
             whose tangents are rational. :math:`\Phi`is a subset of
 
             .. math::
+
                 \{\varphi \in [-\pi/2,\pi/2], \tan(\varphi)=p/q, p
                 \in \mathbb{Z}, q \in \mathbb{N}^\ast, p \wedge q=1\}.
 
