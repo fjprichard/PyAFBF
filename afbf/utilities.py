@@ -27,6 +27,7 @@ from numpy import sign
 # global operations on matrix.
 from numpy import amin, min, argmin  # find the minimum of a matrix.
 from numpy import amax, max, argmax  # find the minimum of a matrix.
+
 from numpy import minimum, maximum
 from numpy import argmin  # find the minimum argument.
 from numpy import sum  # compute sums.
@@ -94,5 +95,5 @@ from scipy.optimize import minimize, least_squares, Bounds
 from numpy.linalg import solve, cond
 
 # Reading an image.
-from imageio import imread
+from imageio.v2 import imread
 
