@@ -207,7 +207,7 @@ class coordinates:
             self.N = amax(self.xy, axis=None)
             self.grid = False
         else:
-            print("DefineNonUniform...: provide xy as an ndarray (M, 2).")
+            raise("DefineNonUniform...: provide xy as an ndarray (M, 2).")
 
     def ApplyAffineTransform(self, A):
         r"""Apply an affine transform A to coordinates.
@@ -249,7 +249,7 @@ class coordinates:
             self.xy = matmul(self.xy, A)
             self.N = amax(self.xy, axis=None)
         else:
-            print("ApplyAffine...: provide A as ndarray of size (2, 2).")
+            raise("ApplyAffine...: provide A as ndarray of size (2, 2).")
 
     def ProjectOnAxis(self, u, v):
         r"""Project coordinates on an axis oriented in (u, v).
@@ -331,8 +331,7 @@ class sdata:
                     self.name = "Image"
                 self.values = zeros((coord.xy.shape[0], 1))
             else:
-                print("sdata.__init__: provide coord as coordinates.")
-                return None
+                raise("sdata.__init__: provide coord as coordinates.")
         else:
             self.coord = None
             self.values = None
@@ -377,7 +376,7 @@ class sdata:
             plt.colorbar(v, cax=cax)
             plt.show()
         else:
-            print("SpatialData.Display: not available on non-uniform sites.")
+            raise("SpatialData.Display: not available on non-uniform sites.")
 
     def ImportImage(self, filename):
         """Import an image.
@@ -417,8 +416,7 @@ class sdata:
             self.coord.Ny = M[0]
             self.coord.grid = True
         else:
-            print("CreateImage: size of image should be an array of size 2.")
-            return 0
+            raise("CreateImage: size of image should be an array of size 2.")
 
     def ComputeIncrements(self, hx, hy, order=0):
         r"""Compute increments of an image.
@@ -449,14 +447,12 @@ class sdata:
         hy = int(hy)
 
         if not self.coord.grid:
-            print("sdata.ComputeIncrements:  only applies to an image.")
-            return 0
+            raise("sdata.ComputeIncrements:  only applies to an image.")
 
         N = self.coord.N
 
         if (abs(hx) >= self.M[1]) or (abs(hy) >= self.M[0]):
-            print("ComputeIncrements: lags are too large for image size.")
-            return 0
+            raise("ComputeIncrements: lags are too large for image size.")
 
         valincre = reshape(self.values, self.M)
 
@@ -519,8 +515,7 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            print("data.ComputeLaplacian:  only applies to an image.")
-            return 0
+            raise("data.ComputeLaplacian:  only applies to an image.")
 
         # Second-order discrete derivative with respect to x and y variables.
         dx2 = self.ComputeIncrements(scale, 0, 1)
@@ -539,7 +534,6 @@ class sdata:
             dx2.values.reshape(Mdx2)[0:my, 0:mx] +
             dy2.values.reshape(Mdy2)[0:my, 0:mx]
         )
-
         return laplacian
 
     def ComputeImageSign(self):
@@ -550,8 +544,7 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            print("data.ComputeImageSign:  only applies to an image.")
-            return 0
+            raise("data.ComputeImageSign:  only applies to an image.")
 
         simage = sdata()
         simage.CreateImage(self.M)
@@ -578,12 +571,10 @@ class sdata:
             This method only applies to an image.
         """
         if not self.coord.grid:
-            print("ComputeQuadraticVariations:  only applies to an image.")
-            return 0
+            raise("ComputeQuadraticVariations:  only applies to an image.")
 
         if not isinstance(lags, coordinates):
-            print("ComputeQuadraticVariations: provide lags as coordinates.")
-            return None
+            raise("ComputeQuadraticVariations: provide lags as coordinates.")
 
         qvar = sdata(lags)
         qvar.name = "Quadratic variations."
@@ -615,8 +606,7 @@ class sdata:
 
         """
         if not self.coord.grid:
-            print("ComputeEmpiricalSemiVariogram: only applies to an image.")
-            return 0
+            raise("ComputeEmpiricalSemiVariogram: only applies to an image.")
 
         # Compute quadratic variations
         evario = self.ComputeQuadraticVariations(lags)
