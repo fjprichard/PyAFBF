@@ -212,8 +212,7 @@ class field:
                 self.hurst = hurst
                 self.FindOrder()
             else:
-                print('Field.SetModel(): set hurst and topo as perfunction.')
-                return(0)
+                raise('Field.SetModel(): set hurst and topo as perfunction.')
 
         self.extended = False
         self.vario = None
@@ -248,8 +247,7 @@ class field:
                     c = pow(2, - (2 * h)) / BETA_H(coord, -pi / 2, pi / 2, h)
                     topo.fparam[0, j] = c[0, 0]
         else:
-            print('Warning: normalize only with step Hurst functions.')
-            return(0)
+            raise('Warning: normalize only with step Hurst functions.')
 
     def CheckValidity(self):
         """Check the validity of field.
@@ -274,12 +272,12 @@ class field:
         """
         if self.CheckValidity():
             self.topo.Display(nfig)
-            self.hurst.Display(nfig+1)
+            self.hurst.Display(nfig + 1)
         else:
             return(0)
 
         if isinstance(self.vario, sdata):
-            self.vario.Display(nfig+2)
+            self.vario.Display(nfig + 2)
 
     def ComputeSemiVariogram(self, lags):
         """Compute values of the :term:`semi-variogram` of the field
@@ -298,11 +296,10 @@ class field:
         if self.CheckValidity() is False:
             return(0)
         if self.order != 0:
-            print('Field: The semi-variogram is defined for field of order 0.')
-            return(0)
+            raise('Field: The semi-variogram is defined for field of order 0.')
+
         if not isinstance(lags, coordinates):
-            print('Definition: the lags must be coordinates.')
-            return(0)
+            raise('Definition: the lags must be coordinates.')
 
         c = self.topo
         h = self.hurst
@@ -337,7 +334,7 @@ class field:
             if C != 0 and H != 0:
                 self.vario.values = self.vario.values +\
                     C * pow(2, (2 * H - 1)) / pow(N, 2 * H) *\
-                    BETA_H(lags, c.t[0, k], c.t[0, k+1], H) *\
+                    BETA_H(lags, c.t[0, k], c.t[0, k + 1], H) *\
                     power(coord2, H)
 
     def FindOrder(self):
@@ -355,14 +352,13 @@ class field:
             return(0)
 
         if 'step' in self.hurst.ftype:
-            inter = linspace(-pi/2, pi/2, 10000)
+            inter = linspace(-pi / 2, pi / 2, 10000)
             self.hurst.Evaluate(inter)
             self.topo.Evaluate(inter)
             ind = nonzero(self.topo.values[:] != 0)
             self.order = ceil(amax(self.hurst.values[ind], axis=None)) - 1
         else:
-            print('FindOrder(): only available for Hurst step function')
-            return(0)
+            raise('FindOrder(): only available for Hurst step function')
 
     def ChangeOrder(self, neworder):
         """Change the order of the :term:`intrinsic` field.
@@ -386,8 +382,7 @@ class field:
             self.FindOrder()
             return(1)
         else:
-            print('ChangeOrder(): only available for Hurst step function.')
-            return(0)
+            raise('ChangeOrder(): only available for Hurst step function.')
 
     def ComputeFeatures(self):
         """Compute several features of the field.
@@ -460,8 +455,7 @@ class field:
             return(0)
 
         if "step" not in self.hurst.ftype or "step" not in self.topo.ftype:
-            print("ComputeFeature_Hurst: only apply to step functions.")
-            return(0)
+            raise("ComputeFeature_Hurst: only apply to step functions.")
 
         finter = self.hurst.finter
         inter = concatenate((finter[0, -1].reshape((1, 1)) - pi, finter),
