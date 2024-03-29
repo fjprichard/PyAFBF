@@ -230,7 +230,7 @@ class tbfield(field):
                                        axis=0)
             M = amax(coord.xy, axis=None)
         else:
-            print('Simulate: provide coord as coordinates.')
+            raise('Simulate: provide coord as coordinates.')
 
         if evaluate:
             self.EvaluateTurningBandParameters()
@@ -261,7 +261,7 @@ class tbfield(field):
                 # Weight the process on the turning band (based on rectangular
                 # integral approximation of the variogram).
                 weig0, weig = Weight_TB(q, H[0, k], C[0, k],
-                                        self.tb.Kangle[k-1], kang, N)
+                                        self.tb.Kangle[k - 1], kang, N)
 
                 # Projection of grid coordinates on the band.
                 indr = coord.ProjectOnAxis(q, p)
@@ -394,13 +394,13 @@ class tbparameters:
         if K == 1:
             K = 2
 
-        Kangle = linspace(-pi/2, pi/2, K)
+        Kangle = linspace(-pi / 2, pi / 2, K)
         K = len(Kangle)
         Pangle = zeros(K, dtype=int)
         Qangle = zeros(K, dtype=int)
-        delta = Kangle[1] + pi/2
+        delta = Kangle[1] + pi / 2
 
-        for m in range(1, K-1):
+        for m in range(1, K - 1):
             # Precision.
             prec = delta * (1 + pow(tan(Kangle[m]), 2)) * 0.5
             # Rational approximation of the slope tan(Kangle(l))
@@ -467,7 +467,7 @@ class tbparameters:
         # Definition of a set S of possible angles
         # and their associated costs.
 
-        if N < Nmax/3:
+        if N < Nmax / 3:
             self.QuasiUniformAngles(Nmax)
         else:
             self.QuasiUniformAngles(10 * N)
@@ -479,16 +479,16 @@ class tbparameters:
         # Dynamic programming for the selection of an optimal subset
         cost = zeros(nvec)  # Partial costs.
         pos = zeros(nvec, dtype=int)
-        cost[nvec-1] = Cost[nvec-1]
-        pos[nvec-1] = nvec-1
-        ind = range(0, nvec-1)
+        cost[nvec - 1] = Cost[nvec - 1]
+        pos[nvec - 1] = nvec - 1
+        ind = range(0, nvec - 1)
         for i in ind[::-1]:
             bound = self.Kangle[i] + prec
             bestj = i + 1
             mini = cost[bestj]
             # Seek among upper angles at distance below prec
             # of the current angle for the one with a minimal partial cost.
-            for j in range(i+2, nvec):
+            for j in range(i + 2, nvec):
                 if self.Kangle[j] > bound:
                     break
                 if cost[j] < mini:
@@ -503,10 +503,10 @@ class tbparameters:
         # Build the set S' by finding the best path.
         i = 0
         Select = zeros(nvec)
-        while i < nvec-1:
+        while i < nvec - 1:
             Select[i] = 1
             i = pos[i]
-        Select[nvec-1] = 1
+        Select[nvec - 1] = 1
 
         ind = nonzero(Select == 1)
         self.Kangle = self.Kangle[ind]
