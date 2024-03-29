@@ -201,7 +201,7 @@ class perfunction:
         :type fname: str (, optional)
         """
         if not isinstance(fname, str) or not isinstance(ftype, str):
-            print('perfunction: provide string arguments for fname and ftype')
+            raise('perfunction: provide string arguments for fname and ftype')
 
         self.fname = fname
         self.ftype = 'undefined'
@@ -217,8 +217,8 @@ class perfunction:
         elif 'step' in ftype:
             self.InitStepFunction(ftype, 'init', param)
         else:
-            print("PeriodicFunction.__init__: invalid representation.")
-            print("PeriodicFunction.__init__: function not defined.")
+            raise("PeriodicFunction.__init__: invalid representation.")
+
         self.t = None
         self.values = None
         self.basis = None
@@ -275,22 +275,18 @@ class perfunction:
                 if fparam.size == self.fparam.size:
                     self.fparam[:] = reshape(fparam, self.fparam.shape)[:]
                 else:
-                    print('ChangeParameters: fparam size is not correct.')
-                    return(0)
+                    raise('ChangeParameters: fparam size is not correct.')
             else:
-                print('ChangeParameters: fparam should be ndarray.')
-                return(0)
+                raise('ChangeParameters: fparam should be ndarray.')
 
         if 'step' in self.ftype and finter is not None:
             if isinstance(finter, ndarray):
                 if finter.size == self.finter.size:
                     self.finter[:] = reshape(finter, self.finter.shape)[:]
                 else:
-                    print('ChangeParameters: finter size is not correct.')
-                    return(0)
+                    raise('ChangeParameters: finter size is not correct.')
             else:
-                print('ChangeParameters: finter should be ndarray.')
-                return(0)
+                raise('ChangeParameters: finter should be ndarray.')
 
     def ApplyTransforms(self, translate=None, rescale=None):
         """Apply translation and/or rescaling transform to the function.
@@ -307,7 +303,7 @@ class perfunction:
             if rescale > 0:
                 self.rescale = rescale
             else:
-                print('Rescaling factor must be positive.')
+                raise('Rescaling factor must be positive.')
 
     def Evaluate(self, t=None):
         """Evaluate the function at some positions.
@@ -327,8 +323,8 @@ class perfunction:
 
         if t is not None:
             if isinstance(t, ndarray) is False:
-                print('pefunction.Evaluate: set parameter t as ndarray.')
-                return(0)
+                raise('pefunction.Evaluate: set parameter t as ndarray.')
+
             self.t = reshape(t, (1, t.size))
 
             # Take into account possible translation and rescaling.
@@ -349,7 +345,7 @@ class perfunction:
                 self.t = self.t + self.translate
 
         if self.basis is None:
-            print("PeriodicFunctions.Evaluate: give positions t as ndarray.")
+            raise("PeriodicFunctions.Evaluate: give positions t as ndarray.")
         else:
             self.values = matmul(self.fparam, self.basis)
 
@@ -573,8 +569,7 @@ class perfunction:
              SetStepSampleMode_.
         """
         if "step" not in self.ftype:
-            print("pefunction.SampleStepConstants: only for step functions.")
-            return(0)
+            raise("pefunction.SampleStepConstants: only for step functions.")
 
         mode = self.smode[0]
         a = self.smode[1]
@@ -656,8 +651,7 @@ class perfunction:
         :returns: Attribute smode.
         """
         if "step" not in self.ftype:
-            print("perfunction.SetStepSampleMode: only for step functions.")
-            return(0)
+            raise("perfunction.SetStepSampleMode: only for step functions.")
 
         self.smode = []
         self.smode.append(mode_cst)
@@ -672,8 +666,7 @@ class perfunction:
         :returns: Attribute finter, trans.
         """
         if "step" not in self.ftype:
-            print("SetUniformStepInverval: only for step functions.")
-            return(0)
+            raise("SetUniformStepInverval: only for step functions.")
 
         self.ChangeParameters(
             None,
@@ -768,8 +761,8 @@ class perfunction:
         :returns: Attribute fparam.
         """
         if 'Fourier' not in self.ftype:
-            print("perfunction.SampleFourier...: only for Fourier function.")
-            return(0)
+            raise("perfunction.SampleFourier...: only for Fourier function.")
+
         M = floor_divide(self.fparam.size - 1, 2)
         param = arange(1, M + 1).reshape(1, M)
         param = 1 / sqrt(1 + power(param, 2))
@@ -785,7 +778,7 @@ class perfunction:
         :returns: Attribute basis.
         """
         M = self.M
-        th = arange(1, M+1).reshape((M, 1))
+        th = arange(1, M + 1).reshape((M, 1))
         th = 2 * matmul(th, self.t.reshape((1, self.t.size)))
         th = concatenate((ones((1, th.shape[1])), cos(th), sin(th)), axis=0)
         self.basis = array(th)
