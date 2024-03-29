@@ -3,6 +3,10 @@
 
 name: Upload Python Package
 
+runs:
+  using: 'node20'
+  main: 'main.js'
+
 on:
   release:
     types: [created]
