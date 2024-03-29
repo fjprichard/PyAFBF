@@ -233,7 +233,6 @@ class process:
         # Simulation of the process by integration of increments.
         self.IntegrateProcess(1)
 
-
     def Simulate_CirculantCovarianceMethod(self, T):
         r"""Simulate process :term:`increments` at positions
         :math:`\{0, 1, \cdots, T\}`.
@@ -294,8 +293,7 @@ class process:
         :type nfig: int, optional
         """
         if self.y is None:
-            print("Display: Simulate a process before integrating.")
-            return(0)
+            raise("Display: Simulate a process before integrating.")
 
         plt.figure(nfig)
         plt.plot(self.y)
