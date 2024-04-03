@@ -46,6 +46,7 @@ from afbf.utilities import pi, linspace, unique, concatenate, power
 from afbf.utilities import ceil, amin, amax, mean, reshape, nonzero, argmin
 from afbf.utilities import sum, zeros, array
 from afbf.Classes.PeriodicFunction import DiscreteFunctionDescription
+from afbf.Classes.PeriodicFunction import LoadPerfunction
 from afbf import sdata, coordinates, perfunction
 
 
@@ -165,6 +166,18 @@ class field:
         :returns: Attributes fname, order, topo, hurst.
         """
         self.SetModel(fname, topo, hurst)
+
+    def Save(self, filename):
+        """Save a field model.
+
+        :param filename: address of the file.
+        :type filename: str.
+
+        .. note::
+            The field can be rebuilt using the function LoadField.
+        """
+        self.hurst.Save(filename + "-hurst")
+        self.topo.Save(filename + "-topo")
 
     def SetModel(self, fname='fbf', topo=None, hurst=None):
         """See Constructor method.
@@ -525,3 +538,18 @@ def BETA_H(coord, alp1, alp2, H):
                           betainc(H, H, 0.5 - s1[i, 0]))
 
     return G * beta(H, H)
+
+
+def LoadField(filename):
+    """Load the field model.
+
+    :param str filename: File name (without extension).
+
+    :returns: The field model.
+    :rtype: tbfield
+    """
+    hurst = LoadPerfunction(filename + "-hurst")
+    topo = LoadPerfunction(filename + "-topo")
+    model = field(filename, topo, hurst)
+
+    return(model)
