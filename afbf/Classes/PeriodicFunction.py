@@ -46,6 +46,7 @@ from afbf.utilities import rand, plt, zeros, amin, amax, argmin, sort, floor
 from afbf.utilities import ceil, sqrt, power, randn
 from afbf.utilities import sum, diff, mod, floor_divide, mean, std, median
 from afbf.utilities import absolute, ones, matmul, arange, array, ndarray
+from afbf.utilities import pickle
 
 
 class perfunction:
@@ -248,6 +249,25 @@ class perfunction:
             if 'step' in self.ftype:
                 print('Step interval bounds:')
                 print(self.finter)
+
+    def Save(self, filename):
+        """Save a periodic function in a file.
+
+        :param filename: address of the file.
+        :type filename: str.
+
+        .. note::
+            The function can be rebuilt using the function LoadPerfunction.
+        """
+        with open(filename + ".pickle", "wb") as f:
+            pickle.dump([self.ftype,
+                         self.fname,
+                         self.fparam,
+                         self.finter,
+                         self.steptrans,
+                         self.trans,
+                         self.translate,
+                         self.rescale], f)
 
     def ChangeParameters(self, fparam=None, finter=None):
         """Change parameters of the function while keeping its
@@ -826,3 +846,29 @@ def DiscreteFunctionDescription(values, delta):
     sharpness = array([tvnorm, maxabs, l2norm])
 
     return stats, deviation, sharpness
+
+
+def LoadPerfunction(filename):
+    """Load a periodic function from a file.
+
+    :param str filename: File name (without extension).
+
+    :returns: The periodic function.
+    :rtype: perfunction
+    """
+    with open(filename + ".pickle", "rb") as f:
+        Z = pickle.load(f)
+    ftype = Z[0]
+    name = Z[1]
+    param = Z[2].size
+    if "Fourier" in ftype:
+        param = floor_divide(param, 2)
+    model = perfunction(ftype, param, name)
+    model.fparam[0, :] = Z[2][:]
+    model.finter[0, :] = Z[3][:]
+    model.steptrans = Z[4]
+    model.trans = Z[5]
+    model.translate = Z[6]
+    model.rescale = Z[7]
+
+    return(model)
