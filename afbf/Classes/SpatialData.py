@@ -45,7 +45,7 @@ from afbf.utilities import reshape, arange, repmat, concatenate, array, zeros
 from afbf.utilities import amin, amax, mean, matmul, floor, linspace, sign
 from afbf.utilities import power, plt, sqrt
 from afbf.utilities import make_axes_locatable, ndarray
-from afbf.utilities import imread
+from afbf.utilities import imread, pickle
 
 
 class coordinates:
@@ -418,6 +418,18 @@ class sdata:
         else:
             raise("CreateImage: size of image should be an array of size 2.")
 
+    def Save(self, filename):
+        """Save an image in a file
+
+        :param str filename: File name (without extension).
+        """
+
+        if self.coord.grid:
+            with open(filename + ".pickle", "wb") as f:
+                pickle.dump([self.M, self.values], f)
+        else:
+            print("sdata.Save: only available for images.")
+
     def ComputeIncrements(self, hx, hy, order=0):
         r"""Compute increments of an image.
 
@@ -616,3 +628,20 @@ class sdata:
         evario.values[:, 0] = 0.5 * evario.values[:, 0]
 
         return evario
+
+
+def LoadSdata(filename):
+    """Load an image from a file.
+
+    :param str filename: File name (without extension).
+
+    :returns: The image.
+    :rtype: sdata
+    """
+    with open(filename + ".pickle", "rb") as f:
+        Z = pickle.load(f)
+    image = sdata()
+    image.CreateImage(Z[0])
+    image.values = Z[1]
+
+    return(image)
