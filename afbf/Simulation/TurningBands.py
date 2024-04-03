@@ -46,6 +46,7 @@ from afbf.utilities import pi, linspace, zeros, tan, arctan2, cos, unique
 from afbf.utilities import log, nonzero, floor, absolute, amax, amin
 from afbf.utilities import sqrt, diff, sum, array, concatenate
 from afbf import coordinates, sdata, process, perfunction, field
+from afbf.Classes.PeriodicFunction import LoadPerfunction
 
 
 class tbfield(field):
@@ -532,3 +533,17 @@ class tbparameters:
         print('Number of bands :' + str(self.Kangle.size))
         print('Precision       :' + str(self.acc))
         print('Simulation cost :' + str(self.cost))
+
+def LoadTBField(filename):
+    """Load the field model.
+
+    :param str filename: File name (without extension).
+
+    :returns: The field model.
+    :rtype: tbfield
+    """
+    hurst = LoadPerfunction(filename + "-hurst")
+    topo = LoadPerfunction(filename + "-topo")
+    model = tbfield(filename, topo, hurst)
+
+    return(model)
