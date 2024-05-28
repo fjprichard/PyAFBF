@@ -51,6 +51,8 @@ H. Biermé, M. Moisan, and F. Richard. A turning-band method for the simulation 
 
 and the JOSS paper:
 
+F.J.P. Richard. PyAFBF: a Python library for sampling image textures from the anisotropic fractional Brownian field. Journal of Open Source Software, 7(75):3821, 2022.
+
 
 .. image:: https://joss.theoj.org/papers/10.21105/joss.03821/status.svg
    :target: https://doi.org/10.21105/joss.03821
