@@ -47,7 +47,7 @@ Citation
 
 When using PyAFBF, please cite the original paper
 
-H. Biermé, M. Moisan, and F. Richard. A turning-band method for the simulation of anisotropic fractional Brownian field. J. Comput. Graph. Statist., 24(3):885–904, 2015.
+H. Biermé, M. Moisan, and F.J.P. Richard. A turning-band method for the simulation of anisotropic fractional Brownian field. J. Comput. Graph. Statist., 24(3):885–904, 2015.
 
 and the JOSS paper:
 
