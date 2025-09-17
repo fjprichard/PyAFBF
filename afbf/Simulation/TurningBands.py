@@ -129,6 +129,12 @@ class tbfield(field):
         if self.CheckValidity():
             self.EvaluateTurningBandParameters()
 
+    def Save(self, filename):
+        """Load the tbfield model.
+        """
+        self.hurst.Save(filename + "-hurst")
+        self.topo.Save(filename + "-topo")
+
     def EvaluateTurningBandParameters(self):
         """Evaluate the topothesy and Hurst function at turning band angles.
 
@@ -216,7 +222,7 @@ class tbfield(field):
             return weig0, weig
 
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         if coord is None:
             coord = coordinates(512)
@@ -231,7 +237,7 @@ class tbfield(field):
                                        axis=0)
             M = amax(coord.xy, axis=None)
         else:
-            raise('Simulate: provide coord as coordinates.')
+            raise Exception('Simulate: provide coord as coordinates.')
 
         if evaluate:
             self.EvaluateTurningBandParameters()
@@ -303,12 +309,12 @@ class tbfield(field):
             self.svario = sdata(coord)
             self.svario.name = 'Semi-variogram of the simulation field.'
             self.svario.values = X
-            return(1)
+            return 1
         else:
             sfield = sdata(coord)
-            sfield.name = 'Field simulation.'
+            sfield.name = 'Field'
             sfield.values = X
-            return(sfield)
+            return sfield
 
 
 class tbparameters:

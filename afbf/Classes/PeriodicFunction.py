@@ -859,11 +859,11 @@ def LoadPerfunction(filename):
     with open(filename + ".pickle", "rb") as f:
         Z = pickle.load(f)
     ftype = Z[0]
-    name = Z[1]
-    param = Z[2].size
+    fname = Z[1]
+    fparam = Z[2].size
     if "Fourier" in ftype:
         param = floor_divide(param, 2)
-    model = perfunction(ftype, param, name)
+    model = perfunction(ftype, fparam, fname)
     model.fparam[0, :] = Z[2][:]
     model.finter[0, :] = Z[3][:]
     model.steptrans = Z[4]
@@ -871,4 +871,4 @@ def LoadPerfunction(filename):
     model.translate = Z[6]
     model.rescale = Z[7]
 
-    return(model)
+    return model

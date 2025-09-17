@@ -17,6 +17,8 @@ afbf/Classes/PeriodicFunction.py
 afbf/Classes/RandomProcess.py
 afbf/Classes/SpatialData.py
 afbf/Classes/__init__.py
+afbf/Estimation/__init__.py
+afbf/Estimation/fit_tbfield.py
 afbf/Simulation/TurningBands.py
 afbf/Simulation/__init__.py
 examples/__init__.py

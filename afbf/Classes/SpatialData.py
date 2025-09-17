@@ -207,7 +207,7 @@ class coordinates:
             self.N = amax(self.xy, axis=None)
             self.grid = False
         else:
-            raise("DefineNonUniform...: provide xy as an ndarray (M, 2).")
+            raise Exception("DefineNonUniform...: provide xy as an ndarray (M, 2).")
 
     def ApplyAffineTransform(self, A):
         r"""Apply an affine transform A to coordinates.
@@ -249,7 +249,7 @@ class coordinates:
             self.xy = matmul(self.xy, A)
             self.N = amax(self.xy, axis=None)
         else:
-            raise("ApplyAffine...: provide A as ndarray of size (2, 2).")
+            raise Exception("ApplyAffine...: provide A as ndarray of size (2, 2).")
 
     def ProjectOnAxis(self, u, v):
         r"""Project coordinates on an axis oriented in (u, v).
@@ -331,7 +331,7 @@ class sdata:
                     self.name = "Image"
                 self.values = zeros((coord.xy.shape[0], 1))
             else:
-                raise("sdata.__init__: provide coord as coordinates.")
+                raise Exception("sdata.__init__: provide coord as coordinates.")
         else:
             self.coord = None
             self.values = None
@@ -376,7 +376,7 @@ class sdata:
             plt.colorbar(v, cax=cax)
             plt.show()
         else:
-            raise("SpatialData.Display: not available on non-uniform sites.")
+            raise Exception("SpatialData.Display: not available on non-uniform sites.")
 
     def ImportImage(self, filename):
         """Import an image.
@@ -416,7 +416,7 @@ class sdata:
             self.coord.Ny = M[0]
             self.coord.grid = True
         else:
-            raise("CreateImage: size of image should be an array of size 2.")
+            raise Exception("CreateImage: size of image should be an array of size 2.")
 
     def Save(self, filename):
         """Save an image in a file
@@ -426,9 +426,9 @@ class sdata:
 
         if self.coord.grid:
             with open(filename + ".pickle", "wb") as f:
-                pickle.dump([self.M, self.values], f)
+                pickle.dump([self.M, self.values, self.name], f)
         else:
-            print("sdata.Save: only available for images.")
+            raise Exception("sdata.Save: only available for images.")
 
     def ComputeIncrements(self, hx, hy, order=0):
         r"""Compute increments of an image.
@@ -459,12 +459,12 @@ class sdata:
         hy = int(hy)
 
         if not self.coord.grid:
-            raise("sdata.ComputeIncrements:  only applies to an image.")
+            raise Exception("sdata.ComputeIncrements:  only applies to an image.")
 
         N = self.coord.N
 
         if (abs(hx) >= self.M[1]) or (abs(hy) >= self.M[0]):
-            raise("ComputeIncrements: lags are too large for image size.")
+            raise Exception("ComputeIncrements: lags are too large for image size.")
 
         valincre = reshape(self.values, self.M)
 
@@ -527,7 +527,7 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            raise("data.ComputeLaplacian:  only applies to an image.")
+            raise Exception("data.ComputeLaplacian:  only applies to an image.")
 
         # Second-order discrete derivative with respect to x and y variables.
         dx2 = self.ComputeIncrements(scale, 0, 1)
@@ -556,7 +556,7 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            raise("data.ComputeImageSign:  only applies to an image.")
+            raise Exception("data.ComputeImageSign:  only applies to an image.")
 
         simage = sdata()
         simage.CreateImage(self.M)
@@ -583,10 +583,10 @@ class sdata:
             This method only applies to an image.
         """
         if not self.coord.grid:
-            raise("ComputeQuadraticVariations:  only applies to an image.")
+            raise Exception("ComputeQuadraticVariations:  only applies to an image.")
 
         if not isinstance(lags, coordinates):
-            raise("ComputeQuadraticVariations: provide lags as coordinates.")
+            raise Exception("ComputeQuadraticVariations: provide lags as coordinates.")
 
         qvar = sdata(lags)
         qvar.name = "Quadratic variations."
@@ -618,7 +618,7 @@ class sdata:
 
         """
         if not self.coord.grid:
-            raise("ComputeEmpiricalSemiVariogram: only applies to an image.")
+            raise Exception("ComputeEmpiricalSemiVariogram: only applies to an image.")
 
         # Compute quadratic variations
         evario = self.ComputeQuadraticVariations(lags)
@@ -643,5 +643,6 @@ def LoadSdata(filename):
     image = sdata()
     image.CreateImage(Z[0])
     image.values = Z[1]
+    image.name = Z[2]
 
-    return(image)
+    return image

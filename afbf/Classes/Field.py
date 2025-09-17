@@ -190,33 +190,32 @@ class field:
             if fname == 'fbf':
                 self.fname = 'Fractional Brownian field'
                 self.order = 0
-                self.topo = perfunction('step-constant')
-                self.hurst = perfunction('step-constant')
+                self.topo = perfunction('step-constant', name='Topothesy')
+                self.hurst = perfunction('step-constant', name='Hurst')
                 self.NormalizeModel()
 
             # Elementary fractional Brownian field.
             elif fname == 'efbf':
                 self.fname = 'Elementary fractional Brownian field'
                 self.order = 0
-                self.topo = perfunction('step-ridge', 1)
-                self.hurst = perfunction('step-constant')
+                self.topo = perfunction('step-ridge', 1, name='Topothesy')
+                self.hurst = perfunction('step-constant', name='Hurst')
 
             # Some other AFBF.
             elif 'afbf' in fname:
                 self.fname = 'Anisotropic fractional Brownian field'
                 self.order = 0
                 if 'smooth' in fname:
-                    self.hurst = perfunction('step-smooth')
+                    self.hurst = perfunction('step-smooth', name='Hurst')
                 else:
-                    self.hurst = perfunction('step')
+                    self.hurst = perfunction('step', name='Hurst')
                 if 'Fourier' in fname:
-                    self.topo = perfunction('Fourier')
+                    self.topo = perfunction('Fourier', name='Topothesy')
                 else:
-                    self.topo = perfunction(self.hurst.ftype)
+                    self.topo = perfunction(self.hurst.ftype, name='Topothesy')
                     self.NormalizeModel()
             else:
-                print('Field.SetModel(): Unknown predefined field.')
-                return(0)
+                raise Exception('Field.SetModel(): Unknown predefined field.')
         else:  # Customized mode of definition.
             if isinstance(topo, perfunction) and\
                     isinstance(hurst, perfunction):
@@ -225,13 +224,12 @@ class field:
                 self.hurst = hurst
                 self.FindOrder()
             else:
-                raise('Field.SetModel(): set hurst and topo as perfunction.')
+                raise Exception('Field.SetModel(): set hurst and topo as perfunction.')
 
         self.extended = False
         self.vario = None
-        self.hurst.fname = 'Hurst function'
-        self.topo.fname = 'Topothesy function'
-        return(1)
+     
+        return 1
 
     def NormalizeModel(self):
         """Normalize the model.
@@ -260,7 +258,7 @@ class field:
                     c = pow(2, - (2 * h)) / BETA_H(coord, -pi / 2, pi / 2, h)
                     topo.fparam[0, j] = c[0, 0]
         else:
-            raise('Warning: normalize only with step Hurst functions.')
+            raise Exception('Normalize only with step Hurst functions.')
 
     def CheckValidity(self):
         """Check the validity of field.
@@ -274,7 +272,7 @@ class field:
         if valid is False:
             print("The field is not properly defined.")
 
-        return(valid)
+        return valid
 
     def DisplayParameters(self, nfig=1):
         """Plot the graph of the topothesy and Hurst functions of the field,
@@ -309,10 +307,10 @@ class field:
         if self.CheckValidity() is False:
             return(0)
         if self.order != 0:
-            raise('Field: The semi-variogram is defined for field of order 0.')
+            raise Exception('Field: The semi-variogram is defined for field of order 0.')
 
         if not isinstance(lags, coordinates):
-            raise('Definition: the lags must be coordinates.')
+            raise Exception('Definition: the lags must be coordinates.')
 
         c = self.topo
         h = self.hurst
@@ -371,7 +369,7 @@ class field:
             ind = nonzero(self.topo.values[:] != 0)
             self.order = ceil(amax(self.hurst.values[ind], axis=None)) - 1
         else:
-            raise('FindOrder(): only available for Hurst step function')
+            raise Exception('FindOrder(): only available for Hurst step function')
 
     def ChangeOrder(self, neworder):
         """Change the order of the :term:`intrinsic` field.
@@ -386,16 +384,16 @@ class field:
             function.
         """
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         if ('step' in self.hurst.ftype):
             order0 = self.order
             self.hurst.fparam = (neworder + 1) / (order0 + 1) *\
                 self.hurst.fparam
             self.FindOrder()
-            return(1)
+            return 1
         else:
-            raise('ChangeOrder(): only available for Hurst step function.')
+            raise Exception('ChangeOrder(): only available for Hurst step function.')
 
     def ComputeFeatures(self):
         """Compute several features of the field.
@@ -406,7 +404,7 @@ class field:
             aniso_sharpness_mixed1, aniso_sharpness_mixed2.
         """
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         # Compute features of the Hurst and topothesy functions.
         self.hurst.ComputeFeatures()
@@ -465,10 +463,10 @@ class field:
         """
 
         if self.CheckValidity() is False:
-            return(0)
+            return 0
 
         if "step" not in self.hurst.ftype or "step" not in self.topo.ftype:
-            raise("ComputeFeature_Hurst: only apply to step functions.")
+            raise Exception("ComputeFeature_Hurst: only apply to step functions.")
 
         finter = self.hurst.finter
         inter = concatenate((finter[0, -1].reshape((1, 1)) - pi, finter),
