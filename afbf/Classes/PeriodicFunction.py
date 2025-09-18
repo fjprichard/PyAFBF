@@ -506,8 +506,7 @@ class perfunction:
             SetStepSampleMode_.
         """
         if "step" not in self.ftype:
-            print("pefunction.SampleSetIntervals: only for step functions.")
-            return(0)
+            raise Exception("pefunction.SampleSetIntervals: only for step functions.")
 
         mode = self.smode[3]
         dmin = self.smode[4]
@@ -861,8 +860,8 @@ def LoadPerfunction(filename):
     ftype = Z[0]
     fname = Z[1]
     fparam = Z[2].size
-    if "Fourier" in ftype:
-        param = floor_divide(param, 2)
+    if "Fourier" in ftype or"step-ridge" in ftype:
+        fparam = floor_divide(fparam, 2)
     model = perfunction(ftype, fparam, fname)
     model.fparam[0, :] = Z[2][:]
     model.finter[0, :] = Z[3][:]
