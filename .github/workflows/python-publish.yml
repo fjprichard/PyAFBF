@@ -1,34 +1,31 @@
-name: Upload Python Package
+name: Publish to PyPI
 
 on:
   release:
-    types: [published]
-
-permissions:
-  contents: read
+    types: [published]  # Déclenche au moment d’une release GitHub
 
 jobs:
-  pypi-publish:
+  deploy:
     runs-on: ubuntu-latest
 
-    environment:
-      name: pypi
-      url: https://pypi.org/p/PyAFBF
-
     steps:
-      - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
 
-      - name: Build distributions
-        run: |
-          python -m pip install --upgrade pip build
-          python -m build
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
 
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.TOKEN_PYPI }}
-          packages-dir: dist/
+    - name: Build package
+      run: python -m build
+
+    - name: Publish to PyPI
+      env:
+        TWINE_USERNAME: "__token__"
+        TWINE_PASSWORD: ${{ secrets.TOKEN_PYPI }}
+      run: twine upload dist/*
