@@ -1,5 +1,7 @@
-.. image:: https://zenodo.org/badge/368267301.svg
-   :target: https://zenodo.org/badge/latestdoi/368267301
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.17154040.svg
+   :target: https://doi.org/10.5281/zenodo.17154040
+
+
 
 The Package PyAFBF is intended for the simulation of rough anisotropic image textures. Textures are sampled from a mathematical model called the anisotropic fractional Brownian field. More details can be found on the `documentation <https://fjprichard.github.io/PyAFBF/>`_.
 
