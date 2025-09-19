@@ -1,0 +1,43 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "\n# Anisotropic Multifractional Brownian field 1\n\n.. codeauthor:: Fr\u00e9d\u00e9ric Richard <frederic.richard_at_univ-amu.fr>\n\nIn this example, we show how to simulate heterogeneous textures whose\npattern orientation spatially varies. Such textures can be obtained\nby simulating a turning band field with a space-dependent Hurst function\nrepresented as a step function.\n\nHere, the Hurst function $\\beta_{(x,y)}$ is defined at position\n$(x, y)$ by translating an initial Hurst function $\\beta_0$\n\n\\begin{align}\\beta_{(x,y)}(s)  = \\beta_0\\left(s - \\frac{y}{N} \\phi_1\\right),\n        \\forall s \\in \\mathbb{R}.\\end{align}\n\nfor some fixed orientation $\\phi_1$. The orientation of the\ngenerated texture varies in the vertical direction while its roughness and\ndegree of anisotropy remain the same. Such a simulation\nwas used for illustration and experiments in :cite:p:`Vu2020`.\n\n<div class=\"alert alert-info\"><h4>Note</h4><p>Such simulations are related to the so-called\n  **anisotropic multifractional Brownian field**\n  which was investigated :cite:p:`Vu2020`. In a harmonizable\n  representation, these fields are defined as\n\n  .. math::\n      Z(x, y) = \\int_{\\mathbb{R}^2}\n      (e^{i\\langle (x, y), w \\rangle} -1 ) \\tau_{(x, y)}(w)\n      \\vert w \\vert^{-\\beta_{x, y}(w) -1}\n      dW(w),\n\n  where $dW$ stands for a complex Brownian measure.</p></div>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\nfrom afbf import coordinates, sdata, tbfield\n\nN = 256  # Image size.\n\npid = np.pi / 8  # length of a step of the Hurst function.\ndpid = np.pi / 16  # length of the transition between steps.\nphi1 = np.pi / 2  # orientation at y=N-1\n\n# Define a field.\nZ = tbfield('afbf-smooth')\n\n# Change the parameters of the Hurst function.\nZ.hurst.ChangeParameters(\n    np.array([0.8, 0.2]),\n    np.array([- pid - dpid, - pid, pid, pid + dpid])\n    )\nZ.hurst.trans = 1  # Indicate where to locate step transition.\nZ.NormalizeModel()  # Normalize the model.\n\n# Set coordinates.\ncoord = coordinates(N)  # field coordinates.\ncoordy = coordinates()  # subset of coordinates.\nx = np.reshape(np.arange(1, N+1), (N, 1))\n\n# Initialize an image.\nz = sdata(coord)\nz.name = 'Anisotropic Multifractional Brownian field'\n\nfor y in range(N):\n    # Translate the Hurst and topothesy functions.\n    trans = y / (N - 1) * phi1\n    Z.hurst.ApplyTransforms(trans)\n    Z.topo.ApplyTransforms(trans)\n\n    # Restrict to coordinates (:, y).\n    coordy.DefineNonUniformLocations(\n        np.concatenate((x, (y+1) * np.ones((N, 1))), axis=1))\n    coordy.N = coord.N\n\n    # Simulate the current field keeping a same random seed.\n    np.random.seed(3)\n    zy = Z.Simulate(coordy)\n\n    # Keep the simulation at positions  (y, :).\n    z.values.reshape(N, N)[y, :] = zy.values.reshape(1, N)[0, 0:N]\n\n# Display the simulation.\nz.Display()"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.11.13"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

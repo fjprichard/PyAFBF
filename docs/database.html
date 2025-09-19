@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generation of a database &mdash; PyAFBF  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API: main classes" href="field.html" />
+    <link rel="prev" title="Anisotropic textures from field deformations" href="auto_examples/RelatedFields/plot_deformfield.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PyAFBF
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstartguide.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Example gallery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generation of a database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#predefined-settings">Predefined settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exporting-to-a-pytorch-dataset">Exporting to a pytorch dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="field.html">API: main classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">API: auxiliary classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PyAFBF</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Generation of a database</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="generation-of-a-database">
+<h1>Generation of a database<a class="headerlink" href="#generation-of-a-database" title="Link to this heading"></a></h1>
+<p><em>Section author: Frédéric Richard &lt;frederic.richard_at_univ-amu.fr&gt;</em></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The complementary package <a class="reference external" href="https://github.com/fjprichard/PyAFBFdb">PyAFBFdb</a> enables to generate database of rough anisotropic textures in a reproducible way using the PyAFBF tools. It is of interest for building sets that can be used for training or testing deep learning architectures, and can be be used for pytorch applications.</p>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>The package source can be downloaded from the <a class="reference external" href="https://github.com/fjprichard/PyAFBFdb">repository</a>.</p>
+<p>Alternately, the package can be installed through PyPI with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">PyAFBFdb</span>
+</pre></div>
+</div>
+</section>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<p>Create a directory where to save the database. Choose a <a class="reference external" href="https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates">setting file</a> and save it in the database directory with the name “setting.yaml” (see below for an explanation of setting). Then to form an initial database of 10 examples, run the python script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">afbfdb</span><span class="w"> </span><span class="kn">import</span> <span class="n">protocol</span>
+
+
+<span class="c1"># Directory where to save the database.</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;path_to_the_database_directory&quot;</span>
+
+<span class="n">nb_examples</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Number of examples.</span>
+
+<span class="c1"># Set the protocol.</span>
+<span class="n">simu</span> <span class="o">=</span> <span class="n">protocol</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+<span class="c1"># Simulate fields.</span>
+<span class="n">simu</span><span class="o">.</span><span class="n">CreateFields</span><span class="p">(</span><span class="n">expe_end</span><span class="o">=</span><span class="n">nb_examples</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once the database was created, an example can be displayed with the command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">simu</span><span class="o">.</span><span class="n">ShowExample</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This shows the image generated from the field as well as the functional parameters of the field (the Hurst function and the topothesy function). It also displays some features related to the Hurst function.</p>
+<p>It is also possible to display all examples using the command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">simu</span><span class="o">.</span><span class="n">DisplayFields</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The database can be increased with an arbritary number of examples (here 2) by running again</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">simu</span><span class="o">.</span><span class="n">CreateFields</span><span class="p">(</span><span class="n">expe_end</span><span class="o">=</span><span class="n">simu</span><span class="o">.</span><span class="n">nbexpe</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This call will not generate again the already created examples, but only the two new ones.</p>
+</section>
+<section id="predefined-settings">
+<h2>Predefined settings<a class="headerlink" href="#predefined-settings" title="Link to this heading"></a></h2>
+<p>As mentioned previously, some predefined database settings are given in the <a class="reference external" href="https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates">repository</a>. They correspond to different types of anisotropic fractional Brownian fields :</p>
+<ul class="simple">
+<li><p>setting_001: database examples are simulations of different isotropic Fractional Brownian field whose Hurst index is uniformly sampled.</p></li>
+<li><p>setting_002: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.</p></li>
+<li><p>setting_003: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps with smooth transitions. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.</p></li>
+<li><p>setting_004: database examples are simulations of elementary Fractional Brownian field whose Hurst index is uniformly sampled. The position and size of the interval where the topothesy vanishes are uniformly sampled.</p></li>
+</ul>
+<p>Other settings can be manually defined by changing the parameters of the models.</p>
+</section>
+<section id="exporting-to-a-pytorch-dataset">
+<h2>Exporting to a pytorch dataset<a class="headerlink" href="#exporting-to-a-pytorch-dataset" title="Link to this heading"></a></h2>
+<p>The database can be used in pytorch by creating a customed Dataset as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">afbfdb</span><span class="w"> </span><span class="kn">import</span> <span class="n">protocol</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToTensor</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Texture_Database</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rep</span><span class="p">,</span> <span class="n">indices</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialization.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        rep : str</span>
+<span class="sd">            &quot;path_to_the_database_directory&quot;.</span>
+<span class="sd">        indices : array</span>
+<span class="sd">            indices of examples to include in the dataset.</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            name of the dataset.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rep</span> <span class="o">=</span> <span class="n">rep</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">protocol</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rep</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">max</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">nbexpe</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;The dataset is to small.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the image and the features associated to an example.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">image</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">ExportData</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">ToTensor</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">ToTensor</span><span class="p">(</span><span class="n">features</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example can be adapted to further include data transforms to the input image.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="auto_examples/RelatedFields/plot_deformfield.html" class="btn btn-neutral float-left" title="Anisotropic textures from field deformations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="field.html" class="btn btn-neutral float-right" title="API: main classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Frédéric Richard, 2021.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "\n# Elementary Fractional Brownian field\n\n.. codeauthor:: Fr\u00e9d\u00e9ric Richard <frederic.richard_at_univ-amu.fr>\n\nThis example shows how to simulate an elementary fractional Brownian field\nwith prescribed Hurst index, step intervals and directions.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\nfrom afbf import tbfield\n\nN = 256  # Image size.\nH = 0.2  # Hurst index in (0, 1).\nT = np.pi / 8  # Interval bound for selected frequencies.\nD = np.pi / 3  # Direction.\n\n# Define the field.\nZ = tbfield('efbf')\n\n# Change the parameter of the Hurst and topothesy functions.\nZ.hurst.ChangeParameters(fparam=np.array([[H]]))\nZ.topo.ChangeParameters(fparam=np.array([0, 1]), finter=np.array([-T, T]))\n# Translate the topothesy function to be at the right orientation.\nZ.topo.ApplyTransforms(translate=-D)\n\n# Simulate the field.\nz = Z.Simulate()\n\n# Display the simulation.\nz.Display()"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.11.13"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

@@ -1,0 +1,120 @@
+Generation of a database
+========================
+.. sectionauthor:: Frédéric Richard <frederic.richard_at_univ-amu.fr>
+
+
+Introduction
+------------
+
+The complementary package `PyAFBFdb <https://github.com/fjprichard/PyAFBFdb>`_ enables to generate database of rough anisotropic textures in a reproducible way using the PyAFBF tools. It is of interest for building sets that can be used for training or testing deep learning architectures, and can be be used for pytorch applications.
+
+Installation
+------------
+
+The package source can be downloaded from the `repository <https://github.com/fjprichard/PyAFBFdb>`_. 
+
+Alternately, the package can be installed through PyPI with
+
+.. code-block:: python
+
+    pip install PyAFBFdb
+
+    
+Quick start
+-----------
+
+Create a directory where to save the database. Choose a `setting file <https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates>`_ and save it in the database directory with the name "setting.yaml" (see below for an explanation of setting). Then to form an initial database of 10 examples, run the python script:   
+
+.. code-block:: python
+
+	from afbfdb import protocol
+	
+	
+	# Directory where to save the database.
+	data_dir = "path_to_the_database_directory"
+
+	nb_examples = 10  # Number of examples.
+
+	# Set the protocol.
+	simu = protocol(data_dir)
+	# Simulate fields.
+	simu.CreateFields(expe_end=nb_examples)
+
+Once the database was created, an example can be displayed with the command
+
+.. code-block:: python
+
+	simu.ShowExample(2)
+	
+This shows the image generated from the field as well as the functional parameters of the field (the Hurst function and the topothesy function). It also displays some features related to the Hurst function. 
+	
+It is also possible to display all examples using the command
+
+.. code-block:: python
+
+	simu.DisplayFields()
+	
+The database can be increased with an arbritary number of examples (here 2) by running again
+
+.. code-block:: python
+
+	simu.CreateFields(expe_end=simu.nbexpe + 2)
+	
+This call will not generate again the already created examples, but only the two new ones.
+
+
+Predefined settings
+-------------------
+
+As mentioned previously, some predefined database settings are given in the `repository <https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates>`_. They correspond to different types of anisotropic fractional Brownian fields :
+
+- setting_001: database examples are simulations of different isotropic Fractional Brownian field whose Hurst index is uniformly sampled.
+- setting_002: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.
+- setting_003: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps with smooth transitions. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.
+- setting_004: database examples are simulations of elementary Fractional Brownian field whose Hurst index is uniformly sampled. The position and size of the interval where the topothesy vanishes are uniformly sampled.
+
+Other settings can be manually defined by changing the parameters of the models.
+
+
+Exporting to a pytorch dataset
+------------------------------
+
+The database can be used in pytorch by creating a customed Dataset as follows.
+
+.. code-block:: python
+
+	from afbfdb import protocol
+	from torch.utils.data import Dataset
+	from torch import ToTensor
+
+
+	class Texture_Database(Dataset):
+	    def __init__(self, rep, indices):
+		"""Initialization.
+		
+		Parameters
+		----------
+		rep : str
+		    "path_to_the_database_directory".
+		indices : array
+		    indices of examples to include in the dataset.
+		name : str, optional
+		    name of the dataset.
+		"""
+		self.rep = rep
+		self.indices = indices
+		self.dataset = protocol(self.rep)
+		if max(indices) >= self.dataset.nbexpe:
+			raise Exception("The dataset is to small.")
+
+	    def __getitem__(self, idx):
+		"""Return the image and the features associated to an example.
+		"""
+		image, features = self.dataset.ExportData(self.indices[idx])
+		return (ToTensor(image), ToTensor(features))
+
+	    def __len__(self):
+		return len(self.indices)
+
+This example can be adapted to further include data transforms to the input image.
+	

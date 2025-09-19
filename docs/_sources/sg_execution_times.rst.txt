@@ -1,0 +1,70 @@
+
+:orphan:
+
+.. _sphx_glr_sg_execution_times:
+
+
+Computation times
+=================
+**22:18.825** total execution time for 12 files **from all galleries**:
+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_mfbf.py` (``../../examples/HeterogeneousFields/plot_mfbf.py``)
+     - 06:44.377
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf1.py` (``../../examples/HeterogeneousFields/plot_amfbf1.py``)
+     - 06:33.111
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf2.py` (``../../examples/HeterogeneousFields/plot_amfbf2.py``)
+     - 06:32.503
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_ExtendedFields_plot_extendedfield.py` (``../../examples/ExtendedFields/plot_extendedfield.py``)
+     - 01:11.589
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_localdeformfield.py` (``../../examples/HeterogeneousFields/plot_localdeformfield.py``)
+     - 00:35.526
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_RelatedFields_plot_deformfield.py` (``../../examples/RelatedFields/plot_deformfield.py``)
+     - 00:10.622
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_afbf_2.py` (``../../examples/plot_afbf_2.py``)
+     - 00:06.133
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_ExtendedFields_plot_intrinsic.py` (``../../examples/ExtendedFields/plot_intrinsic.py``)
+     - 00:06.060
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_fbf.py` (``../../examples/plot_fbf.py``)
+     - 00:05.955
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_afbf_1.py` (``../../examples/plot_afbf_1.py``)
+     - 00:05.925
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_RelatedFields_plot_binarypatterns.py` (``../../examples/RelatedFields/plot_binarypatterns.py``)
+     - 00:05.406
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_efbf.py` (``../../examples/plot_efbf.py``)
+     - 00:01.619
+     - 0.0

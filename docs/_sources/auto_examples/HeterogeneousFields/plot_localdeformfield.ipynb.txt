@@ -1,0 +1,43 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "\n# Heterogeneous textures from local deformation\n\n.. codeauthor:: Fr\u00e9d\u00e9ric Richard <frederic.richard_at_univ-amu.fr>\n\nIn this example, we show how to simulate\nheterogeneous textures by applying a local deformation\nto an :term:`isotropic<isotropy>` random field.\n\nGiven a fractional Brownian field $X$, the transformed field\nis defined by composition\n\n\\begin{align}Y = X \\circ T,\\end{align}\n\nof $X$ with a transformation $T$ mapping $(x, y)$\ninto $(x^{1.5}, y)$.\n\nThe heterogeneous texture is obtained by simulation of $Y$.\n\n<div class=\"alert alert-info\"><h4>Note</h4><p>Such an approach can only be applied if the transformed coordinates\n    remain integer.</p></div>\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "collapsed": false
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\nfrom afbf import coordinates, tbfield\n\n# Define a fractional Brownian field.\nX = tbfield()\n# Define an affine transform.\nT = np.array([[1, 0], [2, 1]], dtype=int)\n\n# Define a uniform grid.\ncoord = coordinates(256)\n# Simulate the field without transformation.\nn0 = int(np.random.randn())\nnp.random.seed(1)\ny0 = X.Simulate()\n\n# Apply a local transform to the the grid.\ncoord.xy[:, 0] = np.power(coord.xy[:, 0], 1.5)\n# Simulate the field with transformation (with a same seed).\ny = X.Simulate(coord)\n\n# Display of simulations.\ny.name = 'Simulation of the deformed field.'\ny.Display(1)\n\ny0.name = 'Simulation of the undeformed field.'\ny0.Display(2)"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "file_extension": ".py",
+      "mimetype": "text/x-python",
+      "name": "python",
+      "nbconvert_exporter": "python",
+      "pygments_lexer": "ipython3",
+      "version": "3.11.13"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}

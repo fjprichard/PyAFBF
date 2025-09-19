@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anisotropic Fractional Brownian field &mdash; PyAFBF  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Elementary Fractional Brownian field" href="plot_efbf.html" />
+    <link rel="prev" title="Anisotropic Fractional Brownian field" href="plot_afbf_1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PyAFBF
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstartguide.html">Quick start guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Example gallery</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#basic-examples">Basic examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_fbf.html">Fractional Brownian field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_afbf_1.html">Anisotropic Fractional Brownian field</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Anisotropic Fractional Brownian field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_efbf.html">Elementary Fractional Brownian field</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#extended-anisotropic-fields">Extended anisotropic fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#heterogeneous-fields">Heterogeneous fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#related-anisotropic-fields">Related anisotropic fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../database.html">Generation of a database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../field.html">API: main classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classes.html">API: auxiliary classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PyAFBF</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Example gallery</a></li>
+      <li class="breadcrumb-item active">Anisotropic Fractional Brownian field</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/auto_examples/plot_afbf_2.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Anisotropic-Fractional-Brownian-field">
+<h1>Anisotropic Fractional Brownian field<a class="headerlink" href="#Anisotropic-Fractional-Brownian-field" title="Link to this heading"></a></h1>
+<p><em>Code author: Frédéric Richard &lt;frederic.richard_at_univ-amu.fr&gt;</em></p>
+<p>This example shows how to simulate an anisotropic fractional Brownian field with random Hurst smooth-step function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">afbf</span><span class="w"> </span><span class="kn">import</span> <span class="n">tbfield</span><span class="p">,</span> <span class="n">perfunction</span>
+
+<span class="c1"># Define the field.</span>
+<span class="n">hurst</span> <span class="o">=</span> <span class="n">perfunction</span><span class="p">(</span><span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;smooth-step&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;Hurst function&#39;</span><span class="p">)</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">perfunction</span><span class="p">(</span><span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;smooth-step&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;Topothesy function&#39;</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">tbfield</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;afbf&#39;</span><span class="p">,</span> <span class="n">topo</span><span class="o">=</span><span class="n">topo</span><span class="p">,</span> <span class="n">hurst</span><span class="o">=</span><span class="n">hurst</span><span class="p">)</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">NormalizeModel</span><span class="p">()</span>
+
+<span class="c1"># Simulate the field.</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">Simulate</span><span class="p">()</span>
+
+<span class="c1"># Display the simulation.</span>
+<span class="n">z</span><span class="o">.</span><span class="n">Display</span><span class="p">()</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">DisplayParameters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/auto_examples_plot_afbf_2_1_0.png" src="../_images/auto_examples_plot_afbf_2_1_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/auto_examples_plot_afbf_2_1_1.png" src="../_images/auto_examples_plot_afbf_2_1_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/auto_examples_plot_afbf_2_1_2.png" src="../_images/auto_examples_plot_afbf_2_1_2.png" />
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plot_afbf_1.html" class="btn btn-neutral float-left" title="Anisotropic Fractional Brownian field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_efbf.html" class="btn btn-neutral float-right" title="Elementary Fractional Brownian field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Frédéric Richard, 2021.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
