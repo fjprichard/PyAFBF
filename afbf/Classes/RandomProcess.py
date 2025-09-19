@@ -136,7 +136,7 @@ class process:
         # Computation of the spectrum.
         self.spect = fft.fft(self.spect, axis=0, norm=None)
         if (amin(real(self.spect)) <= 0):
-            print('ComputeAutocovarianceSpectrum: negative eigenvalue.')
+            print('Warning: ComputeAutocovarianceSpect: negative eigenvalue.')
 
     def ComputeSemiVariogram(self, lags, logvario=0):
         """Compute the semi-variogram of the process at lags given in lags.
@@ -279,8 +279,7 @@ class process:
         :returns: Attribute y.
         """
         if self.y is None:
-            print("IntegrateProcess: Simulate a process before integrating.")
-            return(0)
+            raise Exception("IntegrateProcess: Simulate a process before integrating.")
 
         for i in arange(0, order, 1):
             self.y = cumsum(self.y)
@@ -293,7 +292,7 @@ class process:
         :type nfig: int, optional
         """
         if self.y is None:
-            raise("Display: Simulate a process before integrating.")
+            raise Exception("Display: Simulate a process before integrating.")
 
         plt.figure(nfig)
         plt.plot(self.y)

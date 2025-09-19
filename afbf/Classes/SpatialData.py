@@ -109,8 +109,8 @@ class coordinates:
         :rtype: boolean
         """
         valid = isinstance(self.xy, ndarray) and self.xy.shape[1] == 2
-        if valid is not True:
-            print("Coordinates are not properly defined.")
+        if not valid:
+            raise TypeError("Coordinates are not properly defined.")
 
         return valid
 
@@ -207,7 +207,7 @@ class coordinates:
             self.N = amax(self.xy, axis=None)
             self.grid = False
         else:
-            raise Exception("DefineNonUniform...: provide xy as an ndarray (M, 2).")
+            raise TypeError("DefineNonUniform...: xy must be an array (M, 2).")
 
     def ApplyAffineTransform(self, A):
         r"""Apply an affine transform A to coordinates.
@@ -242,14 +242,14 @@ class coordinates:
         .. image:: ./Figures/coordaff.png
 
         """
-        if self.CheckValidity() is False:
+        if not self.CheckValidity():
             return 0
 
         if isinstance(A, ndarray) and A.shape[0] == 2 and A.shape[1] == 2:
             self.xy = matmul(self.xy, A)
             self.N = amax(self.xy, axis=None)
         else:
-            raise Exception("ApplyAffine...: provide A as ndarray of size (2, 2).")
+            raise TypeError("ApplyAffine...: A must be an array (2, 2).")
 
     def ProjectOnAxis(self, u, v):
         r"""Project coordinates on an axis oriented in (u, v).
@@ -265,7 +265,7 @@ class coordinates:
         :returns: Projection coordinates.
         :rtype: :ref:`ndarray` of shape (ncoord, 2)
         """
-        if self.CheckValidity() is False:
+        if not self.CheckValidity():
             return 0
 
         ind = u * self.xy[:, 0] + v * self.xy[:, 1]
@@ -279,7 +279,7 @@ class coordinates:
         :param int nfig: The index of the figure. Default to 1.
         :type nfig: int, optional
         """
-        if self.CheckValidity() is False:
+        if not self.CheckValidity():
             return 0
 
         plt.figure(nfig)
@@ -331,7 +331,7 @@ class sdata:
                     self.name = "Image"
                 self.values = zeros((coord.xy.shape[0], 1))
             else:
-                raise Exception("sdata.__init__: provide coord as coordinates.")
+                raise TypeError("sdata.__init__: coord must be coordinates.")
         else:
             self.coord = None
             self.values = None
@@ -376,7 +376,7 @@ class sdata:
             plt.colorbar(v, cax=cax)
             plt.show()
         else:
-            raise Exception("SpatialData.Display: not available on non-uniform sites.")
+            raise Exception("SpatialData.Display: only for images.")
 
     def ImportImage(self, filename):
         """Import an image.
@@ -386,10 +386,7 @@ class sdata:
         """
         im = imread(filename)
         if len(im.shape) == 3:
-            print("ImportImage: converting color image to grayscale image.")
-            # im = 0.2989 * im[:, :, 0] + 0.587 * im[:, :, 1] +\
-            #    0.114 * im[:, :, 2]
-            im = im[:, :, 0]
+            raise Exception("ImportImage: only for gray-level images")
         shape = array(im.shape)
         size = int(shape[0] * shape[1])
         self.CreateImage(shape)
@@ -416,7 +413,7 @@ class sdata:
             self.coord.Ny = M[0]
             self.coord.grid = True
         else:
-            raise Exception("CreateImage: size of image should be an array of size 2.")
+            raise Exception("CreateImage: size should be an array of size 2.")
 
     def Save(self, filename):
         """Save an image in a file
@@ -459,12 +456,12 @@ class sdata:
         hy = int(hy)
 
         if not self.coord.grid:
-            raise Exception("sdata.ComputeIncrements:  only applies to an image.")
+            raise Exception("sdata.ComputeIncrements: only for images.")
 
         N = self.coord.N
 
         if (abs(hx) >= self.M[1]) or (abs(hy) >= self.M[0]):
-            raise Exception("ComputeIncrements: lags are too large for image size.")
+            raise Exception("ComputeIncrements: lags too large for image.")
 
         valincre = reshape(self.values, self.M)
 
@@ -527,7 +524,7 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            raise Exception("data.ComputeLaplacian:  only applies to an image.")
+            raise Exception("data.ComputeLaplacian:  only for images.")
 
         # Second-order discrete derivative with respect to x and y variables.
         dx2 = self.ComputeIncrements(scale, 0, 1)
@@ -556,7 +553,7 @@ class sdata:
         :rtype: sdata
         """
         if not self.coord.grid:
-            raise Exception("data.ComputeImageSign:  only applies to an image.")
+            raise Exception("data.ComputeImageSign: only for image.")
 
         simage = sdata()
         simage.CreateImage(self.M)
@@ -583,10 +580,10 @@ class sdata:
             This method only applies to an image.
         """
         if not self.coord.grid:
-            raise Exception("ComputeQuadraticVariations:  only applies to an image.")
+            raise Exception("ComputeQuadraticVariations: only for image.")
 
         if not isinstance(lags, coordinates):
-            raise Exception("ComputeQuadraticVariations: provide lags as coordinates.")
+            raise TypeError("ComputeQuadraticV...: lags must be coordinates.")
 
         qvar = sdata(lags)
         qvar.name = "Quadratic variations."
@@ -618,7 +615,7 @@ class sdata:
 
         """
         if not self.coord.grid:
-            raise Exception("ComputeEmpiricalSemiVariogram: only applies to an image.")
+            raise Exception("ComputeEmpiricalSemiVariogram: only for images.")
 
         # Compute quadratic variations
         evario = self.ComputeQuadraticVariations(lags)

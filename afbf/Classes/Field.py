@@ -212,7 +212,8 @@ class field:
                 if 'Fourier' in fname:
                     self.topo = perfunction('Fourier', fname='Topothesy')
                 else:
-                    self.topo = perfunction(self.hurst.ftype, fname='Topothesy')
+                    self.topo = perfunction(self.hurst.ftype,
+                                            fname='Topothesy')
                     self.NormalizeModel()
             else:
                 raise Exception('Field.SetModel(): Unknown predefined field.')
@@ -224,11 +225,11 @@ class field:
                 self.hurst = hurst
                 self.FindOrder()
             else:
-                raise Exception('Field.SetModel(): set hurst and topo as perfunction.')
+                raise TypeError('Field: set hurst and topo as perfunction.')
 
         self.extended = False
         self.vario = None
-     
+
         return 1
 
     def NormalizeModel(self):
@@ -269,8 +270,8 @@ class field:
         valid = isinstance(self.topo, perfunction)\
             and isinstance(self.hurst, perfunction)
 
-        if valid is False:
-            print("The field is not properly defined.")
+        if not valid:
+            raise TypeError("The field is not properly defined.")
 
         return valid
 
@@ -285,7 +286,7 @@ class field:
             self.topo.Display(nfig)
             self.hurst.Display(nfig + 1)
         else:
-            return(0)
+            return 0
 
         if isinstance(self.vario, sdata):
             self.vario.Display(nfig + 2)
@@ -305,12 +306,12 @@ class field:
             or topothesy function is not a step function.
         """
         if self.CheckValidity() is False:
-            return(0)
+            return 0
         if self.order != 0:
-            raise Exception('Field: The semi-variogram is defined for field of order 0.')
+            raise Exception('Variogram only defined for field of order 0.')
 
         if not isinstance(lags, coordinates):
-            raise Exception('Definition: the lags must be coordinates.')
+            raise TypeError('Definition: the lags must be coordinates.')
 
         c = self.topo
         h = self.hurst
@@ -359,8 +360,8 @@ class field:
             This function is only available when the Hurst function
             is a step function.
         """
-        if self.CheckValidity() is False:
-            return(0)
+        if not self.CheckValidity():
+            return 0
 
         if 'step' in self.hurst.ftype:
             inter = linspace(-pi / 2, pi / 2, 10000)
@@ -466,7 +467,7 @@ class field:
             return 0
 
         if "step" not in self.hurst.ftype or "step" not in self.topo.ftype:
-            raise Exception("ComputeFeature_Hurst: only apply to step functions.")
+            raise Exception("ComputeFeature_Hurst(): only apply to step functions.")
 
         finter = self.hurst.finter
         inter = concatenate((finter[0, -1].reshape((1, 1)) - pi, finter),
@@ -550,4 +551,4 @@ def LoadField(filename):
     topo = LoadPerfunction(filename + "-topo")
     model = field(filename, topo, hurst)
 
-    return(model)
+    return model

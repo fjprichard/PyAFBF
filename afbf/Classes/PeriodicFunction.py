@@ -202,7 +202,7 @@ class perfunction:
         :type fname: str (, optional)
         """
         if not isinstance(fname, str) or not isinstance(ftype, str):
-            raise('perfunction: provide string arguments for fname and ftype')
+            raise TypeError('perfunction: fname and ftype must be strings.')
 
         self.fname = fname
         self.ftype = 'undefined'
@@ -218,7 +218,7 @@ class perfunction:
         elif 'step' in ftype:
             self.InitStepFunction(ftype, 'init', param)
         else:
-            raise("PeriodicFunction.__init__: invalid representation.")
+            raise Exception("PeriodicFunction(): unknown ftype.")
 
         self.t = None
         self.values = None
@@ -234,10 +234,10 @@ class perfunction:
         if "step" in self.ftype:
             valid = valid and isinstance(self.finter, ndarray)
 
-        if valid is False:
-            print("The periodic function is not properly defined.")
+        if not valid:
+            raise TypeError("The periodic function is not properly defined.")
 
-        return(valid)
+        return valid
 
     def ShowParameters(self):
         """Show the parameters of the function.
@@ -295,18 +295,18 @@ class perfunction:
                 if fparam.size == self.fparam.size:
                     self.fparam[:] = reshape(fparam, self.fparam.shape)[:]
                 else:
-                    raise('ChangeParameters: fparam size is not correct.')
+                    raise Exception('ChangeParameters: fparam size is not correct.')
             else:
-                raise('ChangeParameters: fparam should be ndarray.')
+                raise TypeError('ChangeParameters: fparam should be ndarray.')
 
         if 'step' in self.ftype and finter is not None:
             if isinstance(finter, ndarray):
                 if finter.size == self.finter.size:
                     self.finter[:] = reshape(finter, self.finter.shape)[:]
                 else:
-                    raise('ChangeParameters: finter size is not correct.')
+                    raise Exception('ChangeParameters: finter size is not correct.')
             else:
-                raise('ChangeParameters: finter should be ndarray.')
+                raise TypeError('ChangeParameters: finter should be ndarray.')
 
     def ApplyTransforms(self, translate=None, rescale=None):
         """Apply translation and/or rescaling transform to the function.
@@ -323,7 +323,7 @@ class perfunction:
             if rescale > 0:
                 self.rescale = rescale
             else:
-                raise('Rescaling factor must be positive.')
+                raise Exception('Rescaling factor must be positive.')
 
     def Evaluate(self, t=None):
         """Evaluate the function at some positions.
@@ -338,12 +338,12 @@ class perfunction:
           If parameter t is omitted, the function is evaluated
           at points of the previous call of the function.
         """
-        if self.CheckValidity() is False:
-            return(0)
+        if not self.CheckValidity():
+            return 0
 
         if t is not None:
             if isinstance(t, ndarray) is False:
-                raise('pefunction.Evaluate: set parameter t as ndarray.')
+                raise TypeError('pefunction.Evaluate: t must be an array.')
 
             self.t = reshape(t, (1, t.size))
 
@@ -365,7 +365,7 @@ class perfunction:
                 self.t = self.t + self.translate
 
         if self.basis is None:
-            raise("PeriodicFunctions.Evaluate: give positions t as ndarray.")
+            raise Exception("PeriodicFunctions.Evaluate: basis undefined.")
         else:
             self.values = matmul(self.fparam, self.basis)
 
@@ -375,8 +375,8 @@ class perfunction:
         :param nfig: The index of the figure. Default to 1.
         :type nfig: int, optional
         """
-        if self.CheckValidity() is False:
-            return(0)
+        if not self.CheckValidity():
+            return 0
 
         t = linspace(-pi, pi, 10000)
         self.Evaluate(t)
@@ -387,7 +387,8 @@ class perfunction:
         plt.title(self.fname)
         plt.axis([- pi, pi, 0, amax(self.values) + 0.01])
         plt.show()
-        return(1)
+
+        return 1
 
     def ComputeFeatures(self, m=10000):
         """Compute some features describing the function.
@@ -401,8 +402,8 @@ class perfunction:
 
         :returns: Attributes stats, dev, sharpness.
         """
-        if self.CheckValidity() is False:
-            return(0)
+        if not self.CheckValidity():
+            return 0
 
         t = linspace(- pi / 2, pi / 2, m)
         self.Evaluate(t)
@@ -588,7 +589,7 @@ class perfunction:
              SetStepSampleMode_.
         """
         if "step" not in self.ftype:
-            raise("pefunction.SampleStepConstants: only for step functions.")
+            raise Exception("SampleStepConstants: only for step functions.")
 
         mode = self.smode[0]
         a = self.smode[1]
@@ -670,7 +671,7 @@ class perfunction:
         :returns: Attribute smode.
         """
         if "step" not in self.ftype:
-            raise("perfunction.SetStepSampleMode: only for step functions.")
+            raise Exception("SetStepSampleMode: only for step functions.")
 
         self.smode = []
         self.smode.append(mode_cst)
@@ -685,7 +686,7 @@ class perfunction:
         :returns: Attribute finter, trans.
         """
         if "step" not in self.ftype:
-            raise("SetUniformStepInverval: only for step functions.")
+            raise Exception("SetUniformStepInverval: only for step functions.")
 
         self.ChangeParameters(
             None,
@@ -780,7 +781,7 @@ class perfunction:
         :returns: Attribute fparam.
         """
         if 'Fourier' not in self.ftype:
-            raise("perfunction.SampleFourier...: only for Fourier function.")
+            raise Exception("SampleFourier...: only for Fourier function.")
 
         M = floor_divide(self.fparam.size - 1, 2)
         param = arange(1, M + 1).reshape(1, M)
@@ -860,7 +861,7 @@ def LoadPerfunction(filename):
     ftype = Z[0]
     fname = Z[1]
     fparam = Z[2].size
-    if "Fourier" in ftype or"step-ridge" in ftype:
+    if "Fourier" in ftype or "step-ridge" in ftype:
         fparam = floor_divide(fparam, 2)
     model = perfunction(ftype, fparam, fname)
     model.fparam[0, :] = Z[2][:]
