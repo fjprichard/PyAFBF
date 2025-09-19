@@ -1,305 +1,163 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Example gallery &mdash; PyAFBF  documentation</title>
-  
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Fractional Brownian field" href="plot_fbf.html" />
     <link rel="prev" title="Quick start guide" href="../quickstartguide.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../index.html" class="icon icon-home"> PyAFBF
           
-
-          
-            
-            <img src="../_static/logo.png" class="logo" alt="Logo"/>
-          
+          <a href="../index.html" class="icon icon-home">
+            PyAFBF
+              <img src="../_static/logo.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
-              <div class="version">
-                0.0.3
-              </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quickstartguide.html">Quick start guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Example gallery</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basic-examples">Basic examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="plot_fbf.html">Fractional Brownian field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_afbf_1.html">Anisotropic Fractional Brownian field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_afbf_2.html">Anisotropic Fractional Brownian field</a></li>
 <li class="toctree-l3"><a class="reference internal" href="plot_efbf.html">Elementary Fractional Brownian field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_database.html">Texture Patchwork</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#extended-anisotropic-fields">Extended anisotropic fields</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ExtendedFields/plot_intrinsic.html">Textured images with large trend</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ExtendedFields/plot_extendedfield.html">Textured images with spectral variations</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#heterogeneous-fields">Heterogeneous fields</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="HeterogeneousFields/plot_localdeformfield.html">Heterogeneous textures from local deformation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="HeterogeneousFields/plot_mfbf.html">Multifractional Brownian field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="HeterogeneousFields/plot_amfbf1.html">Anisotropic Multifractional Brownian field 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="HeterogeneousFields/plot_amfbf2.html">Anisotropic Multifractional Brownian field 2</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#extended-anisotropic-fields">Extended anisotropic fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#heterogeneous-fields">Heterogeneous fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#related-anisotropic-fields">Related anisotropic fields</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="RelatedFields/plot_binarypatterns.html">Binary textures</a></li>
-<li class="toctree-l3"><a class="reference internal" href="RelatedFields/plot_deformfield.html">Anisotropic textures from field deformations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ExtendedFields/index.html">Extended anisotropic fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="HeterogeneousFields/index.html">Heterogeneous fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RelatedFields/index.html">Related anisotropic fields</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../database.html">Generation of a database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../field.html">API: main classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classes.html">API: auxiliary classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">PyAFBF</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Example gallery</li>
-    
-    
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example gallery</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../_sources/auto_examples/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast.container,
-.nboutput.nblast.container {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast.container + .nbinput.container {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="example-gallery">
-<span id="sphx-glr-auto-examples"></span><h1>Example gallery<a class="headerlink" href="#example-gallery" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="basic-examples">
-<h2>Basic examples<a class="headerlink" href="#basic-examples" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to simulate a fractional Brownian field with a prescribed Hurst index."><div class="figure align-default" id="id1">
-<img alt="Fractional Brownian field" src="../_images/sphx_glr_plot_fbf_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_fbf.html#sphx-glr-auto-examples-plot-fbf-py"><span class="std std-ref">Fractional Brownian field</span></a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+             
+  <section id="example-gallery">
+<h1>Example gallery<a class="headerlink" href="#example-gallery" title="Link to this heading"></a></h1>
+<p>This directory contains the examples of the gallery of the   <a class="reference external" href="https://fjprichard.github.io/PyAFBF/auto_examples/index.html">documentation</a>.
+These examples can be easily reproduced by downloading the python source code or jupyter notebook from the documentation.</p>
+<section id="basic-examples">
+<h2>Basic examples<a class="headerlink" href="#basic-examples" title="Link to this heading"></a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to simulate a fractional Brownian field with a prescribed Hurst index."><img alt="" src="../_images/sphx_glr_plot_fbf_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_plot_fbf.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Fractional Brownian field</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to simulate an anisotropic fractional Brownian field with random Hurst step function."><img alt="" src="../_images/sphx_glr_plot_afbf_1_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_plot_afbf_1.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Anisotropic Fractional Brownian field</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to simulate an anisotropic fractional Brownian field with random Hurst smooth-step function."><img alt="" src="../_images/sphx_glr_plot_afbf_2_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_plot_afbf_2.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Anisotropic Fractional Brownian field</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to simulate an elementary fractional Brownian field with prescribed Hurst index, step intervals and directions."><img alt="" src="../_images/sphx_glr_plot_efbf_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_plot_efbf.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Elementary Fractional Brownian field</div>
+</div></div><div class="toctree-wrapper compound">
 </div>
-</div><div class="toctree-wrapper compound">
+</section>
+<section id="extended-anisotropic-fields">
+<h2>Extended anisotropic fields<a class="headerlink" href="#extended-anisotropic-fields" title="Link to this heading"></a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate textured images with large trends."><img alt="" src="../_images/sphx_glr_plot_intrinsic_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_ExtendedFields_plot_intrinsic.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Textured images with large trend</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate a field having a topothesy whose values may vary depending both on the direction and the amplitude."><img alt="" src="../_images/sphx_glr_plot_extendedfield_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_ExtendedFields_plot_extendedfield.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Textured images with spectral variations</div>
+</div></div></section>
+<section id="heterogeneous-fields">
+<h2>Heterogeneous fields<a class="headerlink" href="#heterogeneous-fields" title="Link to this heading"></a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures by applying a local deformation to an isotropy random field."><img alt="" src="../_images/sphx_glr_plot_localdeformfield_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_HeterogeneousFields_plot_localdeformfield.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Heterogeneous textures from local deformation</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose roughness spatially varies. Such textures can be obtained by simulating a turning band field with a space-dependent Hurst function."><img alt="" src="../_images/sphx_glr_plot_mfbf_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_HeterogeneousFields_plot_mfbf.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Multifractional Brownian field</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose pattern orientation spatially varies. Such textures can be obtained by simulating a turning band field with a space-dependent Hurst function represented as a step function."><img alt="" src="../_images/sphx_glr_plot_amfbf1_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf1.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Anisotropic Multifractional Brownian field 1</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose anisotropy spatially varies. Such textures can be obtained by simulating a turning band field with a space-dependent Hurst function represented as a step function."><img alt="" src="../_images/sphx_glr_plot_amfbf2_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf2.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Anisotropic Multifractional Brownian field 2</div>
+</div></div></section>
+<section id="related-anisotropic-fields">
+<h2>Related anisotropic fields<a class="headerlink" href="#related-anisotropic-fields" title="Link to this heading"></a></h2>
+<div class="sphx-glr-thumbnails"><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate texture images with binary patterns."><img alt="" src="../_images/sphx_glr_plot_binarypatterns_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_RelatedFields_plot_binarypatterns.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Binary textures</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate isotropy textures from the deformation of an isotropy random field."><img alt="" src="../_images/sphx_glr_plot_deformfield_thumb.png" />
+<p><span class="xref std std-ref">sphx_glr_auto_examples_RelatedFields_plot_deformfield.py</span></p>
+  <div class="sphx-glr-thumbnail-title">Anisotropic textures from field deformations</div>
+</div></div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to simulate an elementary fractional Brownian field with prescribed Hurs..."><div class="figure align-default" id="id2">
-<img alt="Elementary Fractional Brownian field" src="../_images/sphx_glr_plot_efbf_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_efbf.html#sphx-glr-auto-examples-plot-efbf-py"><span class="std std-ref">Elementary Fractional Brownian field</span></a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to build a series of simulations of a field model by changing its parame..."><div class="figure align-default" id="id3">
-<img alt="Texture Patchwork" src="../_images/sphx_glr_plot_database_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_database.html#sphx-glr-auto-examples-plot-database-py"><span class="std std-ref">Texture Patchwork</span></a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-clear"></div></div>
-<div class="section" id="extended-anisotropic-fields">
-<span id="sphx-glr-auto-examples-extendedfields"></span><h2>Extended anisotropic fields<a class="headerlink" href="#extended-anisotropic-fields" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate textured images with large trends."><div class="figure align-default" id="id4">
-<img alt="Textured images with large trend" src="../_images/sphx_glr_plot_intrinsic_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="ExtendedFields/plot_intrinsic.html#sphx-glr-auto-examples-extendedfields-plot-intrinsic-py"><span class="std std-ref">Textured images with large trend</span></a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate a field having a topothesy whose values may vary depen..."><div class="figure align-default" id="id5">
-<img alt="Textured images with spectral variations" src="../_images/sphx_glr_plot_extendedfield_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="ExtendedFields/plot_extendedfield.html#sphx-glr-auto-examples-extendedfields-plot-extendedfield-py"><span class="std std-ref">Textured images with spectral variations</span></a></span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-clear"></div></div>
-<div class="section" id="heterogeneous-fields">
-<span id="sphx-glr-auto-examples-heterogeneousfields"></span><h2>Heterogeneous fields<a class="headerlink" href="#heterogeneous-fields" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures by applying a local deformation..."><div class="figure align-default" id="id6">
-<img alt="Heterogeneous textures from local deformation" src="../_images/sphx_glr_plot_localdeformfield_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="HeterogeneousFields/plot_localdeformfield.html#sphx-glr-auto-examples-heterogeneousfields-plot-localdeformfield-py"><span class="std std-ref">Heterogeneous textures from local deformation</span></a></span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose roughness spatially varie..."><div class="figure align-default" id="id7">
-<img alt="Multifractional Brownian field" src="../_images/sphx_glr_plot_mfbf_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="HeterogeneousFields/plot_mfbf.html#sphx-glr-auto-examples-heterogeneousfields-plot-mfbf-py"><span class="std std-ref">Multifractional Brownian field</span></a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose pattern orientation spati..."><div class="figure align-default" id="id8">
-<img alt="Anisotropic Multifractional Brownian field 1" src="../_images/sphx_glr_plot_amfbf1_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="HeterogeneousFields/plot_amfbf1.html#sphx-glr-auto-examples-heterogeneousfields-plot-amfbf1-py"><span class="std std-ref">Anisotropic Multifractional Brownian field 1</span></a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose anisotropy spatially vari..."><div class="figure align-default" id="id9">
-<img alt="Anisotropic Multifractional Brownian field 2" src="../_images/sphx_glr_plot_amfbf2_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="HeterogeneousFields/plot_amfbf2.html#sphx-glr-auto-examples-heterogeneousfields-plot-amfbf2-py"><span class="std std-ref">Anisotropic Multifractional Brownian field 2</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-clear"></div></div>
-<div class="section" id="related-anisotropic-fields">
-<span id="sphx-glr-auto-examples-relatedfields"></span><h2>Related anisotropic fields<a class="headerlink" href="#related-anisotropic-fields" title="Permalink to this headline">¶</a></h2>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate texture images with binary patterns."><div class="figure align-default" id="id10">
-<img alt="Binary textures" src="../_images/sphx_glr_plot_binarypatterns_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="RelatedFields/plot_binarypatterns.html#sphx-glr-auto-examples-relatedfields-plot-binarypatterns-py"><span class="std std-ref">Binary textures</span></a></span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate isotropy textures from the deformation of an isotropy ..."><div class="figure align-default" id="id11">
-<img alt="Anisotropic textures from field deformations" src="../_images/sphx_glr_plot_deformfield_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="RelatedFields/plot_deformfield.html#sphx-glr-auto-examples-relatedfields-plot-deformfield-py"><span class="std std-ref">Anisotropic textures from field deformations</span></a></span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="toctree-wrapper compound">
-</div>
-<div class="sphx-glr-clear"></div><div class="sphx-glr-footer class sphx-glr-footer-gallery docutils container">
+<div class="sphx-glr-footer sphx-glr-footer-gallery docutils container">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/07fcc19ba03226cd3d83d4e40ec44385/auto_examples_python.zip"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">all</span> <span class="pre">examples</span> <span class="pre">in</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">auto_examples_python.zip</span></code></a></p>
 </div>
@@ -308,55 +166,38 @@
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="plot_fbf.html" class="btn btn-neutral float-right" title="Fractional Brownian field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../quickstartguide.html" class="btn btn-neutral float-left" title="Quick start guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plot_fbf.html" class="btn btn-neutral float-right" title="Fractional Brownian field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright Frédéric Richard, 2021.
-
-    </p>
+    <p>&#169; Copyright Frédéric Richard, 2021.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

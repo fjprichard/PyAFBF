@@ -165,6 +165,26 @@ Let us now see how these representations can be used for the field simulation.
 
 .. image:: ./Figures/afbf2.png
 
+
+Exporting simulations
+---------------------
+
+A simulation :math:`z` of a field can be exported as a numpy ndarray as follows.
+
+.. code-block:: python
+
+	z_array = z.values.reshape(z.M)
+
+Then, it can be displayed with matlplotlib tools as follows.
+
+.. code-block:: python
+
+	from matplotlib import pyplot as plt
+
+	plt.imshow(z_array, cmap='gray', origin="upper")
+	
+	   
+
 Tuning model parameters
 -----------------------
 
@@ -321,7 +341,7 @@ let :math:`X_k` be independent fractional Brownian motions with a Hurst index :m
 .. math:: 
   	W(y) = \sum_{k=1}^K \lambda_k X_k(\langle \phi_k, y \rangle),
 
-where :math:`\lambda_k` are some coefficients depending on :math:`\tau(\varphi_k)` and :math:`X_k` are independent fractional Brownian motions of Hurst index :math:`\beta(\phi_k)`. Such a field can be simulated by generating some fractional Brownian motions :math:`X_k` (in one dimension) and summing them. Moreover, it was shown in :cite:p:`Bierme-2015-TBM` that, setting coefficients  :math:`\lambda_k` appropriately, the semi-variogram of the field :math:`W` approximates the one of the field  :math:`Z`. Hence, the AFBF :math:`Z` can be approximately simulated by simulating a turning band field :math:`W`. 
+where :math:`\lambda_k` are some coefficients depending on :math:`\tau(\phi_k)` and :math:`X_k` are independent fractional Brownian motions of Hurst index :math:`\beta(\phi_k)`. Such a field can be simulated by generating some fractional Brownian motions :math:`X_k` (in one dimension) and summing them. Moreover, it was shown in :cite:p:`Bierme-2015-TBM` that, setting coefficients  :math:`\lambda_k` appropriately, the semi-variogram of the field :math:`W` approximates the one of the field  :math:`Z`. Hence, the AFBF :math:`Z` can be approximately simulated by simulating a turning band field :math:`W`. 
 
 Using the PyAFBF package, the semi-variograms of the turning-band field and the AFBF can be computed and compared as follows.
 

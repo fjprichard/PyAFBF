@@ -1,7 +1,0 @@
-afbf
-====
-
-.. toctree::
-   :maxdepth: 4
-
-   afbf

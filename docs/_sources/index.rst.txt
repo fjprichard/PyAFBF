@@ -22,27 +22,29 @@ Package features
 
 - Extensions to related fields (deformed fields, intrinsic fields, heterogeneous fields, binary patterns).
 
+- (NEW FEATURE - version >= 0.2.4) Generate database of rough anisotropic textures with the complementary package `PyAFBFdb <https://github.com/fjprichard/PyAFBFdb>`_.
 
-Installation from sources
-=========================
+- (COMING SOON) Example-based simulation.
+
+
+Installation
+============
 
 The package source can be downloaded from the `repository <https://github.com/fjprichard/PyAFBF>`_. 
 
-To install the package, write the following commands in the root directory where the package was downloaded:
+The package can also be installed through PyPI with
 
 .. code-block:: python
 
-    python setup.py install
-    or
-    pip install -e .
+    pip install PyAFBF
 
-After installation, the package can be tested by running 
+To install the package in a Google Collab environment, please type
 
 .. code-block:: python
 
-    python tests/TestAll.py
+   !pip install imgaug==0.2.6
+   !pip install PyAFBF
 
-If no output appears, then the package is correctly installed.
 
 Communication to the author
 ===========================
@@ -52,13 +54,12 @@ PyAFBF is developed and maintained by Frédéric Richard. For feed-back, contrib
 Citation
 ========
 
-When using PyAFBF, please cite the original paper :cite:`Bierme-2015-TBM` and the JOSS paper :cite:'Richard-2022'.
+When using PyAFBF, please cite the original paper :cite:`Bierme-2015-TBM` and the software paper :cite:`Richard2022` .
 
 Licence
 =======
 
 PyAFBF is under licence GNU GPL, version 3.
-
 
 .. toctree::
    :maxdepth: 2
@@ -66,16 +67,15 @@ PyAFBF is under licence GNU GPL, version 3.
 
    ./quickstartguide.rst
    ./auto_examples/index.rst
+   ./database.rst
    ./field.rst
    ./classes.rst
    ./glossary.rst
    ./refs.rst
 
-******************
 Indices and tables
-******************
+==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

@@ -3,6 +3,7 @@ API: main classes
 
 .. codeauthor:: Frédéric Richard <frederic.richard_at_univ-amu.fr>
 
+
 .. _field:
 
 AFBF (*field*)
@@ -12,6 +13,8 @@ AFBF (*field*)
    :members:
    :undoc-members:
    :show-inheritance:
+
+
 
 .. _tbfield:
 

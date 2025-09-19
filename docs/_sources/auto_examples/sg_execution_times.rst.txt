@@ -3,14 +3,44 @@
 
 .. _sphx_glr_auto_examples_sg_execution_times:
 
+
 Computation times
 =================
-**02:25.487** total execution time for **auto_examples** files:
+**00:19.632** total execution time for 4 files **from auto_examples**:
 
-+-----------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_database.py` (``plot_database.py``) | 02:15.834 | 0.0 MB |
-+-----------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_fbf.py` (``plot_fbf.py``)           | 00:07.591 | 0.0 MB |
-+-----------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_plot_efbf.py` (``plot_efbf.py``)         | 00:02.062 | 0.0 MB |
-+-----------------------------------------------------------------------+-----------+--------+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_plot_afbf_2.py` (``plot_afbf_2.py``)
+     - 00:06.133
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_fbf.py` (``plot_fbf.py``)
+     - 00:05.955
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_afbf_1.py` (``plot_afbf_1.py``)
+     - 00:05.925
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_efbf.py` (``plot_efbf.py``)
+     - 00:01.619
+     - 0.0

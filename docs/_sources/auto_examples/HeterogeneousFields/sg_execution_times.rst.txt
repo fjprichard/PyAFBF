@@ -3,16 +3,44 @@
 
 .. _sphx_glr_auto_examples_HeterogeneousFields_sg_execution_times:
 
+
 Computation times
 =================
-**27:33.249** total execution time for **auto_examples_HeterogeneousFields** files:
+**20:25.517** total execution time for 4 files **from auto_examples/HeterogeneousFields**:
 
-+-----------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_mfbf.py` (``plot_mfbf.py``)                         | 09:01.159 | 0.0 MB |
-+-----------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf1.py` (``plot_amfbf1.py``)                     | 08:50.157 | 0.0 MB |
-+-----------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf2.py` (``plot_amfbf2.py``)                     | 08:49.510 | 0.0 MB |
-+-----------------------------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_localdeformfield.py` (``plot_localdeformfield.py``) | 00:52.423 | 0.0 MB |
-+-----------------------------------------------------------------------------------------------------------+-----------+--------+
+.. container::
+
+  .. raw:: html
+
+    <style scoped>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script type="text/javascript" class="init">
+    $(document).ready( function () {
+        $('table.sg-datatable').DataTable({order: [[1, 'desc']]});
+    } );
+    </script>
+
+  .. list-table::
+   :header-rows: 1
+   :class: table table-striped sg-datatable
+
+   * - Example
+     - Time
+     - Mem (MB)
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_mfbf.py` (``plot_mfbf.py``)
+     - 06:44.377
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf1.py` (``plot_amfbf1.py``)
+     - 06:33.111
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf2.py` (``plot_amfbf2.py``)
+     - 06:32.503
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_localdeformfield.py` (``plot_localdeformfield.py``)
+     - 00:35.526
+     - 0.0
