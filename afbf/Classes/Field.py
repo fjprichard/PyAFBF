@@ -190,29 +190,29 @@ class field:
             if fname == 'fbf':
                 self.fname = 'Fractional Brownian field'
                 self.order = 0
-                self.topo = perfunction('step-constant', name='Topothesy')
-                self.hurst = perfunction('step-constant', name='Hurst')
+                self.topo = perfunction('step-constant', fname='Topothesy')
+                self.hurst = perfunction('step-constant', fname='Hurst')
                 self.NormalizeModel()
 
             # Elementary fractional Brownian field.
             elif fname == 'efbf':
                 self.fname = 'Elementary fractional Brownian field'
                 self.order = 0
-                self.topo = perfunction('step-ridge', 1, name='Topothesy')
-                self.hurst = perfunction('step-constant', name='Hurst')
+                self.topo = perfunction('step-ridge', 1, fname='Topothesy')
+                self.hurst = perfunction('step-constant', fname='Hurst')
 
             # Some other AFBF.
             elif 'afbf' in fname:
                 self.fname = 'Anisotropic fractional Brownian field'
                 self.order = 0
                 if 'smooth' in fname:
-                    self.hurst = perfunction('step-smooth', name='Hurst')
+                    self.hurst = perfunction('step-smooth', fname='Hurst')
                 else:
-                    self.hurst = perfunction('step', name='Hurst')
+                    self.hurst = perfunction('step', fname='Hurst')
                 if 'Fourier' in fname:
-                    self.topo = perfunction('Fourier', name='Topothesy')
+                    self.topo = perfunction('Fourier', fname='Topothesy')
                 else:
-                    self.topo = perfunction(self.hurst.ftype, name='Topothesy')
+                    self.topo = perfunction(self.hurst.ftype, fname='Topothesy')
                     self.NormalizeModel()
             else:
                 raise Exception('Field.SetModel(): Unknown predefined field.')

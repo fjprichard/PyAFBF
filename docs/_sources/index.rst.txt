@@ -52,7 +52,7 @@ PyAFBF is developed and maintained by Frédéric Richard. For feed-back, contrib
 Citation
 ========
 
-When using PyAFBF, please cite the original paper :cite:`Bierme-2015-TBM`.
+When using PyAFBF, please cite the original paper :cite:`Bierme-2015-TBM` and the JOSS paper :cite:'Richard-2022'.
 
 Licence
 =======
