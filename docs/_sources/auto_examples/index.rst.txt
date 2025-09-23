@@ -3,12 +3,6 @@
 Example gallery
 ===============
 
-This directory contains the examples of the gallery of the   `documentation <https://fjprichard.github.io/PyAFBF/auto_examples/index.html>`_.
-These examples can be easily reproduced by downloading the python source code or jupyter notebook from the documentation.
-
-
-Basic examples
---------------
 
 
 
@@ -48,7 +42,7 @@ Basic examples
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Anisotropic Fractional Brownian field</div>
+      <div class="sphx-glr-thumbnail-title">Anisotropic Fractional Brownian field (1)</div>
     </div>
 
 
@@ -65,7 +59,7 @@ Basic examples
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Anisotropic Fractional Brownian field</div>
+      <div class="sphx-glr-thumbnail-title">Anisotropic Fractional Brownian field (2)</div>
     </div>
 
 
@@ -100,200 +94,6 @@ Basic examples
    /auto_examples/plot_afbf_1
    /auto_examples/plot_afbf_2
    /auto_examples/plot_efbf
-
-Extended anisotropic fields
----------------------------
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbnails">
-
-.. thumbnail-parent-div-open
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate textured images with large trends.">
-
-.. only:: html
-
-  .. image:: /auto_examples/ExtendedFields/images/thumb/sphx_glr_plot_intrinsic_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_ExtendedFields_plot_intrinsic.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Textured images with large trend</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate a field having a topothesy whose values may vary depending both on the direction and the amplitude.">
-
-.. only:: html
-
-  .. image:: /auto_examples/ExtendedFields/images/thumb/sphx_glr_plot_extendedfield_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_ExtendedFields_plot_extendedfield.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Textured images with spectral variations</div>
-    </div>
-
-
-.. thumbnail-parent-div-close
-
-.. raw:: html
-
-    </div>
-
-Heterogeneous fields
---------------------
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbnails">
-
-.. thumbnail-parent-div-open
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures by applying a local deformation to an isotropy random field.">
-
-.. only:: html
-
-  .. image:: /auto_examples/HeterogeneousFields/images/thumb/sphx_glr_plot_localdeformfield_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_localdeformfield.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Heterogeneous textures from local deformation</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose roughness spatially varies. Such textures can be obtained by simulating a turning band field with a space-dependent Hurst function.">
-
-.. only:: html
-
-  .. image:: /auto_examples/HeterogeneousFields/images/thumb/sphx_glr_plot_mfbf_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_mfbf.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Multifractional Brownian field</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose pattern orientation spatially varies. Such textures can be obtained by simulating a turning band field with a space-dependent Hurst function represented as a step function.">
-
-.. only:: html
-
-  .. image:: /auto_examples/HeterogeneousFields/images/thumb/sphx_glr_plot_amfbf1_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf1.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Anisotropic Multifractional Brownian field 1</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate heterogeneous textures whose anisotropy spatially varies. Such textures can be obtained by simulating a turning band field with a space-dependent Hurst function represented as a step function.">
-
-.. only:: html
-
-  .. image:: /auto_examples/HeterogeneousFields/images/thumb/sphx_glr_plot_amfbf2_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_HeterogeneousFields_plot_amfbf2.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Anisotropic Multifractional Brownian field 2</div>
-    </div>
-
-
-.. thumbnail-parent-div-close
-
-.. raw:: html
-
-    </div>
-
-Related anisotropic fields
---------------------------
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbnails">
-
-.. thumbnail-parent-div-open
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate texture images with binary patterns.">
-
-.. only:: html
-
-  .. image:: /auto_examples/RelatedFields/images/thumb/sphx_glr_plot_binarypatterns_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_RelatedFields_plot_binarypatterns.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Binary textures</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we show how to simulate isotropy textures from the deformation of an isotropy random field.">
-
-.. only:: html
-
-  .. image:: /auto_examples/RelatedFields/images/thumb/sphx_glr_plot_deformfield_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_auto_examples_RelatedFields_plot_deformfield.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Anisotropic textures from field deformations</div>
-    </div>
-
-
-.. thumbnail-parent-div-close
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-   :includehidden:
-
-
-   /auto_examples/ExtendedFields/index.rst
-   /auto_examples/HeterogeneousFields/index.rst
-   /auto_examples/RelatedFields/index.rst
 
 
 .. only:: html

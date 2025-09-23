@@ -38,14 +38,6 @@ The package can also be installed through PyPI with
 
     pip install PyAFBF
 
-To install the package in a Google Collab environment, please type
-
-.. code-block:: python
-
-   !pip install imgaug==0.2.6
-   !pip install PyAFBF
-
-
 Communication to the author
 ===========================
 

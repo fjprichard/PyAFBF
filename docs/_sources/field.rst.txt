@@ -15,7 +15,6 @@ AFBF (*field*)
    :show-inheritance:
 
 
-
 .. _tbfield:
 
 Turning band field (*tbfield*)

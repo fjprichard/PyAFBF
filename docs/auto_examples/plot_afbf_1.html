@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anisotropic Fractional Brownian field &mdash; PyAFBF  documentation</title>
+  <title>Anisotropic Fractional Brownian field (1) &mdash; PyAFBF  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
@@ -27,7 +27,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Anisotropic Fractional Brownian field" href="plot_afbf_2.html" />
+    <link rel="next" title="Anisotropic Fractional Brownian field (2)" href="plot_afbf_2.html" />
     <link rel="prev" title="Fractional Brownian field" href="plot_fbf.html" /> 
 </head>
 
@@ -55,16 +55,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../quickstartguide.html">Quick start guide</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Example gallery</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#basic-examples">Basic examples</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="plot_fbf.html">Fractional Brownian field</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Anisotropic Fractional Brownian field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_afbf_2.html">Anisotropic Fractional Brownian field</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_efbf.html">Elementary Fractional Brownian field</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#extended-anisotropic-fields">Extended anisotropic fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#heterogeneous-fields">Heterogeneous fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#related-anisotropic-fields">Related anisotropic fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_fbf.html">Fractional Brownian field</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Anisotropic Fractional Brownian field (1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_afbf_2.html">Anisotropic Fractional Brownian field (2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_efbf.html">Elementary Fractional Brownian field</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../database.html">Generation of a database</a></li>
@@ -89,7 +83,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Example gallery</a></li>
-      <li class="breadcrumb-item active">Anisotropic Fractional Brownian field</li>
+      <li class="breadcrumb-item active">Anisotropic Fractional Brownian field (1)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/auto_examples/plot_afbf_1.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -99,8 +93,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Anisotropic-Fractional-Brownian-field">
-<h1>Anisotropic Fractional Brownian field<a class="headerlink" href="#Anisotropic-Fractional-Brownian-field" title="Link to this heading"></a></h1>
+  <section id="Anisotropic-Fractional-Brownian-field-(1)">
+<h1>Anisotropic Fractional Brownian field (1)<a class="headerlink" href="#Anisotropic-Fractional-Brownian-field-(1)" title="Link to this heading"></a></h1>
 <p><em>Code author: Frédéric Richard &lt;frederic.richard_at_univ-amu.fr&gt;</em></p>
 <p>This example shows how to simulate an anisotropic fractional Brownian field with random Hurst step function.</p>
 <div class="nbinput docutils container">
@@ -108,11 +102,13 @@
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">afbf</span><span class="w"> </span><span class="kn">import</span> <span class="n">tbfield</span><span class="p">,</span> <span class="n">perfunction</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span>
 
 <span class="c1"># Define the field.</span>
 <span class="n">hurst</span> <span class="o">=</span> <span class="n">perfunction</span><span class="p">(</span><span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;Hurst function&#39;</span><span class="p">)</span>
 <span class="n">topo</span> <span class="o">=</span> <span class="n">perfunction</span><span class="p">(</span><span class="n">ftype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">param</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;Topothesy function&#39;</span><span class="p">)</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">tbfield</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;afbf&#39;</span><span class="p">,</span> <span class="n">topo</span><span class="o">=</span><span class="n">topo</span><span class="p">,</span> <span class="n">hurst</span><span class="o">=</span><span class="n">hurst</span><span class="p">)</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">hurst</span><span class="o">.</span><span class="n">ChangeParameters</span><span class="p">(</span><span class="n">fparam</span><span class="o">=</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]))</span>
 <span class="n">Z</span><span class="o">.</span><span class="n">NormalizeModel</span><span class="p">()</span>
 
 <span class="c1"># Simulate the field.</span>
@@ -152,7 +148,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="plot_fbf.html" class="btn btn-neutral float-left" title="Fractional Brownian field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="plot_afbf_2.html" class="btn btn-neutral float-right" title="Anisotropic Fractional Brownian field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="plot_afbf_2.html" class="btn btn-neutral float-right" title="Anisotropic Fractional Brownian field (2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

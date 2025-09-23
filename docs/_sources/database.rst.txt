@@ -6,7 +6,7 @@ Generation of a database
 Introduction
 ------------
 
-The complementary package `PyAFBFdb <https://github.com/fjprichard/PyAFBFdb>`_ enables to generate database of rough anisotropic textures in a reproducible way using the PyAFBF tools. It is of interest for building sets that can be used for training or testing deep learning architectures, and can be be used for pytorch applications.
+The complementary package `PyAFBFdb <https://github.com/fjprichard/PyAFBFdb>`_ enables to generate database of rough anisotropic textures in a reproducible way using the PyAFBF tools. Such database can be used for training or testing deep learning architectures. They can be exported to Pytorch Dataset.
 
 Installation
 ------------
@@ -23,7 +23,7 @@ Alternately, the package can be installed through PyPI with
 Quick start
 -----------
 
-Create a directory where to save the database. Choose a `setting file <https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates>`_ and save it in the database directory with the name "setting.yaml" (see below for an explanation of setting). Then to form an initial database of 10 examples, run the python script:   
+Create a directory where to save the database. Choose a `setting file <https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates>`_ and save it in the database directory with the name "setting.yaml" (see below for an explanation of settings). Then to form an initial database of 10 examples, run the python script:   
 
 .. code-block:: python
 
@@ -40,13 +40,13 @@ Create a directory where to save the database. Choose a `setting file <https://g
 	# Simulate fields.
 	simu.CreateFields(expe_end=nb_examples)
 
-Once the database was created, an example can be displayed with the command
+Once the database is created, an example can be displayed with the command
 
 .. code-block:: python
 
 	simu.ShowExample(2)
 	
-This shows the image generated from the field as well as the functional parameters of the field (the Hurst function and the topothesy function). It also displays some features related to the Hurst function. 
+This shows the image generated from the field as well as the functional parameters of the field (the Hurst function and the topothesy function). It also prints out some features related to the Hurst function. 
 	
 It is also possible to display all examples using the command
 
@@ -60,7 +60,7 @@ The database can be increased with an arbritary number of examples (here 2) by r
 
 	simu.CreateFields(expe_end=simu.nbexpe + 2)
 	
-This call will not generate again the already created examples, but only the two new ones.
+This call does not generate again the already created examples, but only the two new ones.
 
 
 Predefined settings
@@ -68,10 +68,13 @@ Predefined settings
 
 As mentioned previously, some predefined database settings are given in the `repository <https://github.com/fjprichard/PyAFBFdb/tree/main/protocol-templates>`_. They correspond to different types of anisotropic fractional Brownian fields :
 
-- setting_001: database examples are simulations of different isotropic Fractional Brownian field whose Hurst index is uniformly sampled.
-- setting_002: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.
-- setting_003: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps with smooth transitions. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.
-- setting_004: database examples are simulations of elementary Fractional Brownian field whose Hurst index is uniformly sampled. The position and size of the interval where the topothesy vanishes are uniformly sampled.
+- `setting_001 <https://github.com/fjprichard/PyAFBFdb/blob/main/protocol-templates/setting-001.yaml>`: database examples are simulations of different isotropic Fractional Brownian field whose Hurst index is uniformly sampled.
+
+- `setting_002 <https://github.com/fjprichard/PyAFBFdb/blob/main/protocol-templates/setting-002.yaml>`: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.
+
+- `setting_003 <https://github.com/fjprichard/PyAFBFdb/blob/main/protocol-templates/setting-003.yaml>`: database examples are simulations of anisotropic Fractional Brownian field. These fields are defined with Hurst and topothesy function having two steps with smooth transitions. The minimal value of this Hurst function (Hurst index) is uniformly sampled, as well as the position and the size of the interval where the Hurst function is equal to the Hurst index.
+
+- `setting_004 <https://github.com/fjprichard/PyAFBFdb/blob/main/protocol-templates/setting-004.yaml>`: database examples are simulations of elementary Fractional Brownian field whose Hurst index is uniformly sampled. The position and size of the interval where the topothesy vanishes are uniformly sampled.
 
 Other settings can be manually defined by changing the parameters of the models.
 
@@ -98,8 +101,6 @@ The database can be used in pytorch by creating a customed Dataset as follows.
 		    "path_to_the_database_directory".
 		indices : array
 		    indices of examples to include in the dataset.
-		name : str, optional
-		    name of the dataset.
 		"""
 		self.rep = rep
 		self.indices = indices

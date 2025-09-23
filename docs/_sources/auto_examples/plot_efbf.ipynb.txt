@@ -15,7 +15,7 @@
       },
       "outputs": [],
       "source": [
-        "import numpy as np\nfrom afbf import tbfield\n\nN = 256  # Image size.\nH = 0.2  # Hurst index in (0, 1).\nT = np.pi / 8  # Interval bound for selected frequencies.\nD = np.pi / 3  # Direction.\n\n# Define the field.\nZ = tbfield('efbf')\n\n# Change the parameter of the Hurst and topothesy functions.\nZ.hurst.ChangeParameters(fparam=np.array([[H]]))\nZ.topo.ChangeParameters(fparam=np.array([0, 1]), finter=np.array([-T, T]))\n# Translate the topothesy function to be at the right orientation.\nZ.topo.ApplyTransforms(translate=-D)\n\n# Simulate the field.\nz = Z.Simulate()\n\n# Display the simulation.\nz.Display()"
+        "import numpy as np\nfrom afbf import tbfield\n\nN = 256  # Image size.\nH = 0.2  # Hurst index in (0, 1).\nT = np.pi / 8  # Interval bound for selected frequencies.\nD = np.pi / 3  # Direction.\n\n# Define the field.\nZ = tbfield('efbf')\n\n# Change the parameter of the Hurst and topothesy functions.\nZ.hurst.ChangeParameters(fparam=np.array([[H]]))\nZ.topo.ChangeParameters(fparam=np.array([0, 1]), finter=np.array([-T, T]))\n# Translate the topothesy function to be at the right orientation.\nZ.topo.ApplyTransforms(translate=-D)\n\n# Simulate the field.\nz = Z.Simulate()\n\n# Display the simulation.\nz.Display()\nZ.DisplayParameters()"
       ]
     }
   ],

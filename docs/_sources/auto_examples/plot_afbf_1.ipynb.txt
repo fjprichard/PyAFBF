@@ -4,7 +4,7 @@
       "cell_type": "markdown",
       "metadata": {},
       "source": [
-        "\n# Anisotropic Fractional Brownian field\n\n.. codeauthor:: Fr\u00e9d\u00e9ric Richard <frederic.richard_at_univ-amu.fr>\n\nThis example shows how to simulate an anisotropic fractional Brownian field\nwith random Hurst step function.\n"
+        "\n# Anisotropic Fractional Brownian field (1)\n\n.. codeauthor:: Fr\u00e9d\u00e9ric Richard <frederic.richard_at_univ-amu.fr>\n\nThis example shows how to simulate an anisotropic fractional Brownian field\nwith random Hurst step function.\n"
       ]
     },
     {
@@ -15,7 +15,7 @@
       },
       "outputs": [],
       "source": [
-        "from afbf import tbfield, perfunction\n\n# Define the field.\nhurst = perfunction(ftype='step', param=2, fname='Hurst function')\ntopo = perfunction(ftype='step', param=2, fname='Topothesy function')\nZ = tbfield(fname='afbf', topo=topo, hurst=hurst)\nZ.NormalizeModel()\n\n# Simulate the field.\nz = Z.Simulate()\n\n# Display the simulation.\nz.Display()\nZ.DisplayParameters()"
+        "from afbf import tbfield, perfunction\nfrom numpy import array\n\n# Define the field.\nhurst = perfunction(ftype='step', param=2, fname='Hurst function')\ntopo = perfunction(ftype='step', param=2, fname='Topothesy function')\nZ = tbfield(fname='afbf', topo=topo, hurst=hurst)\nZ.hurst.ChangeParameters(fparam=array([0.2, 0.8]))\nZ.NormalizeModel()\n\n# Simulate the field.\nz = Z.Simulate()\n\n# Display the simulation.\nz.Display()\nZ.DisplayParameters()"
       ]
     }
   ],

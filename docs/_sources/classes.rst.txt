@@ -36,16 +36,6 @@ Process (*process*)
    :undoc-members:
    :show-inheritance:
 
-
-Variable projection (*minimize*)
---------------------------------
-
-.. autoclass:: afbf.Estimation.varpro.minimize
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
 Turning bands (*tbparameters*)
 ------------------------------
 		   
