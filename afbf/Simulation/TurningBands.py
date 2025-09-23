@@ -540,6 +540,7 @@ class tbparameters:
         print('Precision       :' + str(self.acc))
         print('Simulation cost :' + str(self.cost))
 
+
 def LoadTBField(filename):
     """Load the field model.
 
@@ -552,4 +553,4 @@ def LoadTBField(filename):
     topo = LoadPerfunction(filename + "-topo")
     model = tbfield(filename, topo, hurst)
 
-    return(model)
+    return model
