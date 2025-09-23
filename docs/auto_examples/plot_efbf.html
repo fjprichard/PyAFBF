@@ -111,7 +111,6 @@
 
 <span class="c1"># Define the field.</span>
 <span class="n">Z</span> <span class="o">=</span> <span class="n">tbfield</span><span class="p">(</span><span class="s1">&#39;efbf&#39;</span><span class="p">)</span>
-
 <span class="c1"># Change the parameter of the Hurst and topothesy functions.</span>
 <span class="n">Z</span><span class="o">.</span><span class="n">hurst</span><span class="o">.</span><span class="n">ChangeParameters</span><span class="p">(</span><span class="n">fparam</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">H</span><span class="p">]]))</span>
 <span class="n">Z</span><span class="o">.</span><span class="n">topo</span><span class="o">.</span><span class="n">ChangeParameters</span><span class="p">(</span><span class="n">fparam</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">finter</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">]))</span>

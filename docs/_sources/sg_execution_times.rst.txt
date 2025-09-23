@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:19.726** total execution time for 4 files **from all galleries**:
+**00:02.136** total execution time for 4 files **from all galleries**:
 
 .. container::
 
@@ -32,15 +32,15 @@ Computation times
    * - Example
      - Time
      - Mem (MB)
-   * - :ref:`sphx_glr_auto_examples_plot_afbf_2.py` (``../../examples/plot_afbf_2.py``)
-     - 00:06.078
-     - 0.0
-   * - :ref:`sphx_glr_auto_examples_plot_fbf.py` (``../../examples/plot_fbf.py``)
-     - 00:06.039
+   * - :ref:`sphx_glr_auto_examples_plot_efbf.py` (``../../examples/plot_efbf.py``)
+     - 00:02.136
      - 0.0
    * - :ref:`sphx_glr_auto_examples_plot_afbf_1.py` (``../../examples/plot_afbf_1.py``)
-     - 00:05.944
+     - 00:00.000
      - 0.0
-   * - :ref:`sphx_glr_auto_examples_plot_efbf.py` (``../../examples/plot_efbf.py``)
-     - 00:01.666
+   * - :ref:`sphx_glr_auto_examples_plot_afbf_2.py` (``../../examples/plot_afbf_2.py``)
+     - 00:00.000
+     - 0.0
+   * - :ref:`sphx_glr_auto_examples_plot_fbf.py` (``../../examples/plot_fbf.py``)
+     - 00:00.000
      - 0.0
